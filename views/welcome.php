@@ -47,3 +47,9 @@
 				</tbody>
 			</table>
 		</div>
+		<?php
+		if(!isset($_SESSION['login']))
+        {
+            include('views/plugins/sidebar.php');
+        }
+        ?>
