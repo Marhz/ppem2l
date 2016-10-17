@@ -1,5 +1,5 @@
-<nav class="navbar navbar-default navbar-menuright col-lg-3">
-    <div>
+<nav class="navbar navbar-default navbar-menuright col-lg-3 sidebar">
+    <div class="">
         <table class="table-condensed table-bordered table-striped col-xs-3">
                 <thead>
                     <tr>

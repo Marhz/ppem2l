@@ -1,5 +1,5 @@
 		<div class="col-lg-9">
-			<h1>Formations à venir</h1>
+			<h1 class="title">Formations à venir</h1>
 			<table class="table table-bordered">
 				<thead>
 					<tr>
