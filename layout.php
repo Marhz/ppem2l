@@ -65,12 +65,7 @@
     <div class="container">
         <div class="row">
     <?php 
-        echo $content."<br>";
-
-        if(!isset($_SESSION['login']))
-        {
-            include('views/plugins/sidebar.php');
-        } 
+        echo $content;
     ?>
 
     <!-- JavaScripts -->
