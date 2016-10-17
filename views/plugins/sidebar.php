@@ -1,5 +1,6 @@
-<nav class="navbar navbar-default navbar-menuright col-lg-offset-9 col-lg-2">
-        <table class="table-condensed table-bordered table-striped">
+<nav class="navbar navbar-default navbar-menuright col-lg-3">
+    <div>
+        <table class="table-condensed table-bordered table-striped col-xs-3">
                 <thead>
                     <tr>
                       <th colspan="7" >
@@ -66,17 +67,16 @@
                     </tr>
                 </tbody>
             </table>
-
+    </div>
         <div class="moncompte">
-            <h1>Mon compte</h1>
-            <div>
+            <div class="col-xs-3 col-lg-12">
+                <h1>Mon compte</h1>
                 <p>Bienvenue $Username</p>
-            </div>
-            <div>
                 <p>Il vous reste $Credit</p>
             </div>
-            <h1>Mes formations</h1>
-            <div>
+            <div class="col-xs-3 col-lg-12">
+                <h1>Mes formations</h1>
+
                 <p>Vous avez $nbrf le $fdate</p>
             </div>
         </div> 

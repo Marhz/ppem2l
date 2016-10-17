@@ -42,7 +42,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="welcome">
                     M2L
                 </a>
             </div>
@@ -50,22 +50,23 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="welcome">Home</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                
+                    <li><a href='login'>Se connecter</a></li>                
                 </ul>
             </div>
         </div>
     </nav>
 
+    <div class="container">
+        <div class="row">
     <?php 
         echo $content."<br>";
 
-        if(isset($_SESSION['login']))
+        if(!isset($_SESSION['login']))
         {
             include('views/plugins/sidebar.php');
         } 
