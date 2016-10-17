@@ -50,7 +50,8 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="welcome">Home</a></li>
+                    <li><a href="/ppem2l">Accueil</a></li>
+                    <li><a href="/ppem2l/compte">Mon compte</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
