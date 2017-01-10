@@ -19,3 +19,26 @@
 	</nav>
 </div>
 
+<table class="table table-striped">
+	<thead>
+		<th>Formation</th>
+		<th>Adresse</th>
+		<th>Cout</th>
+		<th>Duree</th>
+	</thead>
+	<tbody>
+		<?php 
+			foreach($user_formations_history as $history)
+			{
+				echo "
+				<tr>
+				<td>{$history['titre']}</td>
+				<td>{$history['numero']}{$history['rue']}{$history['ville']}</td>
+				<td>{$history['cout']}</td>
+				<td>{$history['duree']}</td>
+				</tr>";
+			}
+		?>
+	</tbody>
+</table>
+
