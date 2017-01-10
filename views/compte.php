@@ -31,8 +31,8 @@
 			foreach($user_formations_history as $history)
 			{
 				echo "
-				<tr>
-				<td>{$history['titre']}</td>
+				<tr class=\"{$history['valide']}\">
+				<td >{$history['titre']}</td>
 				<td>{$history['numero']}{$history['rue']}{$history['ville']}</td>
 				<td>{$history['cout']}</td>
 				<td>{$history['duree']}</td>
