@@ -2,7 +2,7 @@
 <div class="row">
 	<div class="col-md-4"></div>
 	<div class="col-md-3 navbar-default navbar">
-		<h2>Bonjour $username</h2>
+		<h2><?= "Bonjour {$_SESSION['prenom']} {$_SESSION['nom']}";?></h2>
 	</div>
 </div>
 <div class="row">

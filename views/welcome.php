@@ -48,7 +48,7 @@
 			</table>
 		</div>
 		<?php
-		if(!isset($_SESSION['login']))
+		if(!isset($_SESSION['connecte']))
         {
             include('views/plugins/sidebar.php');
         }
