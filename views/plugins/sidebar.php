@@ -1,5 +1,5 @@
-<nav class="navbar navbar-default navbar-menuright col-lg-3">
-    <div>
+<nav class="navbar navbar-default navbar-menuright col-lg-3 sidebar">
+    <div class="">
         <table class="table-condensed table-bordered table-striped col-xs-3">
                 <thead>
                     <tr>
@@ -76,8 +76,9 @@
             </div>
             <div class="col-xs-3 col-lg-12">
                 <h1>Mes formations</h1>
-
+                <p>Vous n'avez pas de formation à venir</p>
                 <p>Vous avez $nbrf le $fdate</p>
+                <p>Il vous reste $nbr_jour jours de formation</p>
             </div>
         </div> 
     </nav>
