@@ -1,1 +1,3 @@
-testtsttststst
+<?php
+
+var_dump($formations);
