@@ -12,7 +12,7 @@
 		if(!file_exists("controllers/".$_GET['p'].".php"))
 		{
 			$_GET['p']="404";
-			require "ontrollers/404.php";
+			require "controllers/404.php";
 			die();
 		}
 	}
