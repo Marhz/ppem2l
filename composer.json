@@ -1,11 +1,11 @@
 {
     "require": {
-        "nesbot/carbon": "^1.21"
+        "nesbot/carbon" : "^1.21"
     },
-    "autoload": {
-    	"psr-4" : {
-    		"Core\\" : "core////////"
-    	},
+    "autoload":{
+        "psr-4":{
+            "Core\\" : "core"
+        },
     	"files" : [
     		"core/helpers.php"
     	]

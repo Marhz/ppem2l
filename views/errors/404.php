@@ -40,7 +40,6 @@
     <body>
         <div class="container">
             <div class="content">
-            <form action=""><?= Core\Form::text('','',''); ?></form>
                 <div class="title"><span id="compteur"></span>404 not Found</div>
             </div>
         </div>
