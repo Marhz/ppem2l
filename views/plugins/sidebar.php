@@ -70,12 +70,12 @@
     </div>
         <div class="moncompte">
             <div class="col-xs-3 col-lg-12">
-                <h1>Mon compte</h1>
-                <p>Bienvenue $Username</p>
-                <p>Il vous reste $Credit</p>
+                <h3>Mon compte</h3>
+                <p>Bienvenue <?= auth('prenom').' '.auth('nom'); ?></p>
+                <p>Il vous reste <?= auth('credit'); ?></p>
             </div>
             <div class="col-xs-3 col-lg-12">
-                <h1>Mes formations</h1>
+                <h3>Mes formations</h3>
                 <p>Vous n'avez pas de formation à venir</p>
                 <p>Vous avez $nbrf le $fdate</p>
                 <p>Il vous reste $nbr_jour jours de formation</p>

@@ -14,6 +14,7 @@
 			$_SESSION['prenom']=$donnee['prenom'];
 			$_SESSION['email']=$donnee['email'];
 			$_SESSION['lvl']=$donnee['lvl'];
+			$_SESSION['credit'] = $donnee['credit'];
 			echo "Connexion réussi";
 			header('location:welcome');
 		}

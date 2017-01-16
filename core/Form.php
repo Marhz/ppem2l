@@ -17,52 +17,23 @@ class Form {
 
 	public static function text($name, $label, $params = [])
 	{
-		$result = "<label for='{$name}'>{$label}</label>";
-		$result .= "<input type='text' name='{$name}' id='{$name}' ";
-		foreach($params as $key => $value)
-		{
-			$result .= "{$key} = '{$value}'";
-		}		
-		return $result .= "' />";
+		return self::input('text', $name, $label, $params = []);
 	}
 	public static function email($name, $label, $params = [])
 	{
-		$result = "<label for='{$name}'>{$label}</label>";
-		$result .= "<input type='email' name='{$name}' id='{$name}' ";
-		foreach($params as $key => $value)
-		{
-			$result .= "{$key} = '{$value}'";
-		}		
-		return $result .= "' />";
+		return self::input('email', $name, $label, $params = []);
 	}
 	public static function password($name, $label, $params = [])
 	{
-		$result = "<label for='{$name}'>{$label}</label>";
-		$result .= "<input type='password' name='{$name}' id='{$name}' ";
-		foreach($params as $key => $value)
-		{
-			$result .= "{$key} = '{$value}'";
-		}		
-		return $result .= "' />";
+		return self::input('password', $name, $label, $params = []);
 	}
 	public static function hidden($name, $params = [])
 	{
-		$result = "<input type='hidden' name='{$name}' id='{$name}' ";
-		foreach($params as $key => $value)
-		{
-			$result .= "{$key} = '{$value}'";
-		}		
-		return $result .= "' />";
+		return self::input('hidden', $name, $label, $params = []);
 	}
 	public static function file($name, $label = null, $params = [])
 	{
-		$result = "<label for='{$name}'>{$label}</label>";
-		$result .= "<input type='file' name='{$name}' id='{$name}' ";
-		foreach($params as $key => $value)
-		{
-			$result .= "{$key} = '{$value}'";
-		}		
-		return $result .= "' />";
+		return self::input('file', $name, $label, $params = []);
 	}
 	public static function select($name, $label, $options = [], $params = [])
 	{
@@ -111,4 +82,18 @@ class Form {
 		}
 		return $result;
 	}
-}					
+	public static function input($type, $name, $label, $params = [])
+	{
+		$result = '';
+		if($type != 'hidden')
+			$result .= "<label for='{$name}'>{$label}</label>";
+		$result .= "<textarea name='{$name}' id='{$name}' ";
+		foreach($params as $key => $value)
+		{
+			if($key != 'value')
+				$result .= "{$key} = '{$value}'";
+		}	
+		$default = $params['value'] ? $params['value'] : null;
+		return $result .= ">{$default}</textarea>";
+	}
+}
