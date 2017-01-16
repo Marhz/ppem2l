@@ -1,8 +1,7 @@
 
 <div class="row">
-	<div class="col-md-4"></div>
-	<div class="col-md-3 navbar-default navbar">
-		<h2><?= "Bonjour {$_SESSION['prenom']} {$_SESSION['nom']}";?></h2>
+	<div class="col-md-12 navbar-default navbar">
+		<h2><?= "Bonjour ".auth('prenom')." ".auth('nom');?></h2>
 	</div>
 </div>
 <div class="row">
@@ -28,14 +27,14 @@
 	</thead>
 	<tbody>
 		<?php 
-			foreach($user_formations_history as $history)
+			foreach($formations as $formation)
 			{
 				echo "
-				<tr class=\"{$history['valide']}\">
-				<td >{$history['titre']}</td>
-				<td>{$history['numero']}{$history['rue']}{$history['ville']}</td>
-				<td>{$history['cout']}</td>
-				<td>{$history['duree']}</td>
+				<tr class='{$formation['valide']}'>
+				<td >{$formation['titre']}</td>
+				<td>{$formation['numero']} {$formation['voirie']}, {$formation['code_postal']} {$formation['ville']}</td>
+				<td>{$formation['cout']}</td>
+				<td>{$formation['duree']}</td>
 				</tr>";
 			}
 		?>

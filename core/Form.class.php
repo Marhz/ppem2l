@@ -1,4 +1,5 @@
 <?php
+namespace Core;
 class Form {
 
 	public static function textarea($name, $label, $params = [])

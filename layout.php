@@ -68,7 +68,11 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href='login'>Se connecter</a></li>                
+                <?php if(!isset($_SESSION['connecte']))
+                        echo "<li><a href='login'>Se connecter</a></li>";
+                    else
+                        echo "<li><a href='logout'>Se déconnecter</a></li>";
+                ?>               
                 </ul>
             </div>
         </div>

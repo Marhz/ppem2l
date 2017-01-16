@@ -1,8 +1,10 @@
 <?php
+$index = require "vendor/autoload.php";
+
+use Core\Error;
 	require "models/connexion.php";
-
+	// dd($index);
 	define("BASE_URL",$_SERVER['REQUEST_URI']);
-
 	if(!isset($_GET['p']) || $_GET['p'] == "") 
 	{
 		$_GET['p'] = "welcome";
@@ -11,14 +13,11 @@
 	{
 		if(!file_exists("controllers/".$_GET['p'].".php"))
 		{
-			$_GET['p']="404";
-			require "controllers/404.php";
-			die();
+			Error::set(404);
 		}
 	}
 	ob_start();
 		include "controllers/".$_GET['p'].".php";
 		$content = ob_get_contents();
 	ob_end_clean();
-
 	require "layout.php";
