@@ -4,7 +4,7 @@
 	foreach ($formations as $key => $value) 
 	{
 		$formations[$key]['titre'] = htmlspecialchars($formations[$key]['titre']);
-		$formations[$key]['valide'] = $formations[$key]['valide'] == 1 ? "valide" : null;
+		// $formations[$key]['valide'] = $formations[$key]['valide'] == 1 ? "valide" : null;
 	}
 
 	include_once('views/compte.php');

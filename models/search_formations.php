@@ -10,6 +10,9 @@
 		$formations = $req->fetchAll();
 
 		return $formations;
+		global $bdd;
+		$req->execute();
+		return  $req->fetchAll();
 	}
 
 /*if(isset($_POST['submit']))

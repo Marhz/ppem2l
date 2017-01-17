@@ -9,3 +9,23 @@
 .title{
 	margin-bottom: 20px;
 }
+
+.searchbar{
+	margin-top:7px;
+}
+
+.green{
+	color:green;
+}
+
+.grey{
+	color:grey;
+}
+
+.red{
+	color:red;
+}
+
+.fa{
+	font-size:2em;
+}

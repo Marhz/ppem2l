@@ -3,7 +3,7 @@
         <table class="table-condensed table-bordered table-striped col-xs-3">
                 <thead>
                     <tr>
-                      <th colspan="7" >
+                      <th colspan="7">
                         <a class="btn"><i class="icon-chevron-left"></i></a>
                         <a class="btn">February 2012</a>
                         <a class="btn"><i class="icon-chevron-right"></i></a>
@@ -69,12 +69,12 @@
             </table>
     </div>
         <div class="moncompte">
-            <div class="col-xs-3 col-lg-12">
+            <div class="col-xs-4 col-lg-12">
                 <h3>Mon compte</h3>
                 <p>Bienvenue <?= auth('prenom').' '.auth('nom'); ?></p>
-                <p>Il vous reste <?= auth('credit'); ?></p>
+                <p>Il vous reste <?= auth('credit'); ?> crédits</p>
             </div>
-            <div class="col-xs-3 col-lg-12">
+            <div class="col-xs-4 col-lg-12">
                 <h3>Mes formations</h3>
                 <p>Vous n'avez pas de formation à venir</p>
                 <p>Vous avez $nbrf le $fdate</p>

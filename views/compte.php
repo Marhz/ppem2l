@@ -20,6 +20,7 @@
 
 <table class="table table-striped">
 	<thead>
+		<th>Status</th>
 		<th>Formation</th>
 		<th>Adresse</th>
 		<th>Cout</th>
@@ -29,10 +30,14 @@
 		<?php 
 			foreach($formations as $formation)
 			{
-				echo "
-				<tr class='{$formation['valide']}'>
-				<td >{$formation['titre']}</td>
-				<td>{$formation['numero']} {$formation['voirie']}, {$formation['code_postal']} {$formation['ville']}</td>
+				?>
+				<tr>
+				<td ><i class="<?= 
+					(($formation['valide'] == 1 ? 'fa fa-check green' : ($formation['valide'] == 0 ? 'fa fa-check grey' : 'fa fa-close red')));
+				 ?>"></td>
+				<?=
+				"<td >{$formation['titre']}</td>
+				<td>".formatAdresse($formation)." {$formation['ville']}</td>
 				<td>{$formation['cout']}</td>
 				<td>{$formation['duree']}</td>
 				</tr>";
@@ -40,4 +45,3 @@
 		?>
 	</tbody>
 </table>
-

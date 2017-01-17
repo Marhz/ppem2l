@@ -51,17 +51,15 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav col-lg-9">
                     <li><a href="welcome">Accueil</a></li>
                     <li><a href="compte">Mon compte</a></li>
-                </ul>
-                <ul>
-                    <form action="search" method="Post" class="form-inline">
+                    <form action="search" method="Post" class="form-inline searchbar">
                         <div class="form-group">
-                            <input type="text" name="search" size="10">
+                            <input type="text" name="search" size="15" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="rechercher">
+                            <input type="submit" value="rechercher" class="form-control btn btn-primary">
                         </div>
                     </form>
                 </ul>
@@ -88,6 +86,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     
-    <script src="{{ elixir('js/app.js') }}"></script>
 </body>
 </html>
