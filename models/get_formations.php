@@ -14,3 +14,30 @@
 		$req->execute();
 		return  $req->fetchAll();
 	}
+	function getFormationsToValidate($bdd)
+	{
+		$logged_id = $_SESSION['id_u'];
+		$req = $bdd->query("SELECT * from users where id in (select id_user from chef_user where id_chef = {$logged_id})");
+		foreach($tmp = $req->fetchAll() as $key => $value);
+		{
+			$req2 = $bdd->query("SELECT * from formations where id_formation in (select id_f from attribution_formation where id_u = {$tmp[$key]['id']} and valide = 0)");
+			if($tmp2 = $req2->fetchAll())
+			{
+				$tmp[$key]['formations'] = $tmp2;
+			}
+			else
+			{
+				unset($tmp[$key]);
+			}
+		}
+		return $tmp;
+	}
+	function validerFormation($bdd, $id_u, $id_f, $valide)
+	{
+		$req = $bdd->prepare("UPDATE attribution_formation set valide = :valide where id_u = :id_u and id_f = :id_f");
+		$req->execute([
+			'id_u' => $id_u,
+			'id_f' => $id_f,
+			'valide' => $valide
+		]);
+	}

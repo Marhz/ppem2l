@@ -1,5 +1,6 @@
 <?php
-$index = require "vendor/autoload.php";
+require "vendor/autoload.php";
+require "core/start.php";
 
 use Core\Error;
 use Carbon\Carbon;
