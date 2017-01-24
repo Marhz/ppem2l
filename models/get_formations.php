@@ -7,6 +7,7 @@
 		$req->execute(array('id_u'=>$id_u));
 		return  $req->fetchAll();
 	}
+	$formations = Formation::with('adresse')->withPivot('valide');
 	function getFullFormations()
 	{
 		global $bdd;

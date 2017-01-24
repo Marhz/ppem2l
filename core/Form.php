@@ -9,7 +9,7 @@ class Form {
 		foreach($params as $key => $value)
 		{
 			if($key != 'value')
-				$result .= "{$key} = '{$value}'";
+				$result .= "{$key} = '{$value}' ";
 		}	
 		$default = $params['value'] ? $params['value'] : null;
 		return $result .= ">{$default}</textarea>";
@@ -17,23 +17,23 @@ class Form {
 
 	public static function text($name, $label, $params = [])
 	{
-		return self::input('text', $name, $label, $params = []);
+		return self::input('text', $name, $label, $params);
 	}
 	public static function email($name, $label, $params = [])
 	{
-		return self::input('email', $name, $label, $params = []);
+		return self::input('email', $name, $label, $params);
 	}
 	public static function password($name, $label, $params = [])
 	{
-		return self::input('password', $name, $label, $params = []);
+		return self::input('password', $name, $label, $params);
 	}
 	public static function hidden($name, $params = [])
 	{
-		return self::input('hidden', $name, $label, $params = []);
+		return self::input('hidden', $name, $label, $params);
 	}
 	public static function file($name, $label = null, $params = [])
 	{
-		return self::input('file', $name, $label, $params = []);
+		return self::input('file', $name, $label, $params);
 	}
 	public static function select($name, $label, $options = [], $params = [])
 	{
@@ -41,7 +41,7 @@ class Form {
 		$result .= "<select name='{$name}' id='{$name}' ";
 		foreach($params as $key => $value)
 		{
-			$result .= "{$key} = '{$value}'";
+			$result .= "{$key} = '{$value}' ";
 		}
 		$result .='>';
 		foreach($options as $key => $value)
@@ -60,9 +60,10 @@ class Form {
 			$result .= "<label ";
 			foreach($params as $pKey => $pValue)
 			{
-				$result .= "{$pKey} = '{$pValue}'";
+				$result .= "{$pKey} = '{$pValue}' ";
 			}
 			$result .= "><input type='checkbox' name='{$name}{$i}' id='{$name}{$i}' value='{$key}'>{$value}</label> ";
+			$i++;
 		}
 		return $result;
 	}
@@ -76,9 +77,10 @@ class Form {
 			$result .= "<label ";
 			foreach($params as $pKey => $pValue)
 			{
-				$result .= "{$pKey} = '{$pValue}'";
+				$result .= "{$pKey} = '{$pValue}' ";
 			}
 			$result .= "><input type='radio' name='{$name}' id='{$name}{$i}' value='{$key}'>{$value}</label> ";
+			$i++;
 		}
 		return $result;
 	}
@@ -87,13 +89,11 @@ class Form {
 		$result = '';
 		if($type != 'hidden')
 			$result .= "<label for='{$name}'>{$label}</label>";
-		$result .= "<textarea name='{$name}' id='{$name}' ";
+		$result .= "<input type='{$type}' name='{$name}' id='{$name}' ";
 		foreach($params as $key => $value)
 		{
-			if($key != 'value')
-				$result .= "{$key} = '{$value}'";
+			$result .= "{$key} = '{$value}' ";
 		}	
-		$default = $params['value'] ? $params['value'] : null;
-		return $result .= ">{$default}</textarea>";
+		return $result .= ">";
 	}
 }
