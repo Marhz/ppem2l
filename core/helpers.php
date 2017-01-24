@@ -31,6 +31,17 @@ function formatAdresse($adresse)
 	return $adresse['numero'].' '.$adresse['voirie'].' '.$adresse['nom_voirie'].', '.$adresse['code_postal'];
 }
 
+function isConnect()
+{
+	if(!isset($_SESSION['connecte']))
+		{
+			header("location:welcome");
+		}
+		else
+		{
+			return true;
+		}
+}
 function randStr($size)
 {
 	$result = '';
