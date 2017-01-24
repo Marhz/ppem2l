@@ -4,6 +4,11 @@ require "core/start.php";
 
 use Core\Error;
 use Carbon\Carbon;
+use Models\User;
+
+$user = User::first();
+echo $user->safe('nom');
+die();
 	require "models/connexion.php";
 	// dd($index);
 	setLocale(LC_TIME, 'fr_FR.utf8', 'fra');
