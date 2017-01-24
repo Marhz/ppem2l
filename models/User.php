@@ -32,4 +32,14 @@ class User extends BaseModel
 	{
 		return $this->hasOne(Adresse::class);
 	}
+
+	public function chef()
+	{
+		return $this->belongsTo(User::class, 'chef_id');
+	}
+
+	public function employes()
+	{
+		return $this->hasMany(User::class, 'chef_id');
+	}
 }
