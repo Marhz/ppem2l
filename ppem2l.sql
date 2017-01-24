@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
--- Client :  localhost
--- Généré le :  Mar 17 Janvier 2017 à 09:07
--- Version du serveur :  5.7.16-0ubuntu0.16.04.1
--- Version de PHP :  7.0.13-0ubuntu0.16.04.1
+-- Client :  127.0.0.1
+-- Généré le :  Mar 24 Janvier 2017 à 13:03
+-- Version du serveur :  5.7.14
+-- Version de PHP :  5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -47,43 +47,20 @@ INSERT INTO `adresses` (`id_adresse`, `ville`, `voirie`, `nom_voirie`, `numero`,
 -- --------------------------------------------------------
 
 --
--- Structure de la table `attribution_adresse`
+-- Structure de la table `attribution_formations`
 --
 
-CREATE TABLE `attribution_adresse` (
-  `id_a` int(11) DEFAULT NULL,
-  `id_f` int(11) DEFAULT NULL,
-  `id_p` int(11) DEFAULT NULL,
-  `id_u` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `attribution_adresse`
---
-
-INSERT INTO `attribution_adresse` (`id_a`, `id_f`, `id_p`, `id_u`) VALUES
-(1, 3, NULL, NULL),
-(2, 2, NULL, NULL),
-(3, NULL, NULL, 1),
-(3, 1, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `attribution_formation`
---
-
-CREATE TABLE `attribution_formation` (
-  `id_f` int(11) NOT NULL,
-  `id_u` int(11) NOT NULL,
+CREATE TABLE `attribution_formations` (
+  `formation_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `valide` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `attribution_formation`
+-- Contenu de la table `attribution_formations`
 --
 
-INSERT INTO `attribution_formation` (`id_f`, `id_u`, `valide`) VALUES
+INSERT INTO `attribution_formations` (`formation_id`, `user_id`, `valide`) VALUES
 (1, 1, 1),
 (1, 2, 2),
 (2, 2, 0),
@@ -103,6 +80,7 @@ CREATE TABLE `formations` (
   `debut` datetime DEFAULT NULL,
   `nb_places` int(11) DEFAULT NULL,
   `type_id` int(11) DEFAULT NULL,
+  `adresse_id` int(11) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `deteled_at` datetime DEFAULT NULL
@@ -112,10 +90,10 @@ CREATE TABLE `formations` (
 -- Contenu de la table `formations`
 --
 
-INSERT INTO `formations` (`id_formation`, `titre`, `duree`, `cout`, `debut`, `nb_places`, `type_id`, `created_at`, `update_at`, `deteled_at`) VALUES
-(1, 'Informatique', '30', 100, '2017-01-26 00:00:00', 2, 1, '2017-01-03 00:00:00', NULL, NULL),
-(2, 'sql', '10', 100, '2017-01-31 00:00:00', 2, 3, '2017-01-03 00:00:00', NULL, NULL),
-(3, 'js', '10', 100, '2017-01-31 00:00:00', 2, 1, '2017-01-03 00:00:00', NULL, NULL);
+INSERT INTO `formations` (`id_formation`, `titre`, `duree`, `cout`, `debut`, `nb_places`, `type_id`, `adresse_id`, `created_at`, `update_at`, `deteled_at`) VALUES
+(1, 'Informatique', '30', 100, '2017-01-26 00:00:00', 2, 1, 0, '2017-01-03 00:00:00', NULL, NULL),
+(2, 'sql', '10', 100, '2017-01-31 00:00:00', 2, 3, 0, '2017-01-03 00:00:00', NULL, NULL),
+(3, 'js', '10', 100, '2017-01-31 00:00:00', 2, 1, 0, '2017-01-03 00:00:00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -125,7 +103,8 @@ INSERT INTO `formations` (`id_formation`, `titre`, `duree`, `cout`, `debut`, `nb
 
 CREATE TABLE `prestataires` (
   `id` int(11) NOT NULL,
-  `raison_sociale` varchar(255) DEFAULT NULL
+  `raison_sociale` varchar(255) DEFAULT NULL,
+  `adresse_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -146,7 +125,7 @@ CREATE TABLE `type_formation` (
 INSERT INTO `type_formation` (`id_type`, `type_titre`) VALUES
 (1, 'Informatique'),
 (2, 'Methodologie'),
-(3, 'Gestion de données');
+(3, 'Gestion de donn?es');
 
 -- --------------------------------------------------------
 
@@ -162,16 +141,17 @@ CREATE TABLE `users` (
   `login` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `credit` int(11) DEFAULT NULL,
-  `nbr_jour` int(11) DEFAULT NULL
+  `nbr_jour` int(11) DEFAULT NULL,
+  `adresse_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `users`
 --
 
-INSERT INTO `users` (`id`, `nom`, `prenom`, `email`, `login`, `password`, `credit`, `nbr_jour`) VALUES
-(1, 'Limentour', 'Gaetan', 'gaetalim@gmail.com', 'gaetalim@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0, 0),
-(2, 'de rémusat', 'georges', 'gderemusat@gmail.com', 'gderemusat@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0, 0);
+INSERT INTO `users` (`id`, `nom`, `prenom`, `email`, `login`, `password`, `credit`, `nbr_jour`, `adresse_id`) VALUES
+(1, 'Limentour', 'Gaetan', 'gaetalim@gmail.com', 'gaetalim@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0, 0, 0),
+(2, 'de r?musat', 'georges', 'gderemusat@gmail.com', 'gderemusat@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 0, 0, 0);
 
 --
 -- Index pour les tables exportées
@@ -184,17 +164,11 @@ ALTER TABLE `adresses`
   ADD PRIMARY KEY (`id_adresse`);
 
 --
--- Index pour la table `attribution_adresse`
+-- Index pour la table `attribution_formations`
 --
-ALTER TABLE `attribution_adresse`
-  ADD UNIQUE KEY `id_a` (`id_a`,`id_f`,`id_p`,`id_u`);
-
---
--- Index pour la table `attribution_formation`
---
-ALTER TABLE `attribution_formation`
-  ADD PRIMARY KEY (`id_f`,`id_u`),
-  ADD KEY `id_u` (`id_u`);
+ALTER TABLE `attribution_formations`
+  ADD PRIMARY KEY (`formation_id`,`user_id`),
+  ADD KEY `id_u` (`user_id`);
 
 --
 -- Index pour la table `formations`
@@ -254,11 +228,11 @@ ALTER TABLE `users`
 --
 
 --
--- Contraintes pour la table `attribution_formation`
+-- Contraintes pour la table `attribution_formations`
 --
-ALTER TABLE `attribution_formation`
-  ADD CONSTRAINT `attribution_formation_ibfk_1` FOREIGN KEY (`id_f`) REFERENCES `formations` (`id_formation`),
-  ADD CONSTRAINT `attribution_formation_ibfk_2` FOREIGN KEY (`id_u`) REFERENCES `users` (`id`);
+ALTER TABLE `attribution_formations`
+  ADD CONSTRAINT `attribution_formations_ibfk_1` FOREIGN KEY (`formation_id`) REFERENCES `formations` (`id_formation`),
+  ADD CONSTRAINT `attribution_formations_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
