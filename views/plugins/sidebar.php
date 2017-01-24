@@ -76,8 +76,10 @@
             </div>
             <div class="col-xs-4 col-lg-12">
                 <h3>Mes formations</h3>
-                <p>Vous n'avez pas de formation à venir</p>
-                <p>Vous avez $nbrf le $fdate</p>
+                <?php if($nbFormations == 0)
+                    echo "<p>Vous n'avez pas de formation à venir</p>";
+                else
+                    echo "<p>Vous avez ".$nbFormations." formations à venir</p>" ?>
                 <p>Il vous reste $nbr_jour jours de formation</p>
             </div>
         </div> 

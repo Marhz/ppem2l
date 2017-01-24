@@ -6,6 +6,7 @@ class Formation extends BaseModel
 {
 	public $timestamp=false;
 
+	//Helpers
 	public function getAdresse()
 	{
 		return $this->adresse->format();
@@ -19,6 +20,6 @@ class Formation extends BaseModel
 
 	public function adresse()
 	{
-		return $this->hasOne(Adresse::class);
+		return $this->belongsTo(Adresse::class);
 	}
 }

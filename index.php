@@ -5,7 +5,6 @@ require "core/start.php";
 use Core\Error;
 use Carbon\Carbon;
 
-	die();
 	require "models/connexion.php";
 	// dd($index);
 	setLocale(LC_TIME, 'fr_FR.utf8', 'fra');

@@ -9,7 +9,7 @@ $capsule->addConnection([
 	'host' => 'localhost',
 	'database' => 'ppem2l',
 	'username' => 'root',
-	'password' => '1234',
+	'password' => '',
 	'charset' => 'utf8',
 	'collation' => 'utf8_unicode_ci'
 ]);
