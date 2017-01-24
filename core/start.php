@@ -7,9 +7,9 @@ $capsule = new Capsule;
 $capsule->addConnection([
 	'driver' => 'mysql',
 	'host' => 'localhost',
-	'database' => 'testeloquent',
+	'database' => 'ppem2l',
 	'username' => 'root',
-	'password' => '1234',
+	'password' => '',
 	'charset' => 'utf8',
 	'collation' => 'utf8_unicode_ci'
 ]);

@@ -2,8 +2,6 @@
 
 namespace Models;
 
-use Illuminate\Support\Facades\Auth;
-
 class User extends BaseModel 
 {
 	public $timestamps = false;
@@ -23,10 +21,15 @@ class User extends BaseModel
 	{
 		return $this->credit >= $formation->cout;
 	}
-	
+
 	//Relation
 	public function formations()
 	{
 		return $this->belongsToMany(Formation::class);
+	}
+
+	public function adresse()
+	{
+		return $this->hasOne(Adresse::class);
 	}
 }

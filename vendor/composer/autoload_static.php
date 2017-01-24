@@ -19,6 +19,10 @@ class ComposerStaticInit553c06c15282c699855ab1542997dcd9
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Translation\\' => 30,
         ),
+        'M' => 
+        array (
+            'Models\\' => 7,
+        ),
         'I' => 
         array (
             'Illuminate\\Support\\' => 19,
@@ -41,6 +45,10 @@ class ComposerStaticInit553c06c15282c699855ab1542997dcd9
         'Symfony\\Component\\Translation\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/translation',
+        ),
+        'Models\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/models',
         ),
         'Illuminate\\Support\\' => 
         array (

@@ -8,6 +8,6 @@ class BaseModel extends Model {
 	
 	public function safe($item)
 	{
-		echo htmlspecialchars($this->$item);
+		return htmlspecialchars($this->$item);
 	}
 }

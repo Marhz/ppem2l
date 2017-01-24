@@ -2,11 +2,6 @@
 
 session_start();
 
-function dd($dump)
-{
-	die(var_dump($dump));
-}
-
 function auth($key)
 {
 	return $_SESSION[$key];
@@ -28,7 +23,7 @@ function boldify($text)
 
 function formatAdresse($adresse)
 {
-	return $adresse['numero'].' '.$adresse['voirie'].' '.$adresse['nom_voirie'].', '.$adresse['code_postal'];
+	return $this->$adresse['numero'].' '.$adresse['voirie'].' '.$adresse['nom_voirie'].', '.$adresse['code_postal'];
 }
 
 function isConnect()
@@ -50,4 +45,9 @@ function randStr($size)
 	for($i = 0; $i < $size; $i++)
 		$result .= $str[rand(0, $strsize)];
 	return $result;
+}
+
+function myUcfirst($str)
+{
+	return ucfirst(strtolower($str));
 }
