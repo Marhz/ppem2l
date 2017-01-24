@@ -23,7 +23,7 @@ function boldify($text)
 
 function formatAdresse($adresse)
 {
-	return $this->$adresse['numero'].' '.$adresse['voirie'].' '.$adresse['nom_voirie'].', '.$adresse['code_postal'];
+	return $adresse['numero'].' '.$adresse['voirie'].' '.$adresse['nom_voirie'].', '.$adresse['code_postal'];
 }
 
 function isConnect()
