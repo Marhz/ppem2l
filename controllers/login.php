@@ -8,7 +8,7 @@
 		if($donnee = login($bdd))
 		{
 			$_SESSION['connecte']=true;
-			$_SESSION['id_u']=$donnee['id'];
+			$_SESSION['id']=$donnee['id'];
 			$_SESSION['nom']=$donnee['nom'];
 			$_SESSION['prenom']=$donnee['prenom'];
 			$_SESSION['email']=$donnee['email'];
