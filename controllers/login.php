@@ -3,12 +3,15 @@
 	{
 		include('views/login.php');
 	}
-	else{
+	else
+	{
 		extract($_POST);
-		include("models/login.php");
+		// include("models/login.php");
 		$user = Models\User::where('email', $email)->where('password', sha1($mdp))->first();
+		dd('yolo');
+		
 		if($user)
-		{
+		{			
 			$_SESSION['connecte']= true;
 			$_SESSION['user'] = $user;
 			echo "Connexion réussi";
