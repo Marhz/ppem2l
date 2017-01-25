@@ -10,4 +10,9 @@ class BaseModel extends Model {
 	{
 		return htmlspecialchars($this->$item);
 	}
+
+	public function showQuery()
+	{
+		return [$this->toSql(), $this->getBindings()];
+	}
 }

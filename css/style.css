@@ -1,3 +1,27 @@
+.inline{
+	display: inline-block;
+}
+.table{
+	table-layout: unset;
+}
+.box{
+	min-width: 75px;
+	margin-bottom: 5px;
+}
+@media screen and (max-width: 800px)
+{
+	.hide-small-screen{
+		display: none;
+	}
+}
+.table-breaker{
+	/*text-align: center;*/
+	/*background: #ffffff;*/
+}
+.table-breaker > h5{
+/*	margin-top: 100px;
+	margin-bottom: 100px;
+*/}
 .sidebar{
 	margin-left:0px;
 }

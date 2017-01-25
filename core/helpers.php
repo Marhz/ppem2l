@@ -51,3 +51,17 @@ function myUcfirst($str)
 {
 	return ucfirst(strtolower($str));
 }
+
+function logger() 
+{
+	$queries = \Illuminate\Database\Capsule\Manager::getQueryLog();
+	$formattedQueries = [];
+	foreach( $queries as $query ) :
+	    $prep = $query['query'];
+	    foreach( $query['bindings'] as $binding ) :
+	        $prep = preg_replace("#\?#", $binding, $prep, 1);
+	    endforeach;
+	    $formattedQueries[] = $prep;
+	endforeach;
+	return $formattedQueries;
+}

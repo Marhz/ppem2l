@@ -26,16 +26,14 @@ class User extends BaseModel
 	{
 		return $this->credit >= $formation->cout;
 	}
-
+	//Relations
 	public function getNbFormations()
 	{
 		return $this->formations->where('debut','>',Carbon::Now())->count();
 	}
-
-	//Relation
 	public function formations()
 	{
-		return $this->belongsToMany(Formation::class);
+		return $this->belongsToMany(Formation::class, 'attribution_formations')->withPivot('valide');
 	}
 
 	public function adresse()
