@@ -5,7 +5,6 @@ use Models\User;
 	include('models/get_formations.php');
 //	$formations=get_user_formations_history();
 	$user = User::find($_SESSION['id'])->with('formations.adresse');
-	dd($user);
 	foreach ($user->formations as $key => $value) 
 	{
 		$formations[$key]['titre'] = htmlspecialchars($formations[$key]['titre']);

@@ -11,14 +11,14 @@ class Formation extends BaseModel
 		return $this->adresse->format();
 	}
 
-	//Relation
+	//Relations
 	public function users()
 	{
-		return $this->belongsToMany(User::class);
+		return $this->belongsToMany(User::class)->withPivot('valide');
 	}
 
 	public function adresse()
 	{
-		return $this->hasOne(Adresse::class);
+		return $this->belongsTo(Adresse::class);
 	}
 }

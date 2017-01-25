@@ -71,8 +71,8 @@
         <div class="moncompte">
             <div class="col-xs-4 col-lg-12">
                 <h3>Mon compte</h3>
-                <p>Bienvenue <?= auth('prenom').' '.auth('nom'); ?></p>
-                <p>Il vous reste <?= auth('credit'); ?> crédits</p>
+                <p>Bienvenue <?= auth('user')->fullName(); ?></p>
+                <p>Il vous reste <?= auth('user')->credit; ?> crédits</p>
             </div>
             <div class="col-xs-4 col-lg-12">
                 <h3>Mes formations</h3>

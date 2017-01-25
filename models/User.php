@@ -22,10 +22,10 @@ class User extends BaseModel
 		return $this->credit >= $formation->cout;
 	}
 
-	//Relation
+	//Relations
 	public function formations()
 	{
-		return $this->belongsToMany(Formation::class);
+		return $this->belongsToMany(Formation::class, 'attribution_formations')->withPivot('valide');
 	}
 
 	public function adresse()

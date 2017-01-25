@@ -17,3 +17,5 @@ $capsule->addConnection([
 $capsule->setAsGlobal();
 
 $capsule->bootEloquent();
+
+$capsule::connection()->enableQueryLog();
