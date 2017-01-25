@@ -52,6 +52,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav col-lg-9">
+                <?php if(isset($_SESSION['connecte'])){?>
                     <li><a href="welcome">Accueil</a></li>
                     <li><a href="compte">Mon compte</a></li>
                     <form action="search" method="Post" class="form-inline searchbar">
@@ -63,11 +64,12 @@
                         </div>
                     </form>
                 </ul>
+                <?php }?>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                 <?php if(!isset($_SESSION['connecte']))
-                        echo "<li><a href='login'>Se connecter</a></li>";
+                        echo "<li><a href='login'></a></li>";
                     else
                         echo "<li><a href='logout'>Se déconnecter</a></li>";
                 ?>               

@@ -11,7 +11,14 @@ use Carbon\Carbon;
 	define("BASE_URL",$_SERVER['REQUEST_URI']);
 	if(!isset($_GET['p']) || $_GET['p'] == "") 
 	{
-		$_GET['p'] = "welcome";
+		if(isset($_SESSION['connecte']))
+		{
+			$_GET['p'] = "welcome";
+		}
+		else
+		{
+			$_GET['p'] = "login";
+		}
 	}
 	else
 	{
