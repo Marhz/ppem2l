@@ -27,17 +27,18 @@
 		<th>Duree</th>
 	</thead>
 	<tbody>
-		<?php 
-			foreach($formations as $formation)
+
+		<?php
+			foreach($formation_user as $formation)
 			{
 				?>
 				<tr>
 				<td ><i class="<?= 
-					(($formation['valide'] == 1 ? 'fa fa-check green' : ($formation['valide'] == 0 ? 'fa fa-check grey' : 'fa fa-close red')));
+					(($formation->valide == 1 ? 'fa fa-check green' : ($formation->valide == 0 ? 'fa fa-check grey' : 'fa fa-close red')));
 				 ?>"></td>
 				<?=
-				"<td >{$formation['titre']}</td>
-				<td>".formatAdresse($formation)." {$formation['ville']}</td>
+				"<td >{$formation->titre}</td>
+				<td>".$formation->adresse->ville."</td>
 				<td>{$formation['cout']}</td>
 				<td>{$formation['duree']}</td>
 				</tr>";

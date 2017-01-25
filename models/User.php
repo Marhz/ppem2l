@@ -1,6 +1,10 @@
 <?php
 
+
+
 namespace Models;
+
+use Carbon\Carbon;
 
 class User extends BaseModel 
 {
@@ -21,8 +25,11 @@ class User extends BaseModel
 	{
 		return $this->credit >= $formation->cout;
 	}
-
 	//Relations
+	public function getNbFormations()
+	{
+		return $this->formations->where('debut','>',Carbon::Now())->count();
+	}
 	public function formations()
 	{
 		return $this->belongsToMany(Formation::class, 'attribution_formations')->withPivot('valide');

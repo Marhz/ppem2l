@@ -6,6 +6,7 @@ class Formation extends BaseModel
 {
 	public $timestamp=false;
 
+	//Helpers
 	public function getAdresse()
 	{
 		return $this->adresse->format();
