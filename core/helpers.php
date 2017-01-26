@@ -7,6 +7,11 @@ function auth($key)
 	return $_SESSION[$key];
 }
 
+function methodIs($method)
+{
+	return strtolower($_SERVER['REQUEST_METHOD']) == strtolower($method);
+}
+
 function affDate($date)
 {
 	return Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->formatLocalized('%A %d %B %Y');
@@ -64,4 +69,9 @@ function logger()
 	    $formattedQueries[] = $prep;
 	endforeach;
 	return $formattedQueries;
+}
+function redirect($url)
+{
+	header('location: '.$url);
+	die();
 }

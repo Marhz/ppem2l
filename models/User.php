@@ -13,9 +13,12 @@ class User extends BaseModel
 	//Helpers
 	public function isAdmin()
 	{
-		return $this->level == 1;
+		return $this->level == 2;
 	}
-
+	public function isChef()
+	{
+		return $this->level <= 1;
+	}
 	public function fullName()
 	{
 		return $this->nom." ".$this->prenom;

@@ -1,5 +1,7 @@
 <?php
+
 namespace Core;
+
 class Form {
 
 	public static function textarea($name, $label, $params = [])
@@ -11,10 +13,13 @@ class Form {
 			if($key != 'value')
 				$result .= "{$key} = '{$value}' ";
 		}	
-		$default = $params['value'] ? $params['value'] : null;
+		$default = isset($params['value']) ? $params['value'] : null;
 		return $result .= ">{$default}</textarea>";
 	}
-
+	public static function submit($name, $label, $params = [])
+	{
+		return self::input('submit', $name, $label, $params);
+	}
 	public static function text($name, $label, $params = [])
 	{
 		return self::input('text', $name, $label, $params);
@@ -35,13 +40,21 @@ class Form {
 	{
 		return self::input('file', $name, $label, $params);
 	}
+	public static function number($name, $label = null, $params = [])
+	{
+		return self::input('number', $name, $label, $params);
+	}
+
 	public static function select($name, $label, $options = [], $params = [])
 	{
 		$result = "<label for='{$name}'>{$label}</label>";
 		$result .= "<select name='{$name}' id='{$name}' ";
 		foreach($params as $key => $value)
 		{
-			$result .= "{$key} = '{$value}' ";
+			if($key != 'no-key')
+				$result .= "{$key} = '{$value}' ";
+			else
+				$result .= " {$value} ";
 		}
 		$result .='>';
 		foreach($options as $key => $value)
@@ -87,7 +100,7 @@ class Form {
 	public static function input($type, $name, $label, $params = [])
 	{
 		$result = '';
-		if($type != 'hidden')
+		if($type != 'hidden' && $type != 'submit')
 			$result .= "<label for='{$name}'>{$label}</label>";
 		$result .= "<input type='{$type}' name='{$name}' id='{$name}' ";
 		foreach($params as $key => $value)

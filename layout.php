@@ -33,7 +33,7 @@
     </style>
 </head>
 <body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-static-top layout-nav">
         <div class="container">
             <div class="navbar-header">
 
@@ -80,10 +80,23 @@
 
     <div class="container">
         <div class="row">
+            <div class="col-xs-12">
+                <?php 
+                    echo Core\Session::flash();
+                    echo $content;
+                ?>
+            </div>
+        </div>
     <?php 
-        echo $content;
-    ?>
-
+        if(isset($_SESSION['scripts']))
+        {
+            foreach($_SESSION['scripts'] as $script)
+            {
+                echo $script;
+            }
+            unset($_SESSION['scripts']);
+        }
+     ?>
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

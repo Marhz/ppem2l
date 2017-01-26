@@ -47,7 +47,9 @@
 				</tbody>
 			</table>
 		</div>
+
 		<?php
+			$_SESSION['scripts'][] = "<script>$('#yolo');</script>";
             include('views/plugins/sidebar.php');
 
         ?>

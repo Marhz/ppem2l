@@ -37,7 +37,13 @@
 .searchbar{
 	margin-top:7px;
 }
-
+.layout-nav{
+	margin-bottom: 50px;
+}
+.adresse_form{
+	border-top: 1px dashed #e3E3E3;
+	padding-top: 10px;
+}
 .green{
 	color:green;
 }

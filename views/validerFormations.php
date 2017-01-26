@@ -1,4 +1,5 @@
-<div class="col-lg-9">
+<?php require 'views/plugins/profilMenu.php' ?>
+<div class="col-lg-9 col-xs-12">
 <h2>Demande de formations en attente de validation</h2>
 <table class="table table-striped" id="datatable">
 	<thead>

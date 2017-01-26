@@ -21,8 +21,11 @@ use Carbon\Carbon;
 			Error::set(404);
 		}
 	}
+	if(!isset($_SESSION) || empty($_SESSION))
+		$_GET['p'] = "login";	
 	ob_start();
 		include "controllers/".$_GET['p'].".php";
 		$content = ob_get_contents();
 	ob_end_clean();
 	require "layout.php";
+	dd(logger());

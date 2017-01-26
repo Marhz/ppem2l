@@ -5,31 +5,19 @@
                 <div class="panel-heading">Connexion</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="login">
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="form-group">
                             <label for="email" class="col-md-4 control-label">Adresse email</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="">
-
-                                <!--@if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif-->
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="form-group">
                             <label for="password" class="col-md-4 control-label">Mot de passe</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="mdp">
-
-                                <!--@if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif-->
                             </div>
                         </div>
 
