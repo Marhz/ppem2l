@@ -28,7 +28,7 @@ function boldify($text)
 
 function formatAdresse($adresse)
 {
-	return $adresse['numero'].' '.$adresse['voirie'].' '.$adresse['nom_voirie'].', '.$adresse['code_postal'];
+	return $adresse['adresse']['numero'].' '.$adresse['adresse']['voirie'].' '.$adresse['adresse']['nom_voirie'].', '.$adresse['adresse']['code_postal'];
 }
 
 function isConnect()

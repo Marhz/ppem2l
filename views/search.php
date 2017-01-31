@@ -5,7 +5,7 @@
 			foreach($formations as $formation)
 			{
 				echo "<p>".$formation['titre']."</p>";
-				echo "<p>Catégorie: ".$formation['type_titre']."</p>";
+				echo "<p>Catégorie: ".$formation['type']['titre']."</p>";
 				echo "<p>La formation durera ".$formation['duree']." jours</p>";
 				echo "<p>Elle vous coûtera ".$formation['cout']." crédit.</p>";
 				echo "<p>Elle débute le: ";
@@ -15,7 +15,7 @@
 					echo affDate($formation['debut']);
 				// .(isset($formation['bold_date'])) ? boldify(affDate($formation['debut'])) : affDate($formation['debut']).
 				echo ".</p>";
-				echo "<p>Elle se situe à ".$formation['ville'].".</p>";
+				echo "<p>Elle se situe à ".$formation['adresse']['ville'].".</p>";
 				echo "<p>Adresse: ".formatAdresse($formation)."</p>";
 
 			}
