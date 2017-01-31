@@ -1,13 +1,10 @@
 <?php
 
-
-
-
 namespace Models;
 
 use Carbon\Carbon;
 
-class User extends BaseModel 
+class User extends BaseModel
 {
 	public $timestamps = false;
 
@@ -18,7 +15,7 @@ class User extends BaseModel
 	}
 	public function isChef()
 	{
-		return $this->level <= 1;
+		return $this->level >= 1;
 	}
 	public function fullName()
 	{

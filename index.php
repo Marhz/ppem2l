@@ -29,7 +29,7 @@ use Carbon\Carbon;
 		}
 	}
 	if(!isset($_SESSION) || empty($_SESSION))
-		$_GET['p'] = "login";	
+		$_GET['p'] = "login";
 	ob_start();
 		include "controllers/".$_GET['p'].".php";
 		$content = ob_get_contents();

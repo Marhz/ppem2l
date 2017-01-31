@@ -6,8 +6,7 @@
 		<tr>
 			<th>Nom de l'employé</th>
 			<th>Nom de la formation</th>
-			<th class="hide-small-screen">Adresse</th>
-			<th>Cout</th>
+			<th class="hide-small-screen">Adresse</th>	
 			<th>Durée</th>
 			<th>Début</th>
 			<th>Actions</th>
@@ -32,10 +31,9 @@
 				<td><a href="utilisateur/<?= $employe->id ?>"><?= $employe->fullName(); ?></a></td>
 				<td><a href="formation/<?= $formation->id ?>"><?= $formation->titre ?></a></td>
 				<td class="hide-small-screen"><?= $formation->getAdresse() ?></td>
-				<td><?= $formation->cout ?>/<?= $employe->credit ?></td>
 				<td><?= $formation->duree ?>j/<?= $employe->nbr_jour ?></td>
 				<td><span class="hidden"><?= strtotime($formation->debut) ?></span><?= affDate($formation->debut) ?></td>
-				<td>
+				<td class="">
 					<form action="valider" method="post" class="inline">
 						<input type="hidden" value="<?= $formation->id ?>" name="id_f">
 						<input type="hidden" value="<?= $employe->id ?>" name="id_u">
