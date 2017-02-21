@@ -7,7 +7,7 @@ if(isset($_SESSION['connecte']))
 	$user = auth('user');
 	//$nbFormation = $user->formations->count();
 	$nbFormations = $user->getNbFormations();
-	$formations = Formation::all()->take(5);
+	$formations = Formation::all();
 	include_once('views/welcome.php');
 }
 else

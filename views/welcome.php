@@ -1,6 +1,6 @@
 		<div class="col-lg-9">
 			<h1 class="title">Formations à venir</h1>
-			<table class="table table-bordered">
+			<table class="table table-bordered" id="datatable">
 				<thead>
 					<tr>
 						<th>Formation</th>
@@ -13,14 +13,15 @@
 				<tbody>
 					<?php 
 						foreach($formations as $formation)
-						{
-							echo "</tr>
-								<td>".$formation->titre."</td>
-								<td>ITIC</td>
-								<td>".$formation->cout."</td>
-								<td>".$formation->duree."</td>
-								<td>".$formation->debut."</td>
-							</tr>";
+						{?>
+							</tr>
+								<td><?= $formation->titre ?></td>
+								<td><?= $formation->prestataire->raison_sociale ?></td>
+								<td><?= $formation->cout ?></td>
+								<td><?= $formation->duree ?></td>
+								<td><?= $formation->debut ?></td>
+							</tr>
+						<?php
 						}
 					?>
 					
