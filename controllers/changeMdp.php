@@ -23,5 +23,6 @@
 			Session::setflash("Mauvais mot de passe !","warning");
 		}
 	}
+	$page="changeMdp";
 	include("views/changeMdp.php");
 ?>

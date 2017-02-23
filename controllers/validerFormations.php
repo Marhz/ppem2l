@@ -16,5 +16,5 @@ use Models\User;
 	// 		unset($users[$key]);
 	// 	}
 	// }
-
+	$page="gestion";
 	include('views/validerFormations.php');
