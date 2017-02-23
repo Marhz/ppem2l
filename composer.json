@@ -2,7 +2,8 @@
     "require": {
         "nesbot/carbon" : "^1.21",
         "phpmailer/phpmailer": "^5.2",
-        "illuminate/database": "^5.3"
+        "illuminate/database": "^5.3",
+        "illuminate/pagination": "5.3.23"
     },
     "autoload":{
         "psr-4":{
