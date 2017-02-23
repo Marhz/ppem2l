@@ -57,13 +57,20 @@
 	<div class="">
 		<h1>Mes employés</h1>
 		<?php
-			foreach($employes as $employe)
-			{
-				?>
-				<p><a href="utilisateur/<?= $employe->id ?>"><?= $employe->fullName() ?></a></p>
-				<?php	
+			if(!$employes)
+			{		
+				foreach($employes as $employe)
+				{
+					?>
+					<p><a href="utilisateur/<?= $employe->id ?>"><?= $employe->fullName() ?></a></p>
+					<?php	
+				}
 			}
-			?>
+			else
+			{
+				echo "Vous n'avez pas d'employé(s).";
+			}
+		?>
 	</div>
 </div>
 <?php
