@@ -57,7 +57,7 @@
 	<div class="">
 		<h1>Mes employés</h1>
 		<?php
-			if(!$employes)
+			if(!$employes->isEmpty())
 			{		
 				foreach($employes as $employe)
 				{

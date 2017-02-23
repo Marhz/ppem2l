@@ -5,7 +5,7 @@
 	    </div>
 	    <ul class="nav navbar-nav">
 	      <li class="active"><a href="#">Formation</a></li>
-	      <li><a href="#">Changement de mot de passe</a></li>
+	      <li><a href="changeMdp">Changement de mot de passe</a></li>
 	      <?php
 	      	if(auth('user')->isChef())
 	      	{
