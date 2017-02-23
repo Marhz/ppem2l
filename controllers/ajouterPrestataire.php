@@ -1,5 +1,6 @@
-<?php
 
+
+<?php
 use Core\Session;
 use Models\Adresse;
 use Models\Prestataire;
@@ -20,8 +21,8 @@ use Models\Prestataire;
 			])->id;
 		}
 		$prestataire = Prestataire::create([
-		'raison_sociale' => $raison_sociale, 
-		'adresse_id' => $adresse_id
+			'raison_sociale' => $raison_sociale, 
+			'adresse_id' => $adresse_id
 		]);
 
 		Session::setFlash("Prestataire crée avec succès, appuyez <a href='prestataire/{$prestataire->id}'>ici</a> pour accéder à sa page");

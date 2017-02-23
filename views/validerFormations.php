@@ -33,7 +33,7 @@
 				<td class="hide-small-screen"><?= $formation->getAdresse() ?></td>
 				<td><?= $formation->duree ?>j/<?= $employe->nbr_jour ?></td>
 				<td><span class="hidden"><?= strtotime($formation->debut) ?></span><?= affDate($formation->debut) ?></td>
-				<td class="">
+				<td class="center">
 					<form action="valider" method="post" class="inline">
 						<input type="hidden" value="<?= $formation->id ?>" name="id_f">
 						<input type="hidden" value="<?= $employe->id ?>" name="id_u">
