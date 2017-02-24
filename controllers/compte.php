@@ -12,4 +12,5 @@ use Models\User;
 	// 	$formation_user[$key]['titre'] = htmlspecialchars($formation_user[$key]['titre']);
 	// 	// $formations[$key]['valide'] = $formations[$key]['valide'] == 1 ? "valide" : null;
 	// }
+	$page="formation";
 	include('views/compte.php');

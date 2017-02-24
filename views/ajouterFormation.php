@@ -25,28 +25,47 @@
 				<div class="form-group col-md-6">
 					<?= Form::number('nb_places', 'Nombre de places:', ['class' => 'form-control']) ?>
 				</div>
-				<div class="form-group col-md-12">
-					<?= Form::select('type_id', 'Type de formation: ', $types, ['class' => 'form-control']) ?>
-				</div>
-				<div class="form-group col-md-12">
-					<?= Form::select('prestataire_id', 'Prestataire :', $prestataires, ['class' => 'form-control']) ?>
-				</div>
-				<div class="form-group col-md-12">
-					<label for="adresse_id">Adresse:</label>
-					<select name="adresse_id" id="adresse_id" class="form-control" v-model="showAddrForm">
-						<?php
-							foreach($adresses as $key => $value)
-							{
-								?>
-								<option value="<?= $key ?>"><?= $value ?></option>
-								<?php
-							}
-						?>
-					</select>
-				</div>
-				<i class="fa fa-plus-circle"></i>
+				<select-or-disable :elements='<?= $types ?>' name="type">
+					<transition name="fade" mode="out-in">
+						<div v-cloak class="col-md-12 adresse_form slideUp">
+							<div class="form-group col-md-12">
+								<?= Form::text('type_titre', 'Titre : ', ['class' => 'form-control']) ?>
+							</div>
+						</div>
+					</transition>
+				</select-or-disable>
+				<select-or-disable :elements='<?= $prestataires ?>' name="prestataire">
+					<transition name="fade" mode="out-in">
+						<div v-cloak class="col-md-12 adresse_form slideUp">
+							<div class="form-group col-md-12">
+								<?= Form::text('raison_sociale', 'Raison sociale : ', ['class' => 'form-control']) ?>
+							</div>
+						</div>
+					</transition>
+				</select-or-disable>
+				<select-or-disable :elements='<?= $adresses ?>' name="adresse">
+					<transition name="fade" mode="out-in">
+						<div v-cloak class="col-md-12 adresse_form slideUp">
+							<div class="form-group col-md-12">
+								<?= Form::text('ville', 'Ville : ', ['class' => 'form-control']) ?>
+							</div>
+							<div class="form-group col-md-6">
+								<?= Form::number('cp', 'Code postal :', ['class' => 'form-control']) ?>
+							</div>
+							<div class="form-group col-md-6">
+								<?= Form::text('voirie', 'Voirie :', ['class' => 'form-control']) ?>
+							</div>
+							<div class="form-group col-md-6">
+								<?= Form::number('numero', 'Numero :',['class' => 'form-control']) ?>
+							</div>
+							<div class="form-group col-md-6">
+								<?= Form::text('nom_voirie', 'Nom de la voirie :', ['class' => 'form-control']) ?>
+							</div>
+						</div>
+					</transition>
+				</select-or-disable>
 
-				<div v-if="showAddrForm == 0" class="col-md-12 adresse_form">
+				<div v-if="showAddrForm" v-cloak class="col-md-12 adresse_form">
 					<div class="form-group col-md-12">
 						<?= Form::text('ville', 'Ville : ', ['class' => 'form-control']) ?>
 					</div>

@@ -4,13 +4,13 @@
 	      <a class="navbar-brand" href="#">Mon compte</a>
 	    </div>
 	    <ul class="nav navbar-nav">
-	      <li class="active"><a href="#">Formation</a></li>
-	      <li><a href="#">Changement de mot de passe</a></li>
+	      <li <?php if($page=="formation"){echo "class='active'";}?> ><a href="compte">Formation</a></li>
+	      <li <?php if($page=="changeMdp"){echo "class='active'";}?> ><a href="changeMdp">Changement de mot de passe</a></li>
 	      <?php
 	      	if(auth('user')->isChef())
 	      	{
 	      		?>
-	      		<li><a href="validerFormations">Gestion des employés</a></li>
+	      		<li <?php if($page=="gestion"){echo "class='active'";}?> ><a href="validerFormations">Gestion des employés</a></li>
 	      		<?php
 	      	} 
 	       ?>

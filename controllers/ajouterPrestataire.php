@@ -1,12 +1,13 @@
 
 
 <?php
+use Core\Error;
 use Core\Session;
 use Models\Adresse;
 use Models\Prestataire;
 	
 	if(auth('user')->level < 2)
-		Core\Error::set(503);
+		Error::set(403);
 	if(methodIs('post'))
 	{
 		dd($_POST);
@@ -30,14 +31,9 @@ use Models\Prestataire;
 
 	}
 	$adresses_tmp = Adresse::all();
-	// $adresses = [0 => 'remplir l\'adresse manuellement'];
-	$i = 0;
 	foreach($adresses_tmp as $adresse)
 	{
-		$adresses[$adresse->id] = $adresse->format();
+		$adresses[] = ['id' => $adresse->id, 'data' => $adresse->format()];
 	}
-	// $adresses_tmp = $adresses->toArray();
-	// array_map(function($adresse) use ($adresses) {
-	// 	$adresses_tmp[$adresse['id']] = $adresses->get($adresse['id'])->format();
-	// },$adresses_tmp);
+	$adresses = json_encode($adresses);
 	require 'views/ajouterPrestataire.php';
