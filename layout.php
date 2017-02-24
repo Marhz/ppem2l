@@ -104,6 +104,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    <?php 
+        if (Core\Session::has('js')) 
+        {
+            ?>
+            <script src="js/<?= Core\Session::get('js') ?>"></script>
+            <?php
+        } 
+    ?>
     <script>
         $(document).ready(function() {
             $('#datatable').DataTable({

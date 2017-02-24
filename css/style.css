@@ -1,3 +1,7 @@
+[v-cloak]{
+	display: hidden;
+}
+
 .inline{
 	display: inline-block;
 }
@@ -61,4 +65,13 @@
 
 .fa{
 	font-size:2em;
+}
+
+.plus-icon{
+	color: #00ba15;
+	cursor: pointer;
+}
+
+.fa-icons{
+	font-size: 1em;
 }

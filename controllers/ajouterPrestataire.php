@@ -9,8 +9,9 @@ use Models\Prestataire;
 		Core\Error::set(503);
 	if(methodIs('post'))
 	{
+		dd($_POST);
 		extract($_POST);
-		if($adresse_id == 0)
+		if(isset($adresse_id))
 		{
 			$adresse_id = Adresse::create([
 				'ville' => $ville,
@@ -29,7 +30,8 @@ use Models\Prestataire;
 
 	}
 	$adresses_tmp = Adresse::all();
-	$adresses = [0 => 'remplir l\'adresse manuellement'];
+	// $adresses = [0 => 'remplir l\'adresse manuellement'];
+	$i = 0;
 	foreach($adresses_tmp as $adresse)
 	{
 		$adresses[$adresse->id] = $adresse->format();

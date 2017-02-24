@@ -19,4 +19,21 @@ class Session {
 		$_SESSION['flash']['message'] = htmlspecialchars($message);
 		$_SESSION['flash']['type'] = $type;
 	}
+
+	public static function js($file)
+	{
+		$_SESSION['js'] = $file;
+	}
+
+	public static function has($item)
+	{
+		return isset($_SESSION[$item]);
+	}
+
+	public static function get($item)
+	{
+		$tmp = $_SESSION[$item];
+		unset($_SESSION[$item]);
+		return $tmp;
+	}
 }

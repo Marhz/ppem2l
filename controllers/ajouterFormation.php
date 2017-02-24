@@ -10,6 +10,7 @@ use Models\Type;
 	}
 	if(methodIs('post'))
 	{
+		dd($_POST);
 		extract($_POST);
 		unset($_POST['submit']);
 		// if($prestataire_id == 0)
