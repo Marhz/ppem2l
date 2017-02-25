@@ -10,9 +10,8 @@ use Models\Prestataire;
 		Error::set(403);
 	if(methodIs('post'))
 	{
-		dd($_POST);
 		extract($_POST);
-		if(isset($adresse_id))
+		if(!isset($adresse_id))
 		{
 			$adresse_id = Adresse::create([
 				'ville' => $ville,

@@ -1,6 +1,12 @@
 Vue.component('select-or-disable', {
-	props: ['elements', 'name'],
-	template: '<div><div class="form-group col-md-12">\
+	props: {
+		elements: Array, 
+		name: String, 
+		bsclass: {
+			default: false
+		}
+	},
+	template: '<div><div :class="!bsclass ? \'form-group col-md-12\' : \'margin-bot\' ">\
 					<label :for="name | addId">{{name | capitalize}} :</label>\
 						<div class="input-group">\
 						<select :name="name | addId" :id="name | addId" class="form-control" :disabled="showSubForm" required>\
@@ -35,22 +41,5 @@ Vue.component('select-or-disable', {
 
 
 app = new Vue({
-	el:'#addrForm',
-	data: {
-		showAddrForm: false,
-		showPrestaForm: false,
-		showCatForm: false
-	},
-	methods: {
-		switchAddrForm : function () {
-			this.showAddrForm = !this.showAddrForm;
-		},
-		switchPrestaForm : function () {
-			this.showPrestaForm = !this.showPrestaForm;
-		},
-		switchCatForm : function () {
-			this.showCatForm = !this.showCatForm;
-		}
-
-	}
+	el:'#addrForm'
 });

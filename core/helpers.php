@@ -75,3 +75,8 @@ function redirect($url)
 	header('location: '.$url);
 	die();
 }
+
+function jsonEncode($str)
+{
+	return preg_replace('#\'#', ' ', $str);
+}
