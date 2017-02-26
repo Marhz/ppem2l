@@ -121,12 +121,16 @@
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .3s
+  transition: opacity rotate(360deg) .3s,
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+.fade-enter, .fade-leave-to {
   opacity: 0
 }
 
 .margin-bot {
 	margin-bottom: 15px;
+}
+
+.margin-top {
+	margin-top: 15px;
 }

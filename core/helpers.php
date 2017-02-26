@@ -76,7 +76,7 @@ function redirect($url)
 	die();
 }
 
-function jsonEncode($str)
+function escapeJson()
 {
-	return preg_replace('#\'#', ' ', $str);
+	return JSON_HEX_QUOT|JSON_HEX_APOS;
 }

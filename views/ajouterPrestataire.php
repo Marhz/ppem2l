@@ -53,4 +53,4 @@
 	</div>
 </div>
 
-<?php Core\Session::js('addrForm.js') ?>
+<!--  -->

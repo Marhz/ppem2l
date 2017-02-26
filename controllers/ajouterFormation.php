@@ -32,8 +32,8 @@ foreach($adresses_tmp as $adresse)
 {
 	$adresses[] = ['id' => $adresse->id, 'data' => $adresse->format()];
 }
-$adresses = json_encode($adresses);
-$types = jsonEncode(Type::all(['id', 'titre AS data'])->toJson());
-$prestataires = jsonEncode(Prestataire::all(['id', 'raison_sociale AS data'])->toJson());
+$adresses = json_encode($adresses, escapeJson());
+$types = Type::all(['id', 'titre AS data'])->toJson(escapeJson());
+$prestataires = Prestataire::all(['id', 'raison_sociale AS data'])->toJson(escapeJson());
 
 require 'views/ajouterFormation.php';

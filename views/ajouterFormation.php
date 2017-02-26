@@ -39,7 +39,7 @@
 						<div v-cloak class="col-md-12 adresse_form slideUp">
 							<div class="form-group col-md-12">
 								<?= Form::text('raison_sociale', 'Raison sociale : ', ['class' => 'form-control']) ?>
-								<select-or-disable :elements='<?=htmlspecialchars($adresses) ?>' name='presta_adresse' bsclass="false">
+								<select-or-disable :elements='<?=htmlspecialchars($adresses) ?>' name='prestataire_adresse' bsclass="false">
 									<div v-cloak class="col-md-12 adresse_form slideUp">
 										<div class="form-group col-md-12">
 											<?= Form::text('presta_ville', 'Ville : ', ['class' => 'form-control']) ?>

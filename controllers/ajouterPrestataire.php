@@ -34,5 +34,5 @@ use Models\Prestataire;
 	{
 		$adresses[] = ['id' => $adresse->id, 'data' => $adresse->format()];
 	}
-	$adresses = json_encode($adresses);
+	$adresses = json_encode($adresses, escapeJson());
 	require 'views/ajouterPrestataire.php';
