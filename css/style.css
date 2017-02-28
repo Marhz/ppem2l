@@ -30,10 +30,23 @@ body{
 */}
 .sidebar{
 	margin-left:0px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: 2px 2px 8px rgba(156, 156, 156, 1),-2px 0px 8px rgba(156, 156, 156, 1);
 }
 
 .sidebar table{
-	margin-left: 12px;
+	margin-top: 2%;
+	margin-left: 10%;
+}
+
+.moncompte div{
+	border-top: 1px solid black;
+	margin-top: 5%;
+}
+
+.moncompte div h3{
+	text-align: center;
+	margin-bottom: 10%;
 }
 
 .title{
