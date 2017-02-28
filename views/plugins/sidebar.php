@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default navbar-menuright col-lg-3 sidebar col-xs-12">
-    <div class="">
+    <div class="sidebar-content">
         <table class="table-condensed table-bordered table-striped col-xs-3">
                 <thead>
                     <tr>
@@ -68,19 +68,19 @@
                 </tbody>
             </table>
     </div>
-        <div class="moncompte">
-            <div class="col-xs-3 col-lg-12">
-                <h3>Mon compte</h3>
-                <p>Bienvenue <?= auth('user')->fullName(); ?></p>
-                <p>Il vous reste <?= auth('user')->credit; ?> crédits</p>
-            </div>
-            <div class="col-xs-3 col-lg-12">
-                <h3>Mes formations</h3>
-                <?php if(auth('user')->getNbFormations() == 0)
-                    echo "<p>Vous n'avez pas de formation à venir</p>";
-                else
-                    echo "<p>Vous avez ".auth('user')->getNbFormations()." formations à venir</p>" ?>
-                <p>Il vous reste <?= auth('user')->nbr_jour ?> jour<?= auth('user')->nbr_jour > 1 ? 's' : null ?> de formation</p>
-            </div>
-        </div> 
-    </nav>
+    <div class="moncompte">
+        <div class="col-xs-3 col-lg-12">
+            <h3>Mon compte</h3>
+            <p>Bienvenue <?= auth('user')->fullName(); ?></p>
+            <p>Il vous reste <?= auth('user')->credit; ?> crédits</p>
+        </div>
+        <div class="col-xs-3 col-lg-12">
+            <h3>Mes formations</h3>
+            <?php if(auth('user')->getNbFormations() == 0)
+                echo "<p>Vous n'avez pas de formation à venir</p>";
+            else
+                echo "<p>Vous avez ".auth('user')->getNbFormations()." formations à venir</p>" ?>
+            <p>Il vous reste <?= auth('user')->nbr_jour ?> jour<?= auth('user')->nbr_jour > 1 ? 's' : null ?> de formation</p>
+        </div>
+    </div> 
+</nav>
