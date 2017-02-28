@@ -34180,6 +34180,8 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
 
 exports.default = {
 	props: ['elements', 'name', 'bsclass'],
@@ -34533,7 +34535,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "disabled": _vm.showSubForm,
       "required": ""
     }
-  }, [_vm._v("\\\n\t\t\t"), _c('option', {
+  }, [_c('option', {
     attrs: {
       "value": "",
       "disabled": "",
@@ -34554,7 +34556,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.toggleSubForm()
       }
     }
-  })])]), _vm._v(" "), (_vm.showSubForm) ? _vm._t("default") : _vm._e()], 2)
+  })])]), _vm._v(" "), _c('transition', {
+    attrs: {
+      "name": "slide"
+    }
+  }, [(_vm.showSubForm) ? _vm._t("default") : _vm._e()], 2)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
