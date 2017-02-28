@@ -196,3 +196,14 @@ body{
 .margin-top {
 	margin-top: 15px;
 }
+
+.formation img
+{
+	width: 100%;
+}
+
+.commentaires
+{
+	background-color: blue;
+}
+

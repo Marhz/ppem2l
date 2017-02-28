@@ -6,7 +6,7 @@
 			?>
 				<div class="annonce col-xs-12 <?= $formation->id % 2 == 0 ? 'annonceleft' : 'annonceright'?>">
 					<div class="col-xs-4 center-block <?= $formation->id % 2 == 0 ? 'pull-left' : 'pull-right' ?>">
-						<img class="center-block" src="image/<?= isset($formation->image) ? $formation->image : 'logoformation.png'?>" />
+						<img class="center-block" src="<?= baseUrl()?>image/<?= isset($formation->image) ? $formation->image : 'logoformation.png'?>" />
 					</div>
 					<div class="col-xs-8"?>										
 						<p>
@@ -30,7 +30,7 @@
 					<div class="col-xs-12">
 						<div class="col-xs-12 annonce-body">
 							<p class="description"><?= substr($formation->description,0,250) ?>...</p>
-							<a href="#" class="btn btn-success pull-right annonce-button"><span class="glyphicon glyphicon-align-left"></span>Read More</a>
+							<a href="formations/<?= $formation->id ?>" class="btn btn-success pull-right annonce-button"><span class="glyphicon glyphicon-align-left"></span> Read More</a>
 						</div>
 					</div>
 				</div>
