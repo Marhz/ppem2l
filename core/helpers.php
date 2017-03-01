@@ -75,3 +75,13 @@ function redirect($url)
 	header('location: '.$url);
 	die();
 }
+
+function escapeJson()
+{
+	return JSON_HEX_QUOT|JSON_HEX_APOS;
+}
+
+function baseUrl()
+{
+	return "http://127.0.0.1/PPEm2l/";
+}

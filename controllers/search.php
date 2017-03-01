@@ -1,11 +1,9 @@
 <?php
 
 use Carbon\Carbon;
+use Models\Formation;
 
-	include('models/search_formations.php');
-	include('models/get_formations.php');
-	// $formations = search_formations($_POST['search']);
-	$formations = getFullFormations();
+	$formations = Formation::all();
 	foreach($formations as $key => $value)
 	{
 		$found = false;

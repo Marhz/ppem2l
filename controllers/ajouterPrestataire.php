@@ -10,9 +10,8 @@ use Models\Prestataire;
 		Error::set(403);
 	if(methodIs('post'))
 	{
-		dd($_POST);
 		extract($_POST);
-		if(isset($adresse_id))
+		if(!isset($adresse_id))
 		{
 			$adresse_id = Adresse::create([
 				'ville' => $ville,
@@ -35,5 +34,5 @@ use Models\Prestataire;
 	{
 		$adresses[] = ['id' => $adresse->id, 'data' => $adresse->format()];
 	}
-	$adresses = json_encode($adresses);
+	$adresses = json_encode($adresses, escapeJson());
 	require 'views/ajouterPrestataire.php';

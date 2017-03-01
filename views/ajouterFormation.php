@@ -34,11 +34,30 @@
 						</div>
 					</transition>
 				</select-or-disable>
-				<select-or-disable :elements='<?= $prestataires ?>' name="prestataire">
+				<select-or-disable :elements='<?= htmlspecialchars($prestataires) ?>' name="prestataire">
 					<transition name="fade" mode="out-in">
 						<div v-cloak class="col-md-12 adresse_form slideUp">
 							<div class="form-group col-md-12">
 								<?= Form::text('raison_sociale', 'Raison sociale : ', ['class' => 'form-control']) ?>
+								<select-or-disable :elements='<?=htmlspecialchars($adresses) ?>' name='prestataire_adresse' bsclass="false">
+									<div v-cloak class="col-md-12 adresse_form slideUp">
+										<div class="form-group col-md-12">
+											<?= Form::text('presta_ville', 'Ville : ', ['class' => 'form-control']) ?>
+										</div>
+										<div class="form-group col-md-6">
+											<?= Form::number('presta_cp', 'Code postal :', ['class' => 'form-control']) ?>
+										</div>
+										<div class="form-group col-md-6">
+											<?= Form::text('presta_voirie', 'Voirie :', ['class' => 'form-control']) ?>
+										</div>
+										<div class="form-group col-md-6">
+											<?= Form::number('presta_numero', 'Numero :',['class' => 'form-control']) ?>
+										</div>
+										<div class="form-group col-md-6">
+											<?= Form::text('presta_nom_voirie', 'Nom de la voirie :', ['class' => 'form-control']) ?>
+										</div>
+									</div>
+								</select-or-disable>
 							</div>
 						</div>
 					</transition>
@@ -64,25 +83,6 @@
 						</div>
 					</transition>
 				</select-or-disable>
-
-				<div v-if="showAddrForm" v-cloak class="col-md-12 adresse_form">
-					<div class="form-group col-md-12">
-						<?= Form::text('ville', 'Ville : ', ['class' => 'form-control']) ?>
-					</div>
-					<div class="form-group col-md-6">
-						<?= Form::number('cp', 'Code postal :', ['class' => 'form-control']) ?>
-					</div>
-					<div class="form-group col-md-6">
-						<?= Form::text('voirie', 'Voirie :', ['class' => 'form-control']) ?>
-					</div>
-					<div class="form-group col-md-6">
-						<?= Form::number('numero', 'Numero :',['class' => 'form-control']) ?>
-					</div>
-					<div class="form-group col-md-6">
-						<?= Form::text('nom_voirie', 'Nom de la voirie :', ['class' => 'form-control']) ?>
-					</div>
-				</div>
-
 				<div class="form-group col-md-12">
 					<?= Form::submit('submit',' Ajouter', ['class' => 'form-control btn btn-primary']) ?>
 				</div>
@@ -91,4 +91,3 @@
 		</div>
 	</div>
 </div>
-<?php Core\Session::js('addrForm.js') ?>
