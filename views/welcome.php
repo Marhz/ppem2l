@@ -5,10 +5,10 @@
 		{
 			?>
 				<div class="annonce col-xs-12 <?= $formation->id % 2 == 0 ? 'annonceleft' : 'annonceright'?>">
-					<div class="col-xs-4 center-block <?= $formation->id % 2 == 0 ? 'pull-left' : 'pull-right' ?>">
+					<div class="col-xs-12 col-md-4 center-block <?= $formation->id % 2 == 0 ? 'pull-left' : 'pull-right' ?>">
 						<img class="center-block" src="image/<?= isset($formation->image) ? $formation->image : 'logoformation.png'?>" />
 					</div>
-					<div class="col-xs-8"?>										
+					<div class="col-xs-12 col-md-8">										
 						<p>
 							<div class="formtitre"><?= $formation->titre ?></div>
 							<div class="formLieu">

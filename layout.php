@@ -60,7 +60,7 @@
                         <li><a href="compte">Mon compte</a></li>
                         <form action="search" method="Post" class="form-inline searchbar col-md-4 col-offset-4">
                             <div class="form-group">
-                                <input type="text" name="search" size="15" class="form-control">
+                                <input type="text" name="search" size="15" class="form-control" placeholder="Rechercher..." required>
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="rechercher" class="form-control btn btn-primary">
@@ -91,16 +91,6 @@
                 </div>
             </div>
         </div>
-        <?php 
-            if(isset($_SESSION['scripts']))
-            {
-                foreach($_SESSION['scripts'] as $script)
-                {
-                    echo $script;
-                }
-                unset($_SESSION['scripts']);
-            }
-         ?>
     </div>
         <!-- JavaScripts -->
         <script src="js/bundle.js"></script>
@@ -115,13 +105,5 @@
                 <?php
             } 
         ?>
-        <script>
-            // $(window).resize(function() {
-            //     if(window.innerWidth < 800)
-            //     {
-            //         console.log($('.hide-small-screen').remove());
-            //     }
-            // });
-        </script>
 </body>
 </html>

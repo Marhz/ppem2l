@@ -37,7 +37,7 @@
                                     <i class="fa fa-btn fa-sign-in"></i> Login
                                 </button>
 
-                                <a class="btn btn-link" href="/passwordReset">Mot de passe perdu?</a>
+                                <a class="btn btn-link" href="passwordReset">Mot de passe perdu?</a>
                             </div>
                         </div>
                     </form>
