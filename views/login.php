@@ -1,6 +1,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            <?php if(isset($error)) echo $error; ?>
+
             <div class="panel panel-default">
                 <div class="panel-heading">Connexion</div>
                 <div class="panel-body">
@@ -37,7 +39,7 @@
                                     <i class="fa fa-btn fa-sign-in"></i> Login
                                 </button>
 
-                                <a class="btn btn-link" href="/passwordReset">Mot de passe perdu?</a>
+                                <a class="btn btn-link" href="passwordReset">Mot de passe perdu?</a>
                             </div>
                         </div>
                     </form>

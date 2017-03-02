@@ -6,6 +6,7 @@ import datatables from 'datatables.net';
 import datatablesbs from 'datatables.net-bs';
 import tabs from './components/tabs.vue';
 import tab from './components/tab.vue';
+import comments from './components/comments.vue'
 
 var $ = jQuery;
 window.jQuery = jQuery;
@@ -15,8 +16,9 @@ new Vue({
 	el:'#app',
 	components: {
 		selectOrDisable,
-		tab,
 		tabs,
+		tab,
+		comments
 	}
 });
 

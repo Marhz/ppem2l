@@ -7,6 +7,7 @@ use Carbon\Carbon;
 class User extends BaseModel
 {
 	public $timestamps = false;
+	protected $hidden = ['password'];
 
 	//Helpers
 	public function isAdmin()

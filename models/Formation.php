@@ -33,4 +33,9 @@ class Formation extends BaseModel
 	{
 		return $this->belongsTo(Type::class);
 	}
+
+	public function comments()
+	{
+		return $this->hasMany(Comment::class);
+	}
 }

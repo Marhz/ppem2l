@@ -83,5 +83,5 @@ function escapeJson()
 
 function baseUrl()
 {
-	return "http://127.0.0.1/PPEm2l/";
+	return "http://127.0.0.1/ppem2l/";
 }

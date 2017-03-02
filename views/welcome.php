@@ -1,14 +1,15 @@
 <div class="col-lg-9">
+	<?php if(isset($NbjourFalse)) echo $NbjourFalse; ?>
 	<h1 class="title">Formations à venir</h1>
 	<?php 
 		foreach($formations as $formation)
 		{
 			?>
-				<div class="annonce col-xs-12 <?= $formation->id % 2 == 0 ? 'annonceleft' : 'annonceright'?>">
-					<div class="col-xs-4 center-block <?= $formation->id % 2 == 0 ? 'pull-left' : 'pull-right' ?>">
-						<img class="center-block" src="<?= baseUrl()?>image/<?= isset($formation->image) ? $formation->image : 'logoformation.png'?>" />
+				<div class="annonce col-xs-12 <?= $formation->side ?>">
+					<div class="col-xs-12 col-md-4 center-block <?= $formation->side == 'left' ? 'pull-left' : 'pull-right' ?>">
+						<img class="center-block" src="image/<?= isset($formation->image) ? $formation->image : 'logoformation.png'?>" />
 					</div>
-					<div class="col-xs-8"?>										
+					<div class="col-xs-12 col-md-8">										
 						<p>
 							<div class="formtitre"><?= $formation->titre ?></div>
 							<div class="formLieu">

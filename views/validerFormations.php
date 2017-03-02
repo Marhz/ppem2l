@@ -1,5 +1,5 @@
 <?php require 'views/plugins/profilMenu.php' ?>
-<div class="col-lg-9 col-xs-12">
+<div class="col-lg-9 col-xs-12 bgwhite">
 	<tabs v-cloak>
 		<tab name="Demande de formations en attente de validation" selected="true">
 			<table class="table table-striped margin" id="datatable">
@@ -32,8 +32,7 @@
 										<input type="hidden" value="<?= $employe->id ?>" name="id_u">
 										<input type="hidden" value="1" name="valide">
 										<input type="submit" value="valider" class="btn btn-success box">
-									</form>
-									<form action="valider" method="post" class="inline">
+									</form><form action="valider" method="post" class="inline">
 										<input type="hidden" value="<?= $formation->id ?>" name="id_f">
 										<input type="hidden" value="<?= $employe->id ?>" name="id_u">
 										<input type="hidden" value="2" name="valide">

@@ -11,7 +11,8 @@
             "Core\\" : "core"
         },
     	"files" : [
-    		"core/helpers.php"
+    		"core/helpers.php",
+            "core/start.php"
     	]
     }
 }

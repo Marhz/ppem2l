@@ -72,7 +72,7 @@ body{
 }
 
 .red{
-	color:red;
+	color:#FF3131;
 }
 
 .fa{
@@ -90,8 +90,8 @@ body{
 {
 	margin-top: 10px;
 	border-radius: 50%;
-	max-width:200px;
-	max-height:200px;
+	width:200px;
+	height:200px;
 	border: 1px solid rgba(156, 156, 156, 0.8);
 	padding: 3%;
 	margin-bottom: 15px;
@@ -101,7 +101,6 @@ body{
 {
 	.annonce img
 	{
-		max-width: 160px;
 	}
 }
 .annonce
@@ -202,8 +201,7 @@ body{
 	width: 100%;
 }
 
-.commentaires
+/*.commentaires
 {
 	background-color: blue;
-}
-
+}*/
