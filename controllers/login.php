@@ -18,6 +18,8 @@
 		}
 		else
 		{
-			echo "Mauvais login <a href='index.php'>Retour</a>";
+			$error = '<div class="alert alert-danger">Votre mot de passe ou nom d\'utilisateur est incorrect.</div>';
+			include_once('views/login.php');
+			//echo "Mauvais login <a href='index.php'>Retour</a>";
 		}
 	}
