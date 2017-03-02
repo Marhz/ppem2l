@@ -1,12 +1,8 @@
 <?php
 
 require "vendor/autoload.php";
-require "core/start.php";
 use Core\Error;
 use Carbon\Carbon;
-	require "models/login.php";
-	// dd($index);
-	// dd($_SESSION);
 	setLocale(LC_TIME, 'fr_FR.utf8', 'fra');
 	define("BASE_URL",$_SERVER['REQUEST_URI']);
 	if(!isset($_GET['p']) || $_GET['p'] == "") 

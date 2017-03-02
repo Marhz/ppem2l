@@ -11,6 +11,7 @@ class ComposerStaticInit553c06c15282c699855ab1542997dcd9
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
         '5ec26a44593cffc3089bdca7ce7a56c3' => __DIR__ . '/../..' . '/core/helpers.php',
+        'dde4ce5bc9b7fb6e758d7ac6762226e7' => __DIR__ . '/../..' . '/core/start.php',
     );
 
     public static $prefixLengthsPsr4 = array (
