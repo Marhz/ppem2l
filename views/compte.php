@@ -24,7 +24,7 @@
 						<td>{$formation->getAdresse()}</td>
 						<td>{$formation->cout}</td>
 						<td><span class='hidden'>{$formation->debut}</span>".affDate($formation->debut)."</td>
-						<td>{$formation->duree}j</td>
+						<td>{$formation->duree} jours</td>
 						</tr>";
 					}
 				?>
