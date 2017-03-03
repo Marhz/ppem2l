@@ -7,16 +7,16 @@
 	</div>
 	<div class="col-xs-8 annonce-body margin-top">
 		<p>
-			Débute le: <?= affDate($formation->debut) ?>
+			<b>Débute le:</b> <?= affDate($formation->debut) ?>
 		</p>
 		<p>
-			Durée: <?= $formation->duree ?> jours.
+			<b>Durée:</b> <?= $formation->duree ?> jours.
 		</p>
 		<p>
-			Délivrée par: <?= $formation->prestataire->raison_sociale ?>	
+			<b>Délivrée par:</b> <?= $formation->prestataire->raison_sociale ?>	
 		</p>
 		<p>
-			Coût: <?= $formation->cout ?> crédits.
+			<b>Coût:</b> <?= $formation->cout ?> crédits.
 		</p>
 	</div>	
 	<div class="col-xs-12 annonce-body margin-top">
@@ -25,7 +25,7 @@
 	<div class="col-xs-12">
 		<a href="formation/<?= $formation->id ?>" class="btn btn-success pull-right annonce-button"><span class="glyphicon glyphicon-align-left"></span> S'inscrire</a>
 	</div>
-	<comments :data="<?= htmlspecialchars($comments) ?>" formation-id="<?= $formation->id ?>"></comments>
 </div>
+	<comments :data="<?= htmlspecialchars($comments) ?>" formation-id="<?= $formation->id ?>"></comments>
 
 

@@ -1,15 +1,22 @@
 <template>
-	<div class="col-xs-12">
-		<div v-for="comment in comments" class="col-xs-8 col-xs-offset-2 commentaires">
-			<div class="col-xs-2">
-				<img src="">
+	<div>
+			<transition-group name="slide" tag="div">
+			<div v-for="comment in comments" v-bind:key="comment.id" class="col-xs-12 col-md-10 col-md-offset-1 comments">
+				<div class="col-xs-2">
+					<img src="/ppem2l/image/default-user-avatar.png" class="comment-avatar">
+				</div>
+				<div class="col-xs-10">
+					<span>{{comment.user | fullName}} Le {{comment.created_at}} </span>
+					<span v-if="comment.can_delete" class="pull-right fa fa-trash" @click="deleteComment(comment)"></span>
+					<span v-if="comment.can_delete" class="pull-right fa fa-edit" @click="editComment(comment)"></span>
+					<hr class="no-mt">
+					<p>{{comment.content}}</p>
+					<transition name="slide">
+						<add-comment v-show="editId == comment.id" :editId="editId" :content="comment.content" @commentEdited="postEdit"></add-comment>
+					</transition>
+				</div>
 			</div>
-			<div class="col-xs-10">
-				<span>{{comment.user | fullName}} Le {{comment.created_at}} </span>
-				<span v-if="comment.can_delete" class="pull-right" @click="deleteComment(comment)">X</span>
-				<p>{{comment.content}}</p>
-			</div>
-		</div>
+			</transition-group>
 		<add-comment :formationId="formationId" @commentAdded="postSubmit"></add-comment>
 	</div>
 </template>
@@ -22,13 +29,14 @@ export default {
 	props: ['data', 'formation-id'],
 	data() {
 		return {
-			comments: this.data
+			comments: this.data,
+			editId: false
 		}
 	},
 
 	methods: {
 		postSubmit(comment) {
-			this.comments.push(JSON.parse(comment));
+			this.comments.push(comment);
 		},
 		deleteComment(comment) {
 			$.ajax({
@@ -41,6 +49,21 @@ export default {
             }).done(id => {
             	this.comments = this.comments.filter(comment => comment.id !== parseInt(id));
             });
+		},
+		editComment(comment) {
+			if(comment.id == this.editId)
+				this.editId = false;
+			else
+				this.editId = comment.id;
+		},
+
+		postEdit(comment) {
+			this.comments.map(c => {
+				if (comment.id == c.id){
+					c.content = comment.content;
+				}
+			});
+			this.editId = false;
 		}
 	},
 	filters: {

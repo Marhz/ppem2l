@@ -15,7 +15,9 @@
 </template>
 
 <script>
+	// import tab from './tab.vue';
 	export default {
+		// components: {tab},
 		data() {
 			return { tabs: [] }
 		},

@@ -3,24 +3,24 @@
 require "vendor/autoload.php";
 use Core\Error;
 use Carbon\Carbon;
-	setLocale(LC_TIME, 'fr_FR.utf8', 'fra');
-	define("BASE_URL",$_SERVER['REQUEST_URI']);
-	if(!isset($_GET['p']) || $_GET['p'] == "") 
+setLocale(LC_TIME, 'fr_FR.utf8', 'fra');
+define("BASE_URL",$_SERVER['REQUEST_URI']);
+if(!isset($_GET['p']) || $_GET['p'] == "") 
+{
+	$_GET['p'] = "welcome";
+}
+else
+{
+	if(!file_exists("controllers/".$_GET['p'].".php"))
 	{
-		$_GET['p'] = "welcome";
+		Error::set(404);
 	}
-	else
-	{
-		if(!file_exists("controllers/".$_GET['p'].".php"))
-		{
-			Error::set(404);
-		}
-	}
-	if((!isset($_SESSION) || empty($_SESSION)) && $_GET['p'] != 'passwordReset')
-		$_GET['p'] = "login";
-	ob_start();
-		include "controllers/".$_GET['p'].".php";
-		$content = ob_get_contents();
-	ob_end_clean();
-	require "layout.php";
-	dd(logger());
+}
+if((!isset($_SESSION) || empty($_SESSION)) && $_GET['p'] != 'passwordReset')
+	$_GET['p'] = "login";
+ob_start();
+	include "controllers/".$_GET['p'].".php";
+	$content = ob_get_contents();
+ob_end_clean();
+require "layout.php";
+dd(logger());

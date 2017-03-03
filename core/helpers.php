@@ -83,5 +83,5 @@ function escapeJson()
 
 function baseUrl()
 {
-	return "http://127.0.0.1/ppem2l/";
+	return 'http://'.$_SERVER['SERVER_NAME'].preg_replace('/index.php$/', '', $_SERVER['PHP_SELF']);
 }

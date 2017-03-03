@@ -1,16 +1,15 @@
 import Vue from 'vue';
 import selectOrDisable from './components/selectOrDisable.vue';
 import jQuery from 'jquery';
-// import bootstrap from 'bootstrap';
-import datatables from 'datatables.net';
+import bootstrap from 'bootstrap/dist/js/bootstrap';
+// import datatables from 'datatables.net';
 import datatablesbs from 'datatables.net-bs';
 import tabs from './components/tabs.vue';
 import tab from './components/tab.vue';
 import comments from './components/comments.vue'
+import css from './css';
 
-var $ = jQuery;
-window.jQuery = jQuery;
-window.$ = jQuery;
+window.baseUrl = 'http://127.0.0.1/ppem2l/';
 
 new Vue({
 	el:'#app',
