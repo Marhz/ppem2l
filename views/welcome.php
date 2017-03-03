@@ -1,4 +1,5 @@
 <div class="col-lg-9">
+	<?php if(isset($NbjourFalse)) echo $NbjourFalse; ?>
 	<h1 class="title">Formations à venir</h1>
 	<?php 
 		foreach($formations as $formation)

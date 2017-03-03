@@ -47,7 +47,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="welcome">
+                    <a class="navbar-brand" href="<?= baseUrl()?>welcome">
                         M2L
                     </a>
                 </div>
@@ -56,8 +56,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav col-lg-9">
                     <?php if(isset($_SESSION['connecte'])){?>
-                        <li><a href="welcome">Accueil</a></li>
-                        <li><a href="compte">Mon compte</a></li>
+                        <li><a href="<?= baseUrl()?>welcome">Accueil</a></li>
+                        <li><a href="<?= baseUrl()?>compte">Mon compte</a></li>
                         <form action="search" method="Post" class="form-inline searchbar col-md-4 col-offset-4">
                             <div class="form-group">
                                 <input type="text" name="search" size="15" class="form-control" placeholder="Rechercher..." required>
@@ -72,9 +72,9 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                     <?php if(!isset($_SESSION['connecte']))
-                            echo "<li><a href='login'></a></li>";
+                            echo "<li><a href='".baseUrl()."login'></a></li>";
                         else
-                            echo "<li><a href='logout'>Se déconnecter</a></li>";
+                            echo "<li><a href='".baseUrl()."logout'>Se déconnecter</a></li>";
                     ?>               
                     </ul>
                 </div>
