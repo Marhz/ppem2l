@@ -2,7 +2,6 @@
 	<div class="col-xs-10 col-xs-offset-1">
 		<form class="form-vertical" @submit.prevent="onSubmit" @keydown="error = false" role="form" method="POST" action="ajouterCommentaire">
 	        <div class="form-group" :class="{'has-error' : error}">
-	            <label for="commentaire" class="col-md-2 form-group">Commentaire</label>
 	            <div class="col-md-10">
 	                <textarea v-model="getContent" name="commentaire" class="form-control"></textarea>
 	                <small v-if="error" class="error">{{error}}</small>
@@ -42,11 +41,12 @@
 	                },
 	                timeout:5000
 	            }).done(data => {
-	            	this.getContent = '';
 	            	if(this.editId)
 	            		this.$emit('commentEdited', data);
-	            	else
+	            	else{
+	            		this.getContent = '';
 	            		this.$emit('commentAdded', data)
+	            	}
 	            }).fail(data => this.error = JSON.parse(data.responseText));
             }
 		},

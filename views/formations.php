@@ -23,9 +23,22 @@
 		<p class="description"><?= $formation->description ?></p>
 	</div>
 	<div class="col-xs-12">
-		<a href="formation/<?= $formation->id ?>" class="btn btn-success pull-right annonce-button"><span class="glyphicon glyphicon-align-left"></span> S'inscrire</a>
+		<?php
+			if(!$formation->disabled)
+			{
+				?>
+				<a href="<?= baseUrl() ?>inscription/<?= $formation->id ?>" class="btn btn-success pull-right annonce-button"><span class="glyphicon glyphicon-align-left"></span> S'inscrire</a>		
+				<?php
+			}
+			else
+			{
+				?>
+				<small class="error pull-right">Vous ne pouvez pas vous insrire à cette formation</small>
+				<?php
+			}
+			?>
 	</div>
 </div>
-	<comments :data="<?= htmlspecialchars($comments) ?>" formation-id="<?= $formation->id ?>"></comments>
+<comments :data="<?= htmlspecialchars($comments) ?>" formation-id="<?= $formation->id ?>"></comments>
 
 

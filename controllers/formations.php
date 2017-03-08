@@ -13,6 +13,7 @@ catch (ModelNotFoundException $e)
 {
 	Error::set(404);
 }
+$formation->disabled = ($formation->users->contains(auth('user')->id) || $formation->users->count() == $formation->nb_places);
 $comments = $formation->comments;
 foreach ($comments as $comment)
 	$comment->can_delete = ($comment->user_id == auth('user')->id);

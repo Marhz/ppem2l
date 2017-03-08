@@ -7015,6 +7015,10 @@ body{
 	color:#FF3131;
 }
 
+.blue {
+	color: #3060FF;
+}
+
 .fa{
 	font-size:2em;
 }
@@ -7100,7 +7104,12 @@ body{
 }
 
 .annonce-button {
-	margin-bottom: 10px;
+	margin: 0px 0px 10px 15px;
+	min-width: 120px;
+	text-align: justify;
+}
+
+.annonce-button:not(:last-child) {
 }
 
 [v-cloak] {
@@ -7207,4 +7216,15 @@ body{
 hr {
 	height:1px;
 	border-top:1px dashed #7C7C7C;
+}
+
+.mainTitle{
+	margin-top: 0;
+	margin-bottom: 50px;
+	font-size: 40px;
+	color: #909090;
+	letter-spacing: 1px;
+	text-align: center;
+	font-family: arial;
+
 }

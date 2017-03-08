@@ -18,6 +18,8 @@ else
 }
 if((!isset($_SESSION) || empty($_SESSION)) && $_GET['p'] != 'passwordReset')
 	$_GET['p'] = "login";
+else
+	$_SESSION['user'] = Models\User::find(auth('user')->id);
 ob_start();
 	include "controllers/".$_GET['p'].".php";
 	$content = ob_get_contents();

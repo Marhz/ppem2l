@@ -7,6 +7,10 @@ use Models\User;
 	// foreach ($user->formations as $key => $value) 
 	$user = auth('user');
 	$formations = $user->formations->load('adresse');
+	foreach($formations as $formation)
+	{
+		$formation->valide = $formation->pivot->valide;
+	}
 	// foreach ($formation_user as $key => $value) 
 	// {
 	// 	$formation_user[$key]['titre'] = htmlspecialchars($formation_user[$key]['titre']);

@@ -1,12 +1,12 @@
 <template>
 	<div>
-			<transition-group name="slide" tag="div">
+		<transition-group name="slide" tag="div">
 			<div v-for="comment in comments" v-bind:key="comment.id" class="col-xs-12 col-md-10 col-md-offset-1 comments">
 				<div class="col-xs-2">
 					<img src="/ppem2l/image/default-user-avatar.png" class="comment-avatar">
 				</div>
 				<div class="col-xs-10">
-					<span>{{comment.user | fullName}} Le {{comment.created_at}} </span>
+					<span><b class="blue">{{comment.user | fullName}}</b> Le {{comment.created_at}} </span>
 					<span v-if="comment.can_delete" class="pull-right fa fa-trash" @click="deleteComment(comment)"></span>
 					<span v-if="comment.can_delete" class="pull-right fa fa-edit" @click="editComment(comment)"></span>
 					<hr class="no-mt">
@@ -16,7 +16,8 @@
 					</transition>
 				</div>
 			</div>
-			</transition-group>
+		</transition-group>
+		<label for="commentaire" class="col-md-2 form-group">Commentaire</label>
 		<add-comment :formationId="formationId" @commentAdded="postSubmit"></add-comment>
 	</div>
 </template>

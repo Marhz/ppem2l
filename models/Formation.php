@@ -16,7 +16,7 @@ class Formation extends BaseModel
 	//Relations
 	public function users()
 	{
-		return $this->belongsToMany(User::class)->withPivot('valide');
+		return $this->belongsToMany(User::class, 'attribution_formations')->withPivot('valide');
 	}
 
 	public function adresse()

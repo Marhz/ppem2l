@@ -1,6 +1,5 @@
+<h1 class="title col-xs-12 mainTitle">Formations à venir</h1>
 <div class="col-lg-9">
-	<?php if(isset($NbjourFalse)) echo $NbjourFalse; ?>
-	<h1 class="title">Formations à venir</h1>
 	<?php 
 		foreach($formations as $formation)
 		{
@@ -31,7 +30,8 @@
 					<div class="col-xs-12">
 						<div class="col-xs-12 annonce-body">
 							<p class="description"><?= substr($formation->description,0,250) ?>...</p>
-							<a href="formations/<?= $formation->id ?>" class="btn btn-success pull-right annonce-button"><span class="glyphicon glyphicon-align-left"></span> Read More</a>
+							<a href="formations/<?= $formation->id ?>" class="btn btn-primary pull-right annonce-button"><span class="glyphicon glyphicon-align-left"></span> Plus d'infos</a>
+							<a href="inscription/<?= $formation->id ?>" class="btn btn-success pull-right annonce-button"><span class="glyphicon glyphicon-align-left"></span> S'inscrire</a>
 						</div>
 					</div>
 				</div>
