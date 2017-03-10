@@ -8,12 +8,26 @@
 	min-width: 75px;
 	margin-bottom: 5px;
 }
+.navbar-static-top {
+	background: #222222;
+}
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand {
+	color:white;
+}
+.navbar-default .navbar-nav > li:hover > a, .navbar-default .navbar-brand:hover {
+	color:#cecece;
+}
 .center{
 	text-align: center;
 }
 body{
 	background: #f7faff;
 }
+
+ul {
+	list-style-type: none;
+}
+
 @media screen and (max-width: 769px)
 {
 	.hide-small-screen{
@@ -166,9 +180,8 @@ body{
 .annonce-button {
 	margin: 0px 0px 10px 15px;
 	min-width: 120px;
-	text-align: justify;
+	text-align: center;
 }
-
 .annonce-button:not(:last-child) {
 }
 
@@ -201,6 +214,10 @@ body{
 	margin-bottom: 15px;
 }
 
+.margin-bot-50 {
+	margin-bottom: 50px;
+}
+
 .margin-top {
 	margin-top: 15px;
 }
@@ -226,6 +243,10 @@ body{
 	margin-top: 3px;
 }
 
+.no-pr {
+	margin-right: 0px;
+}
+
 .comments {
 	margin-bottom: 25px;
 	font-size: 1.5em;
@@ -234,6 +255,10 @@ body{
 .comments img {
 	border-radius: 50%;
 	width: 100%;
+}
+
+.comments input {
+	height: 300px;
 }
 
 .formtitre {

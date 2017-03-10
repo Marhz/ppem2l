@@ -1,4 +1,4 @@
-<div class="col-xs-12 formation">									
+<div class="col-xs-12 formation margin-bot-50">									
 	<div class="formtitre col-xs-12">
 		<h1><?= $formation->titre ?></h1>	
 	</div>
@@ -37,6 +37,7 @@
 				<?php
 			}
 			?>
+
 	</div>
 </div>
 <comments :data="<?= htmlspecialchars($comments) ?>" formation-id="<?= $formation->id ?>"></comments>

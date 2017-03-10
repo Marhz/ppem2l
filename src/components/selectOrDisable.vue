@@ -3,16 +3,16 @@
 		<div :class="!bsclass ? 'form-group col-md-12' : 'margin-bot' ">
 			<label :for="name | addId">{{name | capitalize}} :</label>
 			<div class="input-group">
-			<select :name="name | addId" :id="name | addId" class="form-control" :disabled="showSubForm" required>
-				<option value="" disabled selected hidden>Selectionnez ou ajoutez</option>
-				<option v-for="elem in elements" :value="elem.id">{{elem.data}}</option>
-			</select>
-			<span 
-				@click="toggleSubForm()" 
-				class="plus-icon input-group-addon fa fa-icons" 
-				:class="[showSubForm ? 'fa-minus-square red' : 'fa-plus-square green']"
-			>		
-			</span>
+				<select :name="name | addId" :id="name | addId" class="form-control" :disabled="showSubForm" required>
+					<option value="" disabled selected hidden>Selectionnez ou ajoutez</option>
+					<option v-for="elem in elements" :value="elem.id">{{elem.data}}</option>
+				</select>
+				<span
+					@click="toggleSubForm()"
+					class="plus-icon input-group-addon fa fa-icons"
+					:class="[showSubForm ? 'fa-minus-square red' : 'fa-plus-square green']"
+				>
+				</span>
 			</div>
 		</div>
 		<transition name="slide">
@@ -24,7 +24,6 @@
 <script>
 	export default {
 		props: ['elements','name', 'bsclass'],
-		name: "select-or-disable",
 		data: function() {
 			return {
 				showSubForm: false,

@@ -1,20 +1,31 @@
 <template>
-	<div class="col-xs-10 col-xs-offset-1">
-		<form class="form-vertical" @submit.prevent="onSubmit" @keydown="error = false" role="form" method="POST" action="ajouterCommentaire">
-	        <div class="form-group" :class="{'has-error' : error}">
-	            <div class="col-md-10">
-	                <textarea v-model="getContent" name="commentaire" class="form-control"></textarea>
-	                <small v-if="error" class="error">{{error}}</small>
-	            </div>
-	        </div>
+	<div class="">
+		<form 
+			class="pull-right col-xs-12 pull-left margin-top"
+			:class="{'col-xs-9 col-xs-offset-2' : formationId}"
+			@submit.prevent="onSubmit" 
+			@keydown="error = false" 
+			role="form" 
+			method="POST" 
+			action="ajouterCommentaire"
+		>
+        <div class="form-group" :class="{'has-error' : error}">
+            <textarea 
+            	v-model="getContent" 
+            	name="commentaire" 
+            	class="form-control comment-input"
+            	rows="6"
+            	placeholder="Votre commentaire..."
+            >
+            </textarea>
+            <small v-if="error" class="error">{{error}}</small>
+        </div>
 	        <input class='formationId' type="hidden" name="id_formation" :value="formationId">
-	        <div class="form-group">
-	            <div class="col-md-12 margin-top">
-	                <button type="submit" class="btn btn-primary pull-right">
-	                    Envoyer
-	                </button>
-	            </div>
-	        </div>
+            <div class="margin-top">
+                <button type="submit" class="btn btn-primary pull-right no-pr">
+                    Envoyer
+                </button>
+        	</div>
 	    </form>
 	</div>
 </template>
@@ -33,7 +44,7 @@
 			onSubmit() {
 				$.ajax({
 	                type:"POST",
-	                url:baseUrl+"/addComment",
+	                url:baseUrl+"addComment",
 	                data:{
 	                	formationId: this.formationId,
 	                	content: this.getContent,

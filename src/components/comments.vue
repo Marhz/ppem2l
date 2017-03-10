@@ -1,14 +1,17 @@
 <template>
-	<div>
+	<div class="">
 		<transition-group name="slide" tag="div">
 			<div v-for="comment in comments" v-bind:key="comment.id" class="col-xs-12 col-md-10 col-md-offset-1 comments">
 				<div class="col-xs-2">
 					<img src="/ppem2l/image/default-user-avatar.png" class="comment-avatar">
 				</div>
 				<div class="col-xs-10">
-					<span><b class="blue">{{comment.user | fullName}}</b> Le {{comment.created_at}} </span>
-					<span v-if="comment.can_delete" class="pull-right fa fa-trash" @click="deleteComment(comment)"></span>
-					<span v-if="comment.can_delete" class="pull-right fa fa-edit" @click="editComment(comment)"></span>
+					<span>
+						<b class="blue">{{comment.user | fullName}}</b>
+						<span v-if="comment.can_delete" class="pull-right fa fa-trash" @click="deleteComment(comment)"></span>
+						<span v-if="comment.can_delete" class="pull-right fa fa-edit" @click="editComment(comment)"></span>
+						<span class="pull-right">{{comment.created_at | ago }}</span>
+					</span>
 					<hr class="no-mt">
 					<p>{{comment.content}}</p>
 					<transition name="slide">
@@ -17,7 +20,6 @@
 				</div>
 			</div>
 		</transition-group>
-		<label for="commentaire" class="col-md-2 form-group">Commentaire</label>
 		<add-comment :formationId="formationId" @commentAdded="postSubmit"></add-comment>
 	</div>
 </template>
@@ -42,7 +44,7 @@ export default {
 		deleteComment(comment) {
 			$.ajax({
                 type:"POST",
-                url:"/ppem2l/deleteComment",
+                url:baseUrl+"deleteComment",
                 data:{
                 	commentId: comment.id
                 },
@@ -70,6 +72,9 @@ export default {
 	filters: {
 		fullName(user) {
 			return `${user.prenom} ${user.nom}`;
+		},
+		ago(date) {
+			return moment(date).fromNow();
 		}
 	}
 }

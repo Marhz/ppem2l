@@ -1,48 +1,83 @@
 <?php
 namespace Core;
-require 'vendor/phpmailer/phpmailer/PHPMailerAutoload.php';
-	class MyMailer extends \PHPMailer {
-		public function sendMail($to, $header, $body)
+
+class MyMailer extends \PHPMailer {
+
+	public static function sendMail($to, $header, $body)
+	{
+		$mail = new static;
+		$mail->isSMTP();                                      
+		$mail->Host = 'smtp.mailtrap.io';  
+		$mail->SMTPAuth = true; 
+		$mail->Username = 'cc8e7d3cb95edf'; 
+		$mail->Password = '536dd9eab27f4c';
+		$mail->SMTPSecure = 'tls';
+		$mail->Port = 25;
+		$mail->isSMTP();
+		$mail->CharSet="UTF-8";                              
+
+		$mail->setFrom('m2lFormations@m2l.fr', 'm2l');
+		if(is_array($to))
 		{
-			$mail = new static;
-			$mail->isSMTP();                                      
-			$mail->Host = 'smtp.mailtrap.io';  
-			$mail->SMTPAuth = true; 
-			$mail->Username = 'cc8e7d3cb95edf'; 
-			$mail->Password = '536dd9eab27f4c';
-			$mail->SMTPSecure = 'tls';
-			$mail->Port = 25;
-			$mail->isSMTP();
-			$mail->Host = 'smtp.mailtrap.io';
-			$mail->SMTPAuth = true;                   
-			$mail->Username = 'cc8e7d3cb95edf';   
-			$mail->Password = '536dd9eab27f4c';                         
-			$mail->SMTPSecure = 'tls';                        
-			$mail->Port = 25;                                 
-
-			$mail->setFrom('m2lFormation@m2l.fr', 'm2l');
-			if(is_array($to))
+			foreach($to as $subject)
 			{
-				foreach($to as $subject)
-				{
-					$mail->addAddress($subject);              
-				}
-			}
-			else
-			{
-				$mail->addAddress($to);
-			}
-
-			$mail->Subject = $header;
-			$mail->Body = $body;
-
-			if($mail->send())
-			{
-				return true;
-			}
-			else 
-			{
-				return $mail->ErrorInfo;
+				$mail->addAddress($subject);              
 			}
 		}
+		else
+		{
+			$mail->addAddress($to);
+		}
+
+		$mail->Subject = $header;
+		$mail->Body = static::getBody($body);
+		$mail->IsHtml(true);
+		if($mail->send())
+		{
+			return true;
+		}
+		else 
+		{
+			return $mail->ErrorInfo;
+		}
 	}
+
+	protected static function getBody($body)
+	{
+		return "
+<html lang='en'>
+<head>
+	<meta charset='UTF-8'>
+	<title>M2L Formations</title>
+	<style>
+		body {
+			width: 100%;
+			font-family: Arial, Helvetica
+			margin: 0;
+			padding: 0
+		}
+		.container {
+			width: 65%;
+		}
+		.header {
+			width:100%;
+			background: blue;
+			color:white;
+			text-align: center;
+			margin-bottom: 50px;
+			line-height: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div class='header'>
+		<h1>M2L - Formations</h1>
+	</div>
+	<div class='container'>
+		{$body}
+	</div>
+</body>
+</html>
+		";
+	}
+}

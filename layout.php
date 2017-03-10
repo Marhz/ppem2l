@@ -58,14 +58,7 @@
                     <?php if(isset($_SESSION['connecte'])){?>
                         <li><a href="<?= baseUrl()?>welcome">Accueil</a></li>
                         <li><a href="<?= baseUrl()?>compte">Mon compte</a></li>
-                        <form action="search" method="Post" class="form-inline searchbar col-md-4 col-offset-4">
-                            <div class="form-group">
-                                <input type="text" name="search" size="15" class="form-control" placeholder="Rechercher..." required>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="rechercher" class="form-control btn btn-primary">
-                            </div>
-                        </form>
+                        <search-form></search-form>
                     </ul>
                     <?php }?>
 
