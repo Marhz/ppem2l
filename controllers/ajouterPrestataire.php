@@ -6,7 +6,7 @@ use Core\Session;
 use Models\Adresse;
 use Models\Prestataire;
 	
-	if(auth('user')->level < 2)
+	if(!auth('user')->isAdmin())
 		Error::set(403);
 	if(methodIs('post'))
 	{
