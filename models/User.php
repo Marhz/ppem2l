@@ -8,7 +8,7 @@ class User extends BaseModel
 {
 	public $timestamps = false;
 	protected $hidden = ['password'];
-
+	protected $guarded = [];
 	//Helpers
 	public function isAdmin()
 	{

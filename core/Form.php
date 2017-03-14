@@ -75,7 +75,7 @@ class Form {
 			{
 				$result .= "{$pKey} = '{$pValue}' ";
 			}
-			$result .= "><input type='checkbox' name='{$name}{$i}' id='{$name}{$i}' value='{$key}'>{$value}</label> ";
+			$result .= "><input type='checkbox' name='{$name}{$i}' id='{$name}{$i}' value='{$i}'>{$value}</label> ";
 			$i++;
 		}
 		return $result;
