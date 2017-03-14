@@ -20,6 +20,21 @@ class Session {
 		$_SESSION['flash']['type'] = $type;
 	}
 
+
+	public static function setValidationErrors($errors)
+	{
+		$_SESSION['validationErrors'] = $errors;
+	}
+
+	public static function getValidationErrors()
+	{
+		if(isset($_SESSION['validationErrors'])){
+			$tmp = $_SESSION['validationErrors'];
+			unset($_SESSION['validationErrors']);
+			return $tmp;
+		}
+	}
+
 	public static function js($file)
 	{
 		$_SESSION['js'] = $file;

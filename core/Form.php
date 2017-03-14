@@ -63,19 +63,23 @@ class Form {
 		}
 		return $result .= "</select>";
 	}
-	public static function checkbox($name, $options = [], $params = [])
+	public static function checkbox($name, $options = [], $params = [], $checked = false)
 	{
 		$result = '';
 		$i = 1;
-
 		foreach ($options as $key => $value)
 		{
 			$result .= "<label ";
 			foreach($params as $pKey => $pValue)
 			{
-				$result .= "{$pKey} = '{$pValue}' ";
+				if(is_numeric($pKey))
+					$result .= " {$pValue} ";
+				else
+					$result .= "{$pKey} = '{$pValue}' ";
 			}
-			$result .= "><input type='checkbox' name='{$name}{$i}' id='{$name}{$i}' value='{$i}'>{$value}</label> ";
+			$result .= "><input type='checkbox' name='{$name}' id='{$name}'";
+			$result.= $checked ? " checked " : "";
+			$result .=  "value='{$i}'>{$value}</label> ";
 			$i++;
 		}
 		return $result;

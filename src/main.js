@@ -32,4 +32,21 @@ $(document).ready(function() {
 	        "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
 	    }        
     });
-} );
+	$(".select2").select2();
+	$(".users").hide();
+	if(document.getElementById('chef').checked) {
+		$(".users").hide();
+		$(".employes").show()
+	}
+	else {
+		$(".users").show()
+		$(".employes").hide()		
+	}
+	$(".chef").change(() => {
+		$(".users").toggle();
+		$(".employes").toggle();
+
+	})
+});
+
+
