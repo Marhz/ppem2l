@@ -1,4 +1,4 @@
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default navbar-account">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
 	      <a class="navbar-brand" href="#">Mon compte</a>

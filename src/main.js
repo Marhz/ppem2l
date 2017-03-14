@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import select2 from 'select2';
 import selectOrDisable from './components/selectOrDisable.vue';
 import jQuery from 'jquery';
 import bootstrap from 'bootstrap/dist/js/bootstrap';

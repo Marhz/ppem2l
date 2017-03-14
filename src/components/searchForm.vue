@@ -21,7 +21,7 @@
 	            <span class="input-group-addon search-addon fa fa-search" @click="submit"></span>
         	</div>
         </div>
-        <div class="results" v-if="displayResult">
+        <div class="results" v-if="displayResult && results">
         	<ul>
         		<li v-for="formation in results" @mouseover="selected = results.indexOf(formation)">
         			<a :href="baseUrl+'/formations/'+formation.id" class="result" :class="{ 'search-active' : selected === results.indexOf(formation) }">
@@ -47,7 +47,7 @@
 			return {
 				search: '',
 				oldSearch: '',
-				results: {},
+				results: false,
 				baseUrl: baseUrl,
 				displayResult: false,
 				selected: 0
@@ -56,8 +56,9 @@
 		methods: {
 			getResult: function () {
 				if(this.search == ''){
-					this.results = {}
+					this.results = false
 					this.oldSearch = ''
+					this.displayResult = false
 					return
 				}
 				if(this.search === this.oldSearch)

@@ -23,16 +23,9 @@
 	}
 	else
 	{	
-		
-	
-
 		extract($_POST);
 		// include("models/login.php");	
-	
 		$user = Models\User::where('email', $email)->where('password', sha1($mdp))->first();
-		
-		
-		
 		if($user)
 		{			
 			$_SESSION['connecte']= true;

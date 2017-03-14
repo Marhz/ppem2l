@@ -313,3 +313,18 @@ hr {
 	font-family: arial;
 
 }
+
+.navbar-account {
+}
+
+.navbar-account a{
+	color: #333 !important;
+}
+
+.navbar-account li:hover {
+	background: #989898;
+}
+
+.active > a{
+	background: blue;
+}
