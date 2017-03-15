@@ -36,30 +36,41 @@ class CSV {
 			}
 			if(!($file = fopen($this->csv['tmp_name'],'r')))
 			{
-				$data['fileError'][$i] = "Le Serveur n'arrive pas à apporter votre commande en table";
+				$data['fileError'][$i] = "Le Serveur n'arrive pas à ouvrir le fichier en lecture.";
 				$i++;
 			}
 			if($i === 0)
 			{
-				while($csv = fgetcsv($file,0,';'))
+				while($csv = fgetcsv($file,0,','))
 				{
-					$mdp = $csv[4];
+					if($i == 0){
+						$i++;
+						continue;
+					}
+
+
+					$mdp = randStr(8);
+					
 					$data = [
 						'nom' => $csv[0],
 						'prenom' => $csv[1],
 						'email' => $csv[2],
-						'login' => $csv[3],
-						'password' => sha1($csv[4])
+						'login' => $csv[2],
+						'password' => sha1($mdp),
+						'chef_id' => isset($_POST['chef_id']) ? $_POST['chef_id'] : 0
 					];
 					validateUser($data);
 
-					if(\Models\User::where('email', $email)->first()))
+					if(\Models\User::where('email', $csv[2])->first())
 					{
 						//TODO \Models\User::where('email',$email)->first()->update()
 					}
+					else if ($data['nom'] == 'nom' || $data['prenom'] == 'prenom' || $data['email'] == 'email' ) {
+						Session::setFlash("Un des champs suivant n'était pas valide.");
+					}
 					else
 					{
-						\Models\User::create($data);
+						$user = \Models\User::create($data);
 						MyMailer::sendMail($user->email,"M2L - Création de votre comptre M2L maison des ligues","Bonjour, <br/><br/> Votre compte sur l'intranet de la maison des ligues a été créer. <br/> Login : {$user->email} <br/> Mot de passe : {$mdp}");
 
 					}
