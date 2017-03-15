@@ -10,6 +10,7 @@ if(isset($_FILES['csv']))
 }
 
 $users = User::where('level','>=',1)->pluck('email','id');
-$employes = User::where('level',0)->pluck('email','id');
-$errors = Session::getValidationErrors();
+$employes = User::where('level',0)->whereNull('chef_id')->pluck('email','id');
+$csvErrors = Session::getCsvErrors();
+
 require 'views/ajouterUser.php';

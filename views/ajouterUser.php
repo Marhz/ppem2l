@@ -1,6 +1,17 @@
 <?php use Core\Form; ?>
 <div id="addrForm">
     <div class="col-md-8 col-md-offset-2">
+        <?php 
+        if(isset($csvErrors))
+        { 
+            foreach($csvErrors as $error)
+            {
+                ?>
+                <message type="danger">$error</message>
+                <?php
+            }
+        }
+        ?>
         <div class="panel panel-primary">
             <div class="panel-heading">
                 Ajouter un Utilisateur

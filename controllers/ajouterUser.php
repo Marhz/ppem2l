@@ -50,6 +50,6 @@ use Models\User;
 	}
 
 	$users = User::where('level','>=',1)->pluck('email','id');
-	$employes = User::where('level',0)->pluck('email','id');
+	$employes = User::where('level',0)->whereNull('chef_id')->pluck('email','id');
 	$errors = Session::getValidationErrors();
 	require 'views/ajouterUser.php';

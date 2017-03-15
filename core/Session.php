@@ -14,7 +14,7 @@ class Session {
 			return "<div class='alert alert-{$type} alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>{$message}</strong></div>";
 		}
 	}
-	public static function setFlash($message, $type = 'success')
+	public static function setFlash($message, $type = 'succe ss')
 	{
 		$_SESSION['flash']['message'] = htmlspecialchars($message);
 		$_SESSION['flash']['type'] = $type;
@@ -31,6 +31,21 @@ class Session {
 		if(isset($_SESSION['validationErrors'])){
 			$tmp = $_SESSION['validationErrors'];
 			unset($_SESSION['validationErrors']);
+			return $tmp;
+		}
+	}
+
+
+	public static function setCsvErrors($errors)
+	{
+		$_SESSION['csvErrors'] = $errors;
+	}
+
+	public static function getCsvErrors()
+	{
+		if(isset($_SESSION['csvErrors'])){
+			$tmp = $_SESSION['csvErrors'];
+			unset($_SESSION['csvErrors']);
 			return $tmp;
 		}
 	}

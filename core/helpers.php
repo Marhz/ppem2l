@@ -115,3 +115,26 @@ function validateUser($data)
 		Session::setValidationErrors($errorArray);
 	return !(sizeof($errorArray) > 0);
 }
+
+function validateUserCsv($data)
+{
+	extract($data);
+	$errorArray = [];
+	if(!preg_match('/^[a-zA-Z\s]{2,50}$/',$nom))
+	{
+		$errorArray['nom'] = "Nom invalide."; 
+	}
+	if(!preg_match('/^[a-zA-Z\s]{2,50}$/',$prenom))
+	{
+		$errorArray['prenom'] = "Prenom invalide."; 
+	}
+	if(\Models\User::where('email', $email)->first())
+		$errorArray['email'] = "Cet email est déjà utilisé.";
+	if(!preg_match('/^[a-zA-Z0-9._-]{1,20}@[a-zA-Z]{3,10}\.[a-z]{2,6}$/',$email))
+	{
+		$errorArray['email'] = "Mail invalide."; 
+	}
+	if(sizeof($errorArray) > 0)
+		Session::setValidationErrors($errorArray);
+	return (sizeof($errorArray) > 0);
+}
