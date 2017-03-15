@@ -20,7 +20,7 @@ class User extends BaseModel
 	}
 	public function fullName()
 	{
-		return $this->nom." ".$this->prenom;
+		return ucwords($this->nom." ".$this->prenom);
 	}
 
 	public function hasEnoughCredit($formation)

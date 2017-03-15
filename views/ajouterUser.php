@@ -1,6 +1,17 @@
 <?php use Core\Form; ?>
 <div id="addrForm">
     <div class="col-md-8 col-md-offset-2">
+        <?php 
+        if(isset($csvErrors))
+        { 
+            foreach($csvErrors as $error)
+            {
+                ?>
+                <message type="danger"><?= $error ?></message>
+                <?php
+            }
+        }
+        ?>
         <div class="panel panel-primary">
             <div class="panel-heading">
                 Ajouter un Utilisateur
@@ -11,7 +22,17 @@
                         <?= Form::file('csv', 'Fichier : ', ['class' => 'form-control']) ?>
                     </div>
                     <div class="form-group col-md-12">
-                        <?= Form::select('chef_id','Chef :', $users, ['class' => 'form-control']) ?>
+                        <label for="chef_id">Chef : (optionnel)</label>
+                        <select name="chef_id" id="chef_id" class="form-control">
+                            <option value="" disabled selected hidden>Choisir un chef ou laisser vide.</option>
+                            <?php 
+                            foreach($chiefs as $chief)
+                            { 
+                                ?>
+                                <option value="<?= $chief->id ?>"><?= $chief->fullName() ?></option>
+                            <?php
+                            }?>
+                        </select>
                     </div>
                     <div class="form-group col-md-12">
                         <?= Form::submit('submit',' Ajouter en Csv', ['class' => 'form-control btn btn-primary']) ?>
@@ -58,7 +79,17 @@
                         <?= Form::checkbox('chef', ['chef' => ' Chef'], ['class' => 'chef']) ?>
                     </div>
                     <div class="form-group col-md-12 users">
-                        <?= Form::select('chef_id','Chef :', $users, ['class' => 'form-control']) ?>
+                        <label for="chef_id">Chef : (optionnel)</label>
+                        <select name="chef_id" id="chef_id" class="form-control">
+                            <option value="" disabled selected hidden>Choisir un chef ou laisser vide.</option>
+                            <?php 
+                            foreach($chiefs as $chief)
+                            { 
+                                ?>
+                                <option value="<?= $chief->id ?>"><?= $chief->fullName() ?></option>
+                            <?php
+                            }?>
+                        </select>
                     </div>
                     <div class="form-group col-md-12 employes">
                         <?= Form::select('employes[]','Employes :', $employes, ['class' => 'form-control select2','multiple']) ?>

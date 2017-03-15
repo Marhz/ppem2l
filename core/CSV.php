@@ -2,6 +2,10 @@
 
 namespace Core;
 
+use Core\MyMailer;
+use Core\Session;
+use Models\User;
+
 class CSV {
 	private $csv;
 	private $chef_id;
@@ -41,14 +45,15 @@ class CSV {
 			}
 			if($i === 0)
 			{
+				$errors = [];
 				while($csv = fgetcsv($file,0,','))
 				{
 					if($i == 0){
 						$i++;
 						continue;
 					}
-
-
+				
+					$i++;
 					$mdp = randStr(8);
 					
 					$data = [
@@ -57,29 +62,36 @@ class CSV {
 						'email' => $csv[2],
 						'login' => $csv[2],
 						'password' => sha1($mdp),
-						'chef_id' => isset($_POST['chef_id']) ? $_POST['chef_id'] : 0
+						'chef_id' => isset($_POST['chef_id']) ? $_POST['chef_id'] : NULL
 					];
-					validateUser($data);
-
-					if(\Models\User::where('email', $csv[2])->first())
+					if(validateUserCsv($data))
 					{
-						//TODO \Models\User::where('email',$email)->first()->update()
-					}
-					else if ($data['nom'] == 'nom' || $data['prenom'] == 'prenom' || $data['email'] == 'email' ) {
-						Session::setFlash("Un des champs suivant n'était pas valide.");
+						$tmp_errors = Session::getValidationErrors();
+						$tmp = "La ligne {$i} n'a pas pu être enregistrée à cause des erreurs suivantes : ";
+						foreach($tmp_errors as $error)
+						{
+							$tmp .= $error.' ';
+						}
+						$errors[] = $tmp;
 					}
 					else
 					{
-						$user = \Models\User::create($data);
-						MyMailer::sendMail($user->email,"M2L - Création de votre comptre M2L maison des ligues","Bonjour, <br/><br/> Votre compte sur l'intranet de la maison des ligues a été créer. <br/> Login : {$user->email} <br/> Mot de passe : {$mdp}");
+						if(\Models\User::where('email', $csv[2])->first())
+						{
+							//TODO \Models\User::where('email',$email)->first()->update()
+						}
+						else
+						{
+							$user = \Models\User::create($data);
+							MyMailer::sendMail($user->email,"M2L - Création de votre comptre M2L maison des ligues","Bonjour, <br/><br/> Votre compte sur l'intranet de la maison des ligues a été créer. <br/> Login : {$user->email} <br/> Mot de passe : {$mdp}");
 
+						}
 					}
 				}
 			}
 
 		}
-
-	}
+		Session::setCsvErrors($errors);	}
 
 
 }
