@@ -1,4 +1,4 @@
-<message message="yolo"></message>
+<message>yolo</message>
 
 <h1 class="title col-xs-12 mainTitle">Formations à venir</h1>
 <div class="col-lg-9">
