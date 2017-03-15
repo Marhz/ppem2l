@@ -125,6 +125,10 @@ var _maps = __webpack_require__(47);
 
 var _maps2 = _interopRequireDefault(_maps);
 
+var _message = __webpack_require__(50);
+
+var _message2 = _interopRequireDefault(_message);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 window.baseUrl = 'http://127.0.0.1/ppem2l/';
@@ -139,7 +143,8 @@ var myApp = new _vue2.default({
 		tab: _tab2.default,
 		comments: _comments2.default,
 		searchForm: _searchForm2.default,
-		maps: _maps2.default
+		maps: _maps2.default,
+		message: _message2.default
 	}
 });
 
@@ -48443,6 +48448,96 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-51709166", module.exports)
+  }
+}
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(51),
+  /* template */
+  __webpack_require__(52),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/var/www/html/ppem2l/src/components/message.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] message.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-37e7ac08", Component.options)
+  } else {
+    hotAPI.reload("data-v-37e7ac08", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+//
+//
+//
+//
+
+exports.default = {
+	props: {
+		type: { default: 'success' },
+		message: ''
+	}
+};
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "alert alert-dismissible",
+    class: 'alert-' + _vm.type,
+    attrs: {
+      "role": "alert"
+    }
+  }, [_vm._m(0), _c('strong', [_vm._v(_vm._s(_vm.message))])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('button', {
+    staticClass: "close",
+    attrs: {
+      "type": "button",
+      "data-dismiss": "alert",
+      "aria-label": "Close"
+    }
+  }, [_c('span', {
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("×")])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-37e7ac08", module.exports)
   }
 }
 

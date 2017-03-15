@@ -11,6 +11,7 @@ import css from './css';
 import searchForm from './components/searchForm.vue';
 import moment from 'moment';
 import maps from './components/maps.vue'
+import message from './components/message.vue'
 
 window.baseUrl = 'http://127.0.0.1/ppem2l/';
 moment.locale('fr')
@@ -24,7 +25,8 @@ var myApp = new Vue({
 		tab,
 		comments,
 		searchForm,
-		maps
+		maps,
+		message
 	},
 });
 
