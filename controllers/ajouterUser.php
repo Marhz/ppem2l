@@ -1,4 +1,5 @@
 <?php
+
 use Core\Error;
 use Core\MyMailer;
 use Core\Session;
@@ -10,10 +11,6 @@ use Models\User;
 	if(methodIs('post'))
 	{
 		extract($_POST);
-		if(isset($_POST['csv']))
-		{
-			createUsersCSV();
-		}
 		if(!validateUser($_POST))
 		{
 			redirect(baseUrl()."ajouterUser");

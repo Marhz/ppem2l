@@ -1,8 +1,10 @@
 <?php
 
-use Core\CSV; 
+use Core\CSV;
+use Core\Session;
+use Models\User; 
 
-if(isset($_POST['csv']))
+if(isset($_FILES['csv']))
 {
 	(new CSV($_FILES['csv'],$_POST['chef_id']))->importFile();
 }
