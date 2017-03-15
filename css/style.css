@@ -7065,12 +7065,21 @@ ul {
 	{
 	}
 }
+.clear::after{
+   content: " ";
+   display: block; 
+   height: 0; 
+   clear: both;
+}
 .annonce
 {
 	background: #f7faff;
 	border: 1px solid rgba(0, 0, 0, 0.2);
-	margin-bottom: 3%;
-	box-shadow: 2px 2px 8px rgba(156, 156, 156, 1),-2px 2px 8px rgba(156, 156, 156, 1);
+	/*border-bottom: 8px solid #E4EEFF;*/
+	margin-bottom: 4%;
+	/*box-shadow: 2px 2px 8px rgba(156, 156, 156, 1),-2px 2px 8px rgba(156, 156, 156, 1);*/
+	border-radius: 15px;
+	/*height: inherit;*/
 }
 
 .annonce:hover
@@ -7087,6 +7096,19 @@ ul {
 	/*box-shadow: 2px 2px 8px rgba(156, 156, 156, 1),-2px 0px 8px rgba(156, 156, 156, 1);*/
 	background: white;
 }
+
+.annonce-type {
+	position: absolute;
+	top: 0;
+	right: 15px;
+	z-index: 100;
+	background: red;
+	padding:5px 20px;
+	font-size: 16px;
+	line-height: 30px;
+	border-top-right-radius: 15px;
+}
+
 .formLieu
 {
 	border-radius: 3px;
@@ -7118,11 +7140,15 @@ ul {
 	box-shadow: none;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	margin-bottom: 3%;
+}
 
+.btn-container {
+	width: 100%;
+	text-align: center;
 }
 
 .annonce-button {
-	margin: 0px 0px 10px 15px;
+	margin: 20px 10px 10px 10px;
 	min-width: 120px;
 	text-align: center;
 }
@@ -7276,4 +7302,8 @@ hr {
 #map {
 	width: 500px;
 	height: 300px;
+}
+
+.datatable {
+	margin:auto;
 }

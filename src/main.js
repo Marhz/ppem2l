@@ -35,7 +35,7 @@ let bus = new Vue()
 window.myApp = myApp
 
 $(document).ready(function() {
-    $('#datatable').DataTable({
+    $('.datatable').DataTable({
 	    "language": {
 	        "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
 	    }        

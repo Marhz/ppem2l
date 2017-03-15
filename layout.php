@@ -58,7 +58,7 @@
                     <?php if(isset($_SESSION['connecte'])){?>
                         <li><a href="<?= baseUrl()?>welcome">Accueil</a></li>
                         <li><a href="<?= baseUrl()?>compte">Mon compte</a></li>
-                        <search-form></search-form>
+                        <search-form/>
                     </ul>
                     <?php }?>
 
@@ -74,7 +74,7 @@
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12">
                     <?php 
