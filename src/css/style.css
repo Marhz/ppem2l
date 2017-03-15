@@ -11,6 +11,9 @@
 .navbar-static-top {
 	background: #222222;
 }
+.hidden {
+	display: none;
+}
 .navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand {
 	color:white;
 }
@@ -327,4 +330,9 @@ hr {
 
 .active > a{
 	background: blue;
+}
+
+#map {
+	width: 500px;
+	height: 300px;
 }

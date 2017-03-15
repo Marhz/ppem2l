@@ -94,7 +94,7 @@
             if (Core\Session::has('js')) 
             {
                 ?>
-                <script src="js/<?= Core\Session::get('js') ?>"></script>
+                <script src="<?= Core\Session::get('js') ?>" async defer></script>
                 <?php
             } 
         ?>

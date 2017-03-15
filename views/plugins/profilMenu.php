@@ -13,6 +13,12 @@
 	      		<li <?php if($page=="gestion"){echo "class='active'";}?> ><a href="validerFormations">Gestion des employés</a></li>
 	      		<?php
 	      	} 
+	      	if(auth('user')->isAdmin())
+	      	{
+	      		?>
+	      		<li <?php if($page=="ajouterUser"){echo "class='active'";}?> ><a href="ajouterUser">Ajouter un utilisateur</a></li>
+	      		<?php
+	      	}
 	       ?>
 	    </ul>
 	  </div>

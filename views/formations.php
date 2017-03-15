@@ -18,9 +18,13 @@
 		<p>
 			<b>Coût:</b> <?= $formation->cout ?> crédits.
 		</p>
+		<p>
+			<b>Adresse:</b><span id="adresse"> <?= $formation->getAdresse() ?></span>
+		</p>
 	</div>	
 	<div class="col-xs-12 annonce-body margin-top">
 		<p class="description"><?= $formation->description ?></p>
+		<maps address="<?= $formation->getAdresse() ?>" ref="maps"></maps>
 	</div>
 	<div class="col-xs-12">
 		<?php
@@ -41,5 +45,4 @@
 	</div>
 </div>
 <comments :data="<?= htmlspecialchars($comments) ?>" formation-id="<?= $formation->id ?>"></comments>
-
 
