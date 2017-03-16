@@ -71,8 +71,11 @@ ul {
 }
 
 .searchbar{
+	display: inline-block;
+	padding-left:15px;
 	margin-top:7px;
 }
+
 .layout-nav{
 	margin-bottom: 50px;
 }
@@ -365,4 +368,28 @@ hr {
 
 .datatable {
 	margin:auto;
+}
+
+.tabs {
+	padding: 0;
+}
+.tabs li {
+	display: inline-block;
+	padding: 0;
+	height: 50%;
+}
+.tabs a {
+	display: inline-block;
+	height: 100%;
+	padding: 0;
+	margin: 0 !important;
+}
+.tabs-details {
+	border: 2px solid #ececec;
+	padding: 10px 20px;
+	border-top:none;
+}
+
+.datatable {
+	width: 100% !important;
 }

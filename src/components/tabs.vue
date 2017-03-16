@@ -48,24 +48,3 @@
 		}
 	}
 </script>
-
-<style>
-	.tabs {
-		padding: 0;
-	}
-	.tabs li {
-		display: inline-block;
-		padding: 0;
-		height: 50%;
-	}
-	.tabs a {
-		display: inline-block;
-		height: 100%;
-		padding: 0;
-	}
-	.tabs-details {
-		border: 2px solid #ececec;
-		padding: 10px 20px;
-		border-top:none;
-	}
-</style>

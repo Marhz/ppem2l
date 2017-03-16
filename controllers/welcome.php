@@ -8,7 +8,7 @@ $user = auth('user');
 // 	Session::setFlash("Vous n'avez plus de jours de formations disponible", "warning");
 //$nbFormation = $user->formations->count();
 $nbFormations = $user->getNbFormations();
-$formations = Formation::with('prestataire')->get();
+$formations = Formation::with('prestataire', 'type')->get();
 for($i = 0; $i < sizeof($formations); $i++)
 {
 	$formations[$i]->side = ($i % 2 == 0) ? 'left' : 'right';

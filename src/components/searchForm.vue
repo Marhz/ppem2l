@@ -1,5 +1,5 @@
 <template>
-    <form :action="baseUrl+'search'" id="search-form" method="Post" class="form-inline searchbar col-md-4 col-offset-4" @submit.prevent="goToFormation">
+    <form :action="baseUrl+'search'" id="search-form" method="Post" class="form-inline searchbar" @submit.prevent="goToFormation">
         <div class="form-group">
         	<div class="input-group">
 	            <input 
@@ -21,7 +21,7 @@
 	            <span class="input-group-addon search-addon fa fa-search" @click="submit"></span>
         	</div>
         </div>
-        <div class="results" v-if="displayResult && results">
+        <div class="results" v-if="displayResult && results.length > 0">
         	<ul>
         		<li v-for="formation in results" @mouseover="selected = results.indexOf(formation)">
         			<a :href="baseUrl+'/formations/'+formation.id" class="result" :class="{ 'search-active' : selected === results.indexOf(formation) }">

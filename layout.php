@@ -58,7 +58,7 @@
                     <?php if(isset($_SESSION['connecte'])){?>
                         <li><a href="<?= baseUrl()?>welcome">Accueil</a></li>
                         <li><a href="<?= baseUrl()?>compte">Mon compte</a></li>
-                        <search-form/>
+                        <li><search-form></search-form></li>
                     </ul>
                     <?php }?>
 
