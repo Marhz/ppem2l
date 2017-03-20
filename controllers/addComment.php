@@ -2,6 +2,7 @@
 
 use Core\Error;
 use Models\Comment;
+
 if(!methodIs('post'))
 	Error::set(404);
 extract($_POST);

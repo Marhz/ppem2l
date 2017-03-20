@@ -1,9 +1,9 @@
 <?php
 
+use Models\Type;
 use Models\Adresse;
 use Models\Formation;
 use Models\Prestataire;
-use Models\Type;
 
 if(!auth('user')->isAdmin())
 {
@@ -56,12 +56,9 @@ if(methodIs('post'))
 		'prestataire_id' => $prestataire_id
 	]);
 }
-$adresses_tmp = Adresse::all();
-foreach($adresses_tmp as $adresse)
-{
-	$adresses[] = ['id' => $adresse->id, 'data' => $adresse->format()];
-}
-$adresses = json_encode($adresses, escapeJson());
+$adresses = Adresse::all()->map(function($adresse) {
+	return ['id' => $adresse->id, 'data' => $adresse->format()];	
+})->toJson(escapeJson());
 $types = Type::all(['id', 'titre AS data'])->toJson(escapeJson());
 $prestataires = Prestataire::all(['id', 'raison_sociale AS data'])->toJson(escapeJson());
 

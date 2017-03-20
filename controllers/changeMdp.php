@@ -1,28 +1,28 @@
 <?php
-	use Models\User;
-	use Core\Session;
-	extract($_POST);
-	if (isset($submit)) 
+
+use Models\User;
+use Core\Session;
+extract($_POST);
+if (isset($submit)) 
+{
+	$user=auth('user');
+	if(sha1($oldpassword)==$user->password)
 	{
-		$user=auth('user');
-		if(sha1($oldpassword)==$user->password)
+		if($newpassword==$newpasswordconfirm)
 		{
-			if($newpassword==$newpasswordconfirm)
-			{
-				$user->password=sha1($newpassword);
-				$user->save();
-				Session::setflash("Mot de passe modifié !");
-			}
-			else
-			{
-				Session::setflash("Les mots de passes ne correspondent pas !","warning");
-			}
+			$user->password=sha1($newpassword);
+			$user->save();
+			Session::setflash("Mot de passe modifié !");
 		}
 		else
 		{
-			Session::setflash("Mauvais mot de passe !","warning");
+			Session::setflash("Les mots de passes ne correspondent pas !","warning");
 		}
 	}
-	$page="changeMdp";
-	include("views/changeMdp.php");
-?>
+	else
+	{
+		Session::setflash("Mauvais mot de passe !","warning");
+	}
+}
+$page="changeMdp";
+include("views/changeMdp.php");

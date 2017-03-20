@@ -8,7 +8,7 @@
 					<div class="clear">
 					<div class="annonce clear">
 						<div class="pull-right annonce-type"><?= $formation->type->titre ?></div>
-						<div class="col-xs-12 col-md-12 center-block <?= $formation->side == 'left' ? 'pull-left' : 'pull-right' ?>">
+						<div class="col-xs-12 col-md-12 center-block">
 							<img class="center-block" src="image/<?= isset($formation->image) ? $formation->image : 'logoformation.png'?>" />
 						</div>
 						<div class="col-xs-12 col-md-12">
