@@ -24,8 +24,16 @@
 									<td><?= $user->credit ?></td>
 									<td><?= $user->login ?></td>
 									<td class="center">
-										<button class="btn btn-success box"><span class="fa fa-edit"></span></button>
-										<button class="btn btn-danger box"><span class="fa fa-trash"></span></button>
+										<a href="<?= baseUrl() ?>adminUsers/<?= $user->id ?>/edit">
+											<button class="btn btn-success box">
+												<span class="fa fa-edit"></span>
+											</button>
+										</a>
+										<a href="<?= baseUrl() ?>adminUsers/<?= $user->id ?>/delete">
+											<button class="btn btn-danger box">
+												<span class="fa fa-trash"></span>
+											</button>
+										</a>
 									</td>
 								</tr>
 								<?php

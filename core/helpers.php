@@ -79,6 +79,10 @@ function redirect($url)
 	die();
 }
 
+function redirectBack()
+{
+	redirect($_SERVER['HTTP_REFERER'] ?: baseUrl();
+}
 function escapeJson()
 {
 	return JSON_HEX_QUOT|JSON_HEX_APOS;
