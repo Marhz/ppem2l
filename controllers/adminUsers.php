@@ -14,15 +14,15 @@ switch ($_GET['action']) {
 		deleteUser();
 		break;
 	case 'edit':
-		methodIs('get') ? editUser() : updateUser();
+		editUser();
 		break;
 	default:
-		dd($_SERVER);
+		redirect(baseUrl().'ajouterUser/');
 		break;
 }
 
 
-public function deleteUser()
+function deleteUser()
 {
 	try
 	{
@@ -45,7 +45,10 @@ public function deleteUser()
 	}
 }
 
-public function editUser()
+function editUser()
 {
-
+	if(methodIs('get'))
+	{
+		redirect(baseUrl().'ajouterUser/'.$_GET['id']);
+	}
 }
