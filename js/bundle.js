@@ -31539,7 +31539,7 @@ exports.default = {
 		onSubmit: function onSubmit() {
 			var _this = this;
 
-			$.ajax({
+			$.post({
 				type: "POST",
 				url: baseUrl + "addComment",
 				data: {
