@@ -6,12 +6,21 @@ class Formation extends BaseModel
 {
 	public $timestamp=false;
 	protected $guarded = [];
-	
+	protected $perPage = 3;
 	//Helpers
 	public function getAdresse()
 	{
 		return $this->adresse->format();
 	}
+
+	public static function myPaginate($page = 1)
+    {
+        $perPage = (new static)->perPage;
+        $items = static::offset(($perPage*($page-1)))->limit(($perPage*$page) - ($perPage*($page-1)))->get();
+        $items->page = $page;
+        $items->lastPage = ceil((static::count() / $perPage));
+        return $items;
+    }
 
 	//Relations
 	public function users()

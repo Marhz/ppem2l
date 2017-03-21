@@ -4,19 +4,24 @@ use Core\Session;
 use Models\Formation;
 
 $id = $_GET['id'];
-
-if(!Formation::find($id)){
+$user = auth('user');
+if(!$formation = Formation::find($id)){
 	Session::setFlash('La formation demandée n\'existe pas', "danger");
 	redirect(baseUrl());
 }
-if(auth('user')->formations->contains($id)){
+if($user->formations->contains($id)){
 	Session::setFlash('Vous êtes déjà inscrit à cette formation', 'warning');
 	redirect($_SERVER['HTTP_REFERER']);
 }
 
-if(auth('user')->isChef())
+if($user->isChef())
 {
-	auth('user')->formations()->attach($id, ['valide' => 1]);
+	$user->formations()->attach($id, ['valide' => 1]);
+	$user->update([
+		'nbr_jours' => $user->nb_jours - $formation->duree,
+		'credit' => $user->credit - $formation->cout
+	]);
+	$formation->update(['nb_places' => $formation->nb_places - 1]);
 }
 else
 {

@@ -1,6 +1,6 @@
-	<div class="container">
-	<?php require 'views/plugins/profilMenu.php' ?>
-		<div class="col-xs-12">
+	<div class="container container-mobile">
+	<!-- <?php require 'views/plugins/profilMenu.php' ?> -->
+		<div class="col-xs-12 container-mobile">
 			<table class="table table-striped datatable" id="">
 				<thead>
 					<th>Status</th>

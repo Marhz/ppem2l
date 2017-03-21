@@ -1,6 +1,5 @@
-<div class="container">
-	<?php require 'views/plugins/profilMenu.php' ?>
-	<div class="col-xs-12">
+<div class="container container-mobile">
+	<div class="col-xs-12 container-mobile">
 		<tabs>
 			<tab name="Utilisateurs" selected="true">
 				<table class="table table-striped margin datatable" v-cloak>

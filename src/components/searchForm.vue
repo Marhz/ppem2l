@@ -5,8 +5,8 @@
 	            <input 
 	            	v-model="search" 
 	            	@keyup="getResult"
-	            	@blur="displayResult = false"
 	            	@focus="displayResult = true"
+	            	@blur="loseFocus"
 	            	@keyup.up.prevent="getPrevious"
 	            	@keyup.down.prevent="getNext"
 	            	@keyup.esc.prevent="displayResult = false"
@@ -24,7 +24,7 @@
         <div class="results" v-if="displayResult && results.length > 0">
         	<ul>
         		<li v-for="formation in results" @mouseover="selected = results.indexOf(formation)">
-        			<a :href="baseUrl+'/formations/'+formation.id" class="result" :class="{ 'search-active' : selected === results.indexOf(formation) }">
+        			<a :href="baseUrl+'/formations/'+formation.id" class="result" :class="{ 'search-active' : selected === results.indexOf(formation) }"@click.prevent="goToFormation">
         				<div>
 		        			<span v-html="formation.titre" class="titre"></span>
 		        			<span v-html="formation.type.titre" class="pull-right"></span><br/>
@@ -95,6 +95,9 @@
 			},
 			submit: function() {
 				$("#search-form").submit()
+			},
+			loseFocus: function() {
+				setTimeout(() => this.displayResult = false, 100)
 			}
 		},
 		filters: {

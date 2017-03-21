@@ -58,6 +58,9 @@
                     <?php if(isset($_SESSION['connecte'])){?>
                         <li><a href="<?= baseUrl()?>welcome">Accueil</a></li>
                         <li><a href="<?= baseUrl()?>compte">Mon compte</a></li>
+                        <li><a href="<?= baseUrl()?>compte">Historique</a></li>
+                        <li><a href="<?= baseUrl()?>validerFormations">Gestion des employés</a></li>
+                        <li><a href="<?= baseUrl()?>admin">Administration</a></li>
                         <li><search-form></search-form></li>
                     </ul>
                     <?php }?>
@@ -74,16 +77,10 @@
             </div>
         </nav>
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12">
-                    <?php 
-                        echo Core\Session::flash();
-                        echo $content;
-                    ?>
-                </div>
-            </div>
-        </div>
+        <?php 
+            echo Core\Session::flash();
+            echo $content;
+        ?>
     </div>
         <!-- JavaScripts -->
         <script src="<?= baseUrl() ?>js/bundle.js"></script>

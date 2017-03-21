@@ -16,7 +16,7 @@ catch (ModelNotFoundException $e)
 }
 $formation->disabled = ($formation->users->contains(auth('user')->id) || $formation->users->count() == $formation->nb_places);
 $comments = $formation->comments->each(function($comment){
-	$comment->can_delete = ($comment->user_id == auth('user')->id);	
+	$comment->can_delete = ($comment->user_id == auth('user')->id || auth('user')->isAdmin());	
 })->toJson(escapeJson());;
 // foreach ($comments as $comment)
 // $comments = $comments

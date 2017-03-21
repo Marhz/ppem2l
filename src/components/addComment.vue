@@ -1,8 +1,6 @@
 <template>
 	<div class="">
 		<form 
-			class="pull-right col-xs-12 pull-left margin-top"
-			:class="{'col-xs-9 col-xs-offset-2' : formationId}"
 			@submit.prevent="onSubmit" 
 			@keydown="error = false" 
 			role="form" 
@@ -42,7 +40,7 @@
 		},
 		methods: {
 			onSubmit() {
-				$.ajax({
+				$.post({
 	                type:"POST",
 	                url:baseUrl+"addComment",
 	                data:{

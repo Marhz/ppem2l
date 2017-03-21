@@ -1,6 +1,6 @@
-<div class="container">
-	<?php require 'views/plugins/profilMenu.php' ?>
-	<div class="col-xs-12 bgwhite">
+<div class="container container-mobile">
+	<!-- <?php require 'views/plugins/profilMenu.php' ?> -->
+	<div class="col-xs-12 bgwhite container-mobile">
 		<tabs v-cloak>
 			<tab name="Formations à valider" selected="true">
 				<table class="table table-striped margin datatable" id="">
@@ -9,8 +9,8 @@
 							<th>Nom de l'employé</th>
 							<th>Nom de la formation</th>
 							<th class="hide-small-screen">Adresse</th>	
-							<th>Durée</th>
-							<th>Début</th>
+							<th class="hide-small-screen">Durée</th>
+							<th class="hide-small-screen">Début</th>
 							<th>Actions</th>
 						</tr>			
 					</thead>
@@ -25,8 +25,8 @@
 									<td><a href="utilisateur/<?= $employe->id ?>"><?= $employe->fullName(); ?></a></td>
 									<td><a href="formation/<?= $formation->id ?>"><?= $formation->titre ?></a></td>
 									<td class="hide-small-screen"><?= $formation->getAdresse() ?></td>
-									<td><?= $formation->duree ?>j/<?= $employe->nbr_jour ?></td>
-									<td><span class="hidden"><?= strtotime($formation->debut) ?></span><?= affDate($formation->debut) ?></td>
+									<td class="hide-small-screen"><?= $formation->duree ?>j/<?= $employe->nbr_jour ?></td>
+									<td class="hide-small-screen"><span class="hidden"><?= strtotime($formation->debut) ?></span><?= affDate($formation->debut) ?></td>
 									<td class="center">
 										<form action="valider" method="post" class="inline">
 											<input type="hidden" value="<?= $formation->id ?>" name="id_f">

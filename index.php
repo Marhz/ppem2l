@@ -5,6 +5,7 @@ use Core\Error;
 use Carbon\Carbon;
 setLocale(LC_TIME, 'fr_FR.utf8', 'fra');
 define("BASE_URL",$_SERVER['REQUEST_URI']);
+
 if(!isset($_GET['p']) || $_GET['p'] == "") 
 {
 	$_GET['p'] = "welcome";

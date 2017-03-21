@@ -6952,6 +6952,11 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
 .navbar-static-top {
 	background: #222222;
 }
+
+.bg-white {
+	background: white;
+}
+
 .hidden {
 	display: none;
 }
@@ -6970,6 +6975,17 @@ body{
 
 ul {
 	list-style-type: none;
+}
+.no-padding{
+	padding: 0;
+}
+
+.margin-top-50 {
+	margin-top: 50px;
+}
+
+.padding-right {
+	padding-right: 15px;
 }
 
 @media screen and (max-width: 769px)
@@ -7051,17 +7067,15 @@ ul {
 .fa-icons{
 	font-size: 1.5em;
 }
-.annonce img
+
+@media(max-width: 768px)
 {
-	margin-top: 10px;
-	border-radius: 50%;
-	width:200px;
-	height:200px;
-	border: 1px solid rgba(156, 156, 156, 0.8);
-	padding: 3%;
-	margin-bottom: 15px;
-	background: white;
+	.container-mobile {
+		padding: 0;
+		width:100%;
+	}
 }
+
 @media(max-width: 900px)
 {
 	.annonce img
@@ -7076,18 +7090,59 @@ ul {
 }
 .annonce
 {
-	background: #f7faff;
-	border: 1px solid rgba(0, 0, 0, 0.2);
+	background: #76D4FC;
+	/*border: 1px solid rgba(0, 0, 0, 0.2);*/
 	/*border-bottom: 8px solid #E4EEFF;*/
 	margin-bottom: 4%;
 	/*box-shadow: 2px 2px 8px rgba(156, 156, 156, 1),-2px 2px 8px rgba(156, 156, 156, 1);*/
-	border-radius: 15px;
+	border-radius: 5px;
 	/*height: inherit;*/
+	transition: all .3s ease;
+	/*background: rgba(0,0,0,0.9);*/
+	/*background: transparent;*/
+
+
 }
 
-.annonce:hover
+.annonce-type {
+	position: absolute;
+	top: 0;
+	color:white;
+	right: 15px;
+	z-index: 100;
+	background: rgba(255,0,0,.8);
+	padding:5px 20px;
+	font-size: 16px;
+	line-height: 30px;
+	border-top-right-radius: 5px;
+}
+
+/*.annonce:hover
 {
 	background: #d6e6fc;
+	background: #76D4FC;
+}
+*/
+.annonce img
+{
+	/*margin-top: 10px;*/
+	/*border-radius: 50%;*/
+	width:100%;
+	height:300px;
+	/*border: 1px solid rgba(156, 156, 156, 0.8);*/
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+/*	border-bottom: 1px solid rgb(0, 0, 0);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+*/	transition: all .3s ease;
+	/*z-in*/dex: -100;
+	position: relative;
+
+}
+
+.annonce:hover img
+{
+	opacity: 1;
 }
 
 .formtitre
@@ -7100,28 +7155,63 @@ ul {
 	background: white;
 }
 
-.annonce-type {
-	position: absolute;
-	top: 0;
-	right: 15px;
-	z-index: 100;
-	background: red;
-	padding:5px 20px;
-	font-size: 16px;
-	line-height: 30px;
-	border-top-right-radius: 15px;
-}
-
-.formLieu
+.annonce-details
 {
 	border-radius: 3px;
 	font-size: 120%;
-	border: 1px solid rgba(0, 0, 0, 0.2);
 	margin-top: 5px;
 	padding-left: 10px;
 	/*box-shadow: 2px 2px 8px rgba(156, 156, 156, 0.8),-2px 0px 8px rgba(156, 156, 156, 0.8);*/
 	background: white;
+	position: absolute;
+	margin:auto;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	/*height: 50%;*/
+	width: 80%;
+	height: 120px;
+	padding: 10px;
+	vertical-align: middle;
+	opacity: 0;
+	transition: all .3s ease;
+	color:white;
+	background: transparent;
 }
+
+.annonce-details span {
+	vertical-align: middle;
+	line-height: 20px;
+}
+
+.annonce-details-overlay {
+	/*padding: 15px;*/
+	/*background: white;*/
+	background: transparent;
+	z-index: 10;
+	width: 100%;
+	height: 300px;
+	position: absolute;
+	top: 0px;
+}
+
+.annonce:hover .annonce-details-overlay {
+	background: rgba(0,0,0,0.7);
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+
+}
+
+.annonce:hover .annonce-details {
+	opacity: 1;
+	z-index:50;
+}
+
+.annonce-details p {
+	vertical-align: middle;
+}
+
 .annonce h2
 {
 	color: red;
@@ -7223,11 +7313,32 @@ ul {
 .comments {
 	margin-bottom: 25px;
 	font-size: 1.5em;
+	vertical-align: middle;
+}
+
+.comments-count {
+	margin-bottom: 50px;
+}
+
+.comment-avatar {
+/*	vertical-align: middle;
+	top: 0;
+	bottom: 0;
+	width:125px;
+	height: 125px;
+	float:left;
+*/
+	text-align: center
 }
 
 .comments img {
+	height: 120px;
+	width: 120px;
+	border: 1px solid black;
 	border-radius: 50%;
+/*	height: 100%;
 	width: 100%;
+*/	vertical-align: middle;
 }
 
 .comments input {
@@ -7333,4 +7444,14 @@ hr {
 
 .datatable {
 	width: 100% !important;
+}
+
+.annonce >.pagination > li > a {
+	font-size: 30px;
+	padding: 6px 20px;
+}
+
+.annonce >.pagination > li > a > .fa {
+	font-size: 30px;
+
 }

@@ -31524,8 +31524,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
 
 exports.default = {
 	name: 'add-comment',
@@ -31621,6 +31619,14 @@ exports.default = {
 				}
 			});
 			this.editId = false;
+		},
+		avatarUrl: function avatarUrl(user) {
+			return baseUrl + "image/logoformation.png";
+		}
+	},
+	computed: {
+		commentsCount: function commentsCount() {
+			return this.comments.length;
 		}
 	},
 	filters: {
@@ -31632,6 +31638,14 @@ exports.default = {
 		}
 	}
 }; //
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -31833,6 +31847,13 @@ exports.default = {
 		},
 		submit: function submit() {
 			$("#search-form").submit();
+		},
+		loseFocus: function loseFocus() {
+			var _this2 = this;
+
+			setTimeout(function () {
+				return _this2.displayResult = false;
+			}, 100);
 		}
 	},
 	filters: {
@@ -47795,12 +47816,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         $event.preventDefault();
         _vm.displayResult = false
       }],
-      "blur": function($event) {
-        _vm.displayResult = false
-      },
       "focus": function($event) {
         _vm.displayResult = true
       },
+      "blur": _vm.loseFocus,
       "input": function($event) {
         if ($event.target.composing) { return; }
         _vm.search = $event.target.value
@@ -47827,6 +47846,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       attrs: {
         "href": _vm.baseUrl + '/formations/' + formation.id
+      },
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.goToFormation($event)
+        }
       }
     }, [_c('div', [_c('span', {
       staticClass: "titre",
@@ -47891,10 +47916,6 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {}, [_c('form', {
-    staticClass: "pull-right col-xs-12 pull-left margin-top",
-    class: {
-      'col-xs-9 col-xs-offset-2': _vm.formationId
-    },
     attrs: {
       "role": "form",
       "method": "POST",
@@ -47971,7 +47992,9 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {}, [_c('transition-group', {
+  return _c('div', {}, [_c('div', {
+    staticClass: "comments-count col-xs-12"
+  }, [_c('h3', [_vm._v(_vm._s(_vm.commentsCount) + " Commentaire" + _vm._s((_vm.commentsCount > 1) ? 's' : ''))])]), _vm._v(" "), _c('transition-group', {
     attrs: {
       "name": "slide",
       "tag": "div"
@@ -47979,16 +48002,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.comments), function(comment) {
     return _c('div', {
       key: comment.id,
-      staticClass: "col-xs-12 col-md-10 col-md-offset-1 comments"
+      staticClass: "margin-bot-50 clear"
     }, [_c('div', {
-      staticClass: "col-xs-2"
+      staticClass: "comments"
+    }, [_c('div', {
+      staticClass: "comment-avatar col-md-offset-1 col-md-2 hidden-xs"
     }, [_c('img', {
-      staticClass: "comment-avatar",
       attrs: {
-        "src": "/ppem2l/image/default-user-avatar.png"
+        "src": _vm.avatarUrl(comment.user)
       }
     })]), _vm._v(" "), _c('div', {
-      staticClass: "col-xs-10"
+      staticClass: "col-md-8"
     }, [_c('span', [_c('b', {
       staticClass: "blue"
     }, [_vm._v(_vm._s(_vm._f("fullName")(comment.user)))]), _vm._v(" "), (comment.can_delete) ? _c('span', {
@@ -48027,15 +48051,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       on: {
         "commentEdited": _vm.postEdit
       }
-    })], 1)], 1)])
-  })), _vm._v(" "), _c('add-comment', {
+    })], 1)], 1)])])
+  })), _vm._v(" "), _c('div', {
+    staticClass: "col-md-10 col-md-offset-1 col-md-12"
+  }, [_c('add-comment', {
     attrs: {
       "formationId": _vm.formationId
     },
     on: {
       "commentAdded": _vm.postSubmit
     }
-  })], 1)
+  })], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

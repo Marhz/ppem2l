@@ -1,26 +1,34 @@
 <template>
 	<div class="">
+		<div class="comments-count col-xs-12">
+			<h3>{{commentsCount}} Commentaire{{ (commentsCount > 1) ? 's' : '' }}</h3>
+		</div>
 		<transition-group name="slide" tag="div">
-			<div v-for="comment in comments" v-bind:key="comment.id" class="col-xs-12 col-md-10 col-md-offset-1 comments">
-				<div class="col-xs-2">
-					<img src="/ppem2l/image/default-user-avatar.png" class="comment-avatar">
-				</div>
-				<div class="col-xs-10">
-					<span>
-						<b class="blue">{{comment.user | fullName}}</b>
-						<span v-if="comment.can_delete" class="pull-right fa fa-trash" @click="deleteComment(comment)"></span>
-						<span v-if="comment.can_delete" class="pull-right fa fa-edit" @click="editComment(comment)"></span>
-						<span class="pull-right">{{comment.created_at | ago }}</span>
-					</span>
-					<hr class="no-mt">
-					<p>{{comment.content}}</p>
-					<transition name="slide">
-						<add-comment v-show="editId == comment.id" :editId="editId" :content="comment.content" @commentEdited="postEdit"></add-comment>
-					</transition>
+			<div v-for="comment in comments" v-bind:key="comment.id" class="margin-bot-50 clear">
+				<div class="comments">
+					<!-- col-xs-12 col-md-10 col-md-offset-1 -->
+					<div class="comment-avatar col-md-offset-1 col-md-2 hidden-xs">
+						<img :src="avatarUrl(comment.user)">
+					</div>
+					<div class="col-md-8">
+						<span>
+							<b class="blue">{{comment.user | fullName}}</b>
+							<span v-if="comment.can_delete" class="pull-right fa fa-trash" @click="deleteComment(comment)"></span>
+							<span v-if="comment.can_delete" class="pull-right fa fa-edit" @click="editComment(comment)"></span>
+							<span class="pull-right">{{comment.created_at | ago }}</span>
+						</span>
+						<hr class="no-mt">
+						<p>{{comment.content}}</p>						
+						<transition name="slide">
+							<add-comment v-show="editId == comment.id" :editId="editId" :content="comment.content" @commentEdited="postEdit"></add-comment>
+						</transition>
+					</div>
 				</div>
 			</div>
 		</transition-group>
-		<add-comment :formationId="formationId" @commentAdded="postSubmit"></add-comment>
+		<div class="col-md-10 col-md-offset-1 col-md-12">
+			<add-comment :formationId="formationId" @commentAdded="postSubmit"></add-comment>
+		</div>
 	</div>
 </template>
 
@@ -67,6 +75,14 @@ export default {
 				}
 			});
 			this.editId = false;
+		},
+		avatarUrl(user) {
+			return baseUrl+"image/logoformation.png"
+		}
+	},
+	computed: {
+		commentsCount() {
+			return this.comments.length
 		}
 	},
 	filters: {

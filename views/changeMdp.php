@@ -1,4 +1,4 @@
-<?php require 'views/plugins/profilMenu.php' ?>
+<!-- <?php require 'views/plugins/profilMenu.php' ?> -->
 <div class="container">
 	<form method="POST" action="changeMdp">
 		<div class="row">
