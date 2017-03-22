@@ -82,6 +82,7 @@ function redirect($url)
 function redirectBack()
 {
 	redirect(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : baseUrl());
+	die();
 }
 function escapeJson()
 {

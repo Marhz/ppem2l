@@ -5,24 +5,20 @@ use Core\Error;
 use Carbon\Carbon;
 setLocale(LC_TIME, 'fr_FR.utf8', 'fra');
 define("BASE_URL",$_SERVER['REQUEST_URI']);
-/*$formation = Models\Formation::find(1);
-$user = Models\User::find(3);
 
-require("views/createPDF.php");
-die();
-*/
 if(!isset($_GET['p']) || $_GET['p'] == "") 
 {
-	$_GET['p'] = "welcome";
+	$_GET['p'] = "home";
 }
 else
 {
 	if(!file_exists("controllers/".$_GET['p'].".php"))
 	{
+		dd("yolo");
 		Error::set(404);
 	}
 }
-if((!isset($_SESSION) || empty($_SESSION)) && $_GET['p'] != 'passwordReset')
+if(!isset($_SESSION['user']) && $_GET['p'] != 'passwordReset')
 	$_GET['p'] = "login";
 else
 	$_SESSION['user'] = Models\User::find(auth('user')->id);

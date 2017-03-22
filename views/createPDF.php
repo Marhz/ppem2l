@@ -41,13 +41,11 @@
 		.text-pdf h3
 		{
 			font-size: 25px;
-			border-bottom: 1px solid black;
-			padding-bottom: 3px;
+			text-decoration: underline;
 		}
 		.pdf-info
 		{
 			border: 1px solid black;
-			padding-top: 8px;
 			padding: 20px 30px;
 		}
 		.pdf-info p

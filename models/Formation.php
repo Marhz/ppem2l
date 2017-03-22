@@ -2,11 +2,13 @@
 
 namespace Models;
 
+use Core\MyMailer;
+
 class Formation extends BaseModel 
 {
 	public $timestamp=false;
 	protected $guarded = [];
-	protected $perPage = 12;
+	protected $perPage = 6;
 	//Helpers
 	public function getAdresse()
 	{
@@ -16,11 +18,41 @@ class Formation extends BaseModel
 	public static function myPaginate($page = 1)
     {
         $perPage = (new static)->perPage;
-        $items = static::offset(($perPage*($page-1)))->limit(($perPage*$page) - ($perPage*($page-1)))->get();
+        $items = static::with('type')
+        	->offset(($perPage*($page-1)))
+        	->limit(($perPage*$page) - ($perPage*($page-1)))
+        	->orderBy('debut')->get();
         $items->page = $page;
         $items->lastPage = ceil((static::count() / $perPage));
         return $items;
     }
+
+    public function checkIfFull()
+    {
+    	if($this->isFull())
+    	{
+    		$users = $this->users()->wherePivot('valide', 0)->get()->each(function ($user) {
+    			MyMailer::sendMail($user->email, 'M2L - Formations', $this->title);
+    			$user->formations()->updateExistingPivot($this->id, ['valide' => 2]);
+    		});
+    	}
+    }
+
+    public function checkIfFullBefore()
+    {
+    	if($this->isFull())
+    	{
+    		$users = $this->users()->wherePivot('valide', 2)->get()->each(function ($user) {
+    			MyMailer::sendMail($user->email, 'M2L - Formations', "YA DLA PLACE OMG");
+    			$user->formations()->updateExistingPivot($this->id, ['valide' => 0]);
+    		});    		
+    	}
+    }
+
+   	public function isFull()
+   	{
+   		return $this->users()->wherePivot('valide', 1)->count() == $this->nb_places;
+   	}
 
 	//Relations
 	public function users()

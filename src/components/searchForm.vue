@@ -12,7 +12,6 @@
 	            	@keyup.esc.prevent="displayResult = false"
 	            	type="text" 
 	            	name="search" 
-	            	size="25"
 	            	class="form-control" 
 	            	placeholder="Rechercher..." 
 	            	autocomplete="off" 

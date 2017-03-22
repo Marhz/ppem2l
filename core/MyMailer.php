@@ -9,8 +9,8 @@ class MyMailer extends \PHPMailer {
 		$mail->isSMTP();                                      
 		$mail->Host = 'smtp.mailtrap.io';  
 		$mail->SMTPAuth = true; 
-		$mail->Username = 'ad4452499edd53'; 
-		$mail->Password = '72e19410642c5a';
+		$mail->Username = 'cc8e7d3cb95edf'; 
+		$mail->Password = '536dd9eab27f4c';
 		$mail->SMTPSecure = '';
 		$mail->Port = 465;
 		$mail->isSMTP();
@@ -37,7 +37,7 @@ class MyMailer extends \PHPMailer {
 		{
 			$mail->AddAttachment($attach);
 		}
-		if(dd($mail->send()))
+		if($mail->send())
 		{
 			return true;
 		}

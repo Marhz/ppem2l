@@ -1,6 +1,6 @@
 <div class="container container-mobile">
 	<div class="col-xs-12 container-mobile">
-		<tabs>
+		<tabs v-cloak>
 			<tab name="Utilisateurs" selected="true">
 				<div class="">
 					<a href="<?= baseUrl() ?>ajouterUser">
