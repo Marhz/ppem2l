@@ -3,16 +3,16 @@ namespace Core;
 
 class MyMailer extends \PHPMailer {
 
-	public static function sendMail($to, $header, $body)
+	public static function sendMail($to, $header, $body, $attach = false)
 	{
 		$mail = new static;
 		$mail->isSMTP();                                      
 		$mail->Host = 'smtp.mailtrap.io';  
 		$mail->SMTPAuth = true; 
-		$mail->Username = 'cc8e7d3cb95edf'; 
-		$mail->Password = '536dd9eab27f4c';
-		$mail->SMTPSecure = 'tls';
-		$mail->Port = 25;
+		$mail->Username = 'ad4452499edd53'; 
+		$mail->Password = '72e19410642c5a';
+		$mail->SMTPSecure = '';
+		$mail->Port = 465;
 		$mail->isSMTP();
 		$mail->CharSet="UTF-8";                              
 
@@ -32,7 +32,12 @@ class MyMailer extends \PHPMailer {
 		$mail->Subject = $header;
 		$mail->Body = static::getBody($body);
 		$mail->IsHtml(true);
-		if($mail->send())
+
+		if($attach)
+		{
+			$mail->AddAttachment($attach);
+		}
+		if(dd($mail->send()))
 		{
 			return true;
 		}

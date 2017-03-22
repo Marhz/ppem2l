@@ -505,17 +505,12 @@ hr {
 	width: 100% !important;
 }
 
-.main-pagination > li > a {
+.annonce >.pagination > li > a {
 	font-size: 30px;
 	padding: 6px 20px;
 }
 
-.main-pagination > li > a > .fa {
+.annonce >.pagination > li > a > .fa {
 	font-size: 30px;
 
-}
-
-.pdf
-{
-	font-family: Arial, Helvetica, sans-serif;
 }

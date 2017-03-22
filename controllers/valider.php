@@ -29,13 +29,17 @@ if(auth('user')->employes->contains($user))
 	/*$dompdf->set_option('isHtml5ParserEnabled', true);*/
 	$dompdf->loadHtml($content);
 
-	$dompdf->setPaper('A4','portait');
+	$dompdf->setPaper('A4','portrait');
 
 	$dompdf->render();
 
-	$dompdf->stream();
-	die();
-	MyMailer::sendMail($user->email, 'M2L - Acceptation de votre demande de formation', '<p>Votre demande de participation à la formation </p>');
+	$name = "valide".rand(1,1000).".pdf";
+
+	file_put_contents("pdf/${name}", $dompdf->output());
+/*	$dompdf->stream();
+*/
+
+	MyMailer::sendMail($user->email, 'M2L - Acceptation de votre demande de formation', '<p>Votre demande de participation à la formation </p>',"pdf/${name}");
 }
 
-header("location: validerFormations");
+redirect("validerFormations");
