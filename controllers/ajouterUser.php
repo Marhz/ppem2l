@@ -1,10 +1,11 @@
 <?php
 
 use Core\Error;
-use Models\User;
-use Core\Session;
 use Core\MyMailer;
+use Core\Session;
+use Illuminate\Database\Eloquent\Collection;
 use Models\Adresse;
+use Models\User;
 
 if(!auth('user')->isAdmin())
 	Error::set(403);
@@ -17,6 +18,8 @@ if(methodIs('post'))
 		'prenom' => $prenom,
 		'email' => $email,
 		'login' => $email,
+		'id' => isset($id) ? $id : false,
+		'level' => 0,
 	];
 	
 	if(!isset($id)) 
@@ -38,13 +41,8 @@ if(methodIs('post'))
 			$data['chef_id'] = $chef_id;
 		}
 	}
-	if(isset($id))
-	{
-		$data['edit'] = true;
-	}
-
-	if(!validateUser($data))
-		redirect(baseUrl()."ajouterUser"); //validation des champs et retour erreur;
+	if(!validateUser($data, $data['id']))
+		redirect(baseUrl()."ajouterUser/".$data['id']); //validation des champs et retour erreur;
 
 	if(!isset($id))
 	{
@@ -64,9 +62,15 @@ if(methodIs('post'))
 		if(!empty($employes))
 		{
 			User::whereIn('id', $employes)->update(['chef_id' => $user->id]);
+			User::where('chef_id', $user->id)->whereNotIn('id', $employes)->update(['chef_id'=> null]);
 		}
 	}
+	if(!isset($chef) && isset($id))
+	{
+		User::where('chef_id', $id)->update(['chef_id' => null]);
+	}
 	Session::setFlash("Utilisateur {$user->fullName()} créé avec succès, appuyez <a href='user/{$user->id}'>ici</a> pour accéder à sa page");
+	redirect(baseUrl().'admin#utilisateurs');
 
 }
 
@@ -80,7 +84,8 @@ if(isset($_GET['id'])){
 		Error::set(404);	
 	}
 }
-else
+else{
 	$user = new User;
+}
 
 require 'views/ajouterUser.php';

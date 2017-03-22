@@ -32,11 +32,11 @@ function deleteUser()
 				->employes
 				->each(function ($employe){
 					$employe->update(['chef_id' => null]);
+				});
+		}
 		$user = User::findOrFail($_GET['id']);
 		$user->deleted_at = Carbon::now();
 		$user->save();
-				});
-		}
 
 	}
 	catch (ModelNotFoundException $e)

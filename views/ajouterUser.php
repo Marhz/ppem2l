@@ -94,6 +94,7 @@
 
                     </div>
                     <div class="form-group col-md-12 employes">
+                        <label>Employes : (optionel)</label>
                         <select multiple name="employes[]" id="employes[]" class="form-control select2">
                             <?php 
                             foreach($employes as $employe)
@@ -108,7 +109,7 @@
                                 foreach($user->employes as $employe)
                                 { 
                                 ?>
-                                    <option selected="selected" value="<?= $employe->id ?>"><?= $employe->fullName() ?></option>
+                                    <option selected value="<?= $employe->id ?>"><?= $employe->fullName() ?></option>
                                 <?php
                                 }
                             } ?>
