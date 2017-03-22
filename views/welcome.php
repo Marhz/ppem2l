@@ -44,6 +44,7 @@ use Core\Paginate;
 				<?php
 			}
 		?>
+		<div class="clear"></div>
 		<div class="center">
 			<?= Paginate::make($formations->page, $formations->lastPage, baseUrl().'home/') ?>
 		</div>

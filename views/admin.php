@@ -2,6 +2,12 @@
 	<div class="col-xs-12 container-mobile">
 		<tabs>
 			<tab name="Utilisateurs" selected="true">
+				<div class="">
+					<a href="<?= baseUrl() ?>ajouterUser">
+						<button class="btn btn-success pull-right">Ajouter un utilisateur</button>
+					</a>
+					<button class="btn btn-primary pull-right">Ajouter des utilisateurs via csv</button>
+				</div>
 				<table class="table table-striped margin datatable" v-cloak>
 					<thead>
 						<tr>

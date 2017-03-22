@@ -505,12 +505,12 @@ hr {
 	width: 100% !important;
 }
 
-.annonce >.pagination > li > a {
+.main-pagination > li > a {
 	font-size: 30px;
 	padding: 6px 20px;
 }
 
-.annonce >.pagination > li > a > .fa {
+.main-pagination > li > a > .fa {
 	font-size: 30px;
 
 }

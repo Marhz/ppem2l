@@ -38,9 +38,9 @@
                         <?= Form::submit('submit',' Ajouter en Csv', ['class' => 'form-control btn btn-primary']) ?>
                     </div>
                 </form>
-                <form action="ajouterUser" method="post">
+                <form action=<?= baseUrl() ?>ajouterUser method="post">
                     <div class="form-group col-md-12">
-                        <?= Form::text('nom', 'Nom : ', ['class' => 'form-control']) ?>
+                        <?= Form::text('nom', 'Nom : ', ['class' => 'form-control','value' => $user->nom]) ?>
                         <?php if(isset($errors['nom'])) 
                             {
                                 ?>
@@ -52,7 +52,7 @@
                         ?>
                     </div>            
                     <div class="form-group col-md-12">
-                        <?= Form::text('prenom', 'Prenom : ', ['class' => 'form-control']) ?>
+                        <?= Form::text('prenom', 'Prenom : ', ['class' => 'form-control','value' => $user->prenom]) ?>
                         <?php if(isset($errors['prenom'])) 
                             {
                                 ?>
@@ -64,7 +64,7 @@
                         ?>
                     </div>
                     <div class="form-group col-md-12">
-                        <?= Form::email('email', 'Email : ', ['class' => 'form-control']) ?>
+                        <?= Form::email('email', 'Email : ', ['class' => 'form-control','value' => $user->email]) ?>
                         <?php if(isset($errors['email'])) 
                             {
                                 ?>
@@ -76,7 +76,7 @@
                         ?>
                     </div>
                     <div class="form-group col-md-12 chefSelect">
-                        <?= Form::checkbox('chef', ['chef' => ' Chef'], ['class' => 'chef']) ?>
+                         <input type="checkbox" name="chef" value="Chef" <?php if($user->level >= 1) echo "checked='checked'";?> class="chef" id="chef" > <label for="chef" > Chef </label>
                     </div>
                     <div class="form-group col-md-12 users">
                         <label for="chef_id">Chef : (optionnel)</label>
@@ -86,14 +86,41 @@
                             foreach($chiefs as $chief)
                             { 
                                 ?>
-                                <option value="<?= $chief->id ?>"><?= $chief->fullName() ?></option>
+                                <option <?php if($chief->id == $user->chef_id) echo 'selected="selected"'; ?> value="<?= $chief->id ?>"><?= $chief->fullName() ?></option>
+                                
                             <?php
                             }?>
                         </select>
+
                     </div>
                     <div class="form-group col-md-12 employes">
-                        <?= Form::select('employes[]','Employes :', $employes, ['class' => 'form-control select2','multiple']) ?>
+                        <label>Employes : (optionel)</label>
+                        <select multiple name="employes[]" id="employes[]" class="form-control select2">
+                            <?php 
+                            foreach($employes as $employe)
+                            { 
+                                ?>
+                                <option value="<?= $employe->id ?>"><?= $employe->fullName() ?></option>
+                            <?php
+
+                            }
+                            if($user->employes->count() > 0)
+                            { 
+                                foreach($user->employes as $employe)
+                                { 
+                                ?>
+                                    <option selected value="<?= $employe->id ?>"><?= $employe->fullName() ?></option>
+                                <?php
+                                }
+                            } ?>
+                        </select>
                     </div>
+                    <?php if (isset($_GET['id']))
+                    { ?>
+                        <input type="hidden" name="id" value="<?= $_GET['id'] ?>" />
+                    <?php 
+                    }
+                    ?>
                     <div class="form-group col-md-12">
                         <?= Form::submit('submit',' Ajouter', ['class' => 'form-control btn btn-primary']) ?>
                     </div>

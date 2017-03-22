@@ -81,7 +81,7 @@ function redirect($url)
 
 function redirectBack()
 {
-	//redirect($_SERVER['HTTP_REFERER'] ?: baseUrl());
+	redirect(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : baseUrl());
 }
 function escapeJson()
 {
@@ -93,7 +93,7 @@ function baseUrl()
 	return 'http://'.$_SERVER['SERVER_NAME'].preg_replace('/index.php$/', '', $_SERVER['PHP_SELF']);
 }
 
-function validateUser($data)
+function validateUser($data, $oldUser = false)
 {
 	extract($data);
 	$errorArray = [];
@@ -105,22 +105,27 @@ function validateUser($data)
 	{
 		$errorArray['prenom'] = "Prenom invalide."; 
 	}
-	if(\Models\User::where('email', $email)->first())
-		$errorArray['email'] = "Cet email est déjà utilisé.";
+	if($oldUser)
+	{
+		if(User::where('id', '!=', $oldUser)->where('email', $email)->first() !== null)
+			$errorArray['email'] = "Cet email est déjà utilisé.";
+
+	}
+	else
+	{
+		if(\Models\User::where('email', $email)->first())
+			$errorArray['email'] = "Cet email est déjà utilisé.";
+	}
 	if(!preg_match('/^[a-zA-Z0-9._-]{1,20}@[a-zA-Z]{3,10}\.[a-z]{2,6}$/',$email))
 	{
 		$errorArray['email'] = "Mail invalide."; 
-	}
-	if(!isset($chef_id) && !isset($employes))
-	{
-		$errorArray[] = "Veuillez choisir un chef ou un/des employé(s)."; 
 	}
 	if(sizeof($errorArray) > 0)
 		Session::setValidationErrors($errorArray);
 	return !(sizeof($errorArray) > 0);
 }
 
-function validateUserCsv($data)
+function validateUserCsv($data, $oldUser = false)
 {
 	extract($data);
 	$errorArray = [];
@@ -132,8 +137,18 @@ function validateUserCsv($data)
 	{
 		$errorArray['prenom'] = "Prenom invalide."; 
 	}
-	if(\Models\User::where('email', $email)->first())
-		$errorArray['email'] = "Cet email est déjà utilisé.";
+	dd($oldUser);
+	if($edit)
+	{
+		if(\Models\User::where('email', $email)->first())
+			$errorArray['email'] = "Cet email est déjà utilisé.";
+
+	}
+	else
+	{
+		if(\Models\User::where('id', '!=', $oldUser)->where('email', $email)->first())
+			$errorArray['email'] = "Cet email est déjà utilisé.";
+	}
 	if(!preg_match('/^[a-zA-Z0-9._-]{1,20}@[a-zA-Z]{3,10}\.[a-z]{2,6}$/',$email))
 	{
 		$errorArray['email'] = "Mail invalide."; 

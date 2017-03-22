@@ -38,7 +38,7 @@ else
             setcookie('remember',$user->token, time() + 365*24*3600);
         }
 		echo "Connexion réussi";
-		header('location:welcome');
+		header('location:home');
 	}
 	else
 	{

@@ -6,7 +6,7 @@ class Formation extends BaseModel
 {
 	public $timestamp=false;
 	protected $guarded = [];
-	protected $perPage = 10;
+	protected $perPage = 12;
 	//Helpers
 	public function getAdresse()
 	{

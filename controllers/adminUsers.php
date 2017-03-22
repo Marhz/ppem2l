@@ -14,15 +14,15 @@ switch ($_GET['action']) {
 		deleteUser();
 		break;
 	case 'edit':
-		methodIs('get') ? editUser() : updateUser();
+		editUser();
 		break;
 	default:
-		dd($_SERVER);
+		redirect(baseUrl().'ajouterUser/');
 		break;
 }
 
 
-public function deleteUser()
+function deleteUser()
 {
 	try
 	{
@@ -32,11 +32,11 @@ public function deleteUser()
 				->employes
 				->each(function ($employe){
 					$employe->update(['chef_id' => null]);
+				});
+		}
 		$user = User::findOrFail($_GET['id']);
 		$user->deleted_at = Carbon::now();
 		$user->save();
-				});
-		}
 
 	}
 	catch (ModelNotFoundException $e)
@@ -45,7 +45,10 @@ public function deleteUser()
 	}
 }
 
-public function editUser()
+function editUser()
 {
-
+	if(methodIs('get'))
+	{
+		redirect(baseUrl().'ajouterUser/'.$_GET['id']);
+	}
 }

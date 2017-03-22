@@ -54,6 +54,6 @@ class Paginate {
 	}
 
 	public function __toString() {
-		return "<ul class='pagination'>".$this->previous.$this->list.$this->next."</ul>";
+		return "<ul class='pagination main-pagination'>".$this->previous.$this->list.$this->next."</ul>";
 	}
 }
