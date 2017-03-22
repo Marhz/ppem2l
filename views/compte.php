@@ -31,5 +31,6 @@
 					?>
 				</tbody>
 			</table>
+			<a href="createPDF"><button type="button" class="btn btn-danger"><i class="fa fa-file-pdf-o" aria-hidden="false"></i>Générer pdf</button>
 		</div>
 	</div>
