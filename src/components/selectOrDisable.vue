@@ -5,7 +5,7 @@
 			<div class="input-group">
 				<select :name="name | addId" :id="name | addId" class="form-control" :disabled="showSubForm" required>
 					<option value="" disabled selected hidden>Selectionnez ou ajoutez</option>
-					<option v-for="elem in elements" :value="elem.id">{{elem.data}}</option>
+					<option v-for="elem in elements" :value="elem.id" :selected="selected(elem)">{{elem.data}}</option>
 				</select>
 				<span
 					@click="toggleSubForm()"
@@ -23,7 +23,12 @@
 
 <script>
 	export default {
-		props: ['elements','name', 'bsclass'],
+		props: {
+				elements : { default : false},
+				name: {},
+				bsclass: { default: false },
+				old: { default : "0" }
+				},
 		data: function() {
 			return {
 				showSubForm: false,
@@ -31,7 +36,11 @@
 		},
 		methods: {
 			toggleSubForm : function () {
-				this.showSubForm = !this.showSubForm;
+				this.showSubForm = !this.showSubForm
+			},
+			selected : function (elem) {
+				if(this.old)
+					return (elem.id == this.old) ? "selected" : null
 			}
 		},
 		filters: {
@@ -41,6 +50,6 @@
 			addId: function(str) {
 				return str+"_id";
 			}
-		}
+		},
 	}
 </script>

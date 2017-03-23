@@ -8,31 +8,42 @@
 			<div class="panel-body">
 			<form action="ajouterFormation" method="post">
 				<div class="form-group col-md-12">
-					<?= Form::text('titre', 'Nom de la formation :', ['class' => 'form-control']) ?>
+					<?= Form::text('titre', 'Nom de la formation :', ['class' => 'form-control','value' => $formation->titre]) ?>
 				</div>
 				<div class="form-group col-md-12">
-					<?= Form::textarea('description', 'Description :', ['class' => 'form-control']) ?>
+					<?= Form::textarea('description', 'Description :', ['class' => 'form-control','value' => $formation->description]) ?>
 				</div>
 				<div class="form-group col-md-6">
-					<?= Form::input('date', 'debut', 'Date de début: ', ['class' => 'form-control']) ?>
+					<?= Form::input('date', 'debut', 'Date de début: ', ['class' => 'form-control','value' => formatDateInput($formation->debut)]) ?>
 				</div>
 				<div class="form-group col-md-6">
-					<?= Form::number('duree', 'Durée(en jours) :', ['class' => 'form-control']) ?>
+					<?= Form::number('duree', 'Durée(en jours) :', ['class' => 'form-control','value' => $formation->duree]) ?>
 				</div>
 				<div class="form-group col-md-6">
-					<?= Form::number('cout', 'Cout :', ['class' => 'form-control']) ?>
+					<?= Form::number('cout', 'Cout :', ['class' => 'form-control','value' => $formation->cout]) ?>
 				</div>
 				<div class="form-group col-md-6">
-					<?= Form::number('nb_places', 'Nombre de places:', ['class' => 'form-control']) ?>
+					<?= Form::number('nb_places', 'Nombre de places:', ['class' => 'form-control','value' => $formation->nb_places]) ?>
 				</div>
-				<select-or-disable :elements='<?= $types ?>' name="type">
+				<select-or-disable :elements='<?= $types ?>' name="type" :old="<?= isset($formation->id) ? $formation->type_id : "0" ?>">
 					<div v-cloak class="col-md-12 adresse_form slideUp">
 						<div class="form-group col-md-12">
 							<?= Form::text('type_titre', 'Titre : ', ['class' => 'form-control']) ?>
 						</div>
 					</div>
 				</select-or-disable>
-				<select-or-disable :elements='<?= htmlspecialchars($prestataires) ?>' name="prestataire">
+<!-- 				<select name="type_id" id="type_id" class="form-control">
+                    <option value="" disabled selected>Selectionnez ou ajoutez.</option>
+                    <?php 
+                    foreach($types as $type)
+                    { 
+                        ?>
+                        <option <?= ($type['id'] === $formation->id ? 'selected' : null) ?> value="<?= $type['id'] ?>"><?= $type['data'] ?></option>
+                        
+                    <?php
+                    }?>
+                </select> -->
+				<select-or-disable :elements='<?= htmlspecialchars($prestataires) ?>' name="prestataire" :old="<?= isset($formation->id) ? $formation->prestataire_id : "0" ?>">
 					<div v-cloak class="col-md-12 adresse_form slideUp">
 						<div class="form-group col-md-12">
 							<?= Form::text('raison_sociale', 'Raison sociale : ', ['class' => 'form-control']) ?>
@@ -58,7 +69,7 @@
 						</div>
 					</div>
 				</select-or-disable>
-				<select-or-disable :elements='<?= $adresses ?>' name="adresse">
+				<select-or-disable :elements='<?= $adresses ?>' name="adresse" :old="<?= isset($formation->id) ? $formation->adresse_id : "0" ?>">
 					<div v-cloak class="col-md-12 adresse_form slideUp">
 						<div class="form-group col-md-12">
 							<?= Form::text('ville', 'Ville : ', ['class' => 'form-control']) ?>
@@ -78,7 +89,7 @@
 					</div>
 				</select-or-disable>
 				<div class="form-group col-md-12">
-					<?= Form::submit('submit',' Ajouter', ['class' => 'form-control btn btn-primary']) ?>
+					<?= Form::submit('submit',' Ajouter', ['class' => 'form-control btn btn-primary','value' => !isset($formation->id) ? "Ajouter" : "Editer"]) ?>
 				</div>
 			</form>
 			</div>

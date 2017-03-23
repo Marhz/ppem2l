@@ -24,6 +24,12 @@ function formatDate($date)
 	return Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d/m/Y');
 }
 
+function formatDateInput($date)
+{
+	if(!empty($date))
+		return Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d');
+}
+
 function boldify($text)
 {
 	return "<b>{$text}</b>";
