@@ -6,7 +6,7 @@
 				Ajouter une formation
 			</div>
 			<div class="panel-body">
-			<form action="ajouterFormation" method="post">
+			<form action=<?= baseUrl() ?>ajouterFormationv2 method="post">
 				<div class="form-group col-md-12">
 					<?= Form::text('titre', 'Nom de la formation :', ['class' => 'form-control','value' => $formation->titre]) ?>
 				</div>
@@ -88,6 +88,12 @@
 						</div>
 					</div>
 				</select-or-disable>
+				<?php if (isset($_GET['id']))
+                { ?>
+                    <input type="hidden" name="id" value="<?= $_GET['id'] ?>" />
+                <?php 
+                }
+                ?>
 				<div class="form-group col-md-12">
 					<?= Form::submit('submit',' Ajouter', ['class' => 'form-control btn btn-primary','value' => !isset($formation->id) ? "Ajouter" : "Editer"]) ?>
 				</div>
