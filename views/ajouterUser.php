@@ -91,7 +91,6 @@
                             <?php
                             }?>
                         </select>
-
                     </div>
                     <div class="form-group col-md-12 employes">
                         <label>Employes : (optionel)</label>

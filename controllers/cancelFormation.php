@@ -28,5 +28,5 @@ if(auth('user')->formations()->find($id)->pivot->valide == 1){
 	MyMailer::sendMail($users->pluck('email')->toArray(), "M2L - Formations", "Une place s'est librée dans la formation".$formation->title);
 }
 auth('user')->formations()->detach($id);
-auth('user')->formations()->attach($id);
+// auth('user')->formations()->attach($id);
 redirectBack();

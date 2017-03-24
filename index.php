@@ -14,7 +14,6 @@ else
 {
 	if(!file_exists("controllers/".$_GET['p'].".php"))
 	{
-		dd("yolo");
 		Error::set(404);
 	}
 }
