@@ -121,7 +121,7 @@
                     }
                     ?>
                     <div class="form-group col-md-12">
-                        <?= Form::submit('submit',' Ajouter', ['class' => 'form-control btn btn-primary']) ?>
+                        <?= Form::submit('submit',' Ajouter', ['class' => 'form-control btn btn-primary','value' => !isset($user->id) ? "Ajouter" : "Editer"]) ?>
                     </div>
                 </form>
             </div>
