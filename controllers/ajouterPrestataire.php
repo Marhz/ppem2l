@@ -21,10 +21,22 @@ if(methodIs('post'))
 			'code_postal' => $cp
 		])->id;
 	}
-	$prestataire = Prestataire::create([
-		'raison_sociale' => $raison_sociale, 
-		'adresse_id' => $adresse_id
-	]);
+	if(!isset($id))
+	{
+		$prestataire = Prestataire::create([
+			'raison_sociale' => $raison_sociale, 
+			'adresse_id' => $adresse_id
+		]);
+	}
+	else
+	{
+		$data = [
+			'raison_sociale' => $raison_sociale, 
+			'adresse_id' => $adresse_id
+		];
+		$prestataire = Prestataire::find($id);
+		$prestataire->update($data);
+	}
 
 	Session::setFlash("Prestataire crée avec succès, appuyez <a href='prestataire/{$prestataire->id}'>ici</a> pour accéder à sa page");
 
@@ -32,4 +44,15 @@ if(methodIs('post'))
 $adresses = Adresse::all()->map(function($adresse) {
 	return ['id' => $adresse->id, 'data' => $adresse->format()];	
 })->toJson(escapeJson());
+
+if(isset($_GET['id'])){
+	try {
+		$prestataire = Prestataire::with('adresse')->findOrFail($_GET['id']);
+	} catch (Exception $e) {
+		Error::set(404);	
+	}
+}
+else
+	$prestataire = new Prestataire;
+
 require 'views/ajouterPrestataire.php';

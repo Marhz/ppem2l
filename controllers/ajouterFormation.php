@@ -2,22 +2,21 @@
 
 use Models\Type;
 use Models\Adresse;
+use Core\Validator;
 use Models\Formation;
 use Models\Prestataire;
 
 if(!auth('user')->isAdmin())
-{
 	Error::set(403);
-}
 if(methodIs('post'))
 {
-	$data = $_POST;
-	extract($data);
-	if(isset($raison_sociale))
+	extract($_POST);
+	$image = null; 
+	if(!isset($prestataire_id))
 	{
 		if(isset($presta_ville))
 		{
-			$presta_adresse_id = Adresse::create([
+			$prestataire_adresse_id = Adresse::create([
 				'ville' => $presta_ville,
 				'voirie' => $presta_voirie,
 				'nom_voirie' => $presta_nom_voirie,
@@ -27,7 +26,7 @@ if(methodIs('post'))
 		}
 		$prestataire_id = Prestataire::create([
 			'raison_sociale' => $raison_sociale,
-			'adresse_id' => $presta_adresse_id
+			'adresse_id' => $prestataire_adresse_id
 		])->id;
 	}
 	if(isset($type_titre))
@@ -44,22 +43,69 @@ if(methodIs('post'))
 			'code_postal' => $cp
 		])->id;
 	}
-	$formation = Formation::create([
-		'titre' => $titre,
-		'description' => $description,
-		'debut' => $debut,
-		'duree' => $duree,
-		'cout' => $cout,
-		'nb_places' => $nb_places,
-		'type_id' => $type_id,
-		'adresse_id' => $adresse_id,
-		'prestataire_id' => $prestataire_id
-	]);
+	if($_FILES['image']['size'] > 0)
+	{
+		if(Validator::fileImage($_FILES['image']))
+		{
+			$image_name = randStr(60).'.'.pathinfo($_FILES['image']['name'],PATHINFO_EXTENSION);
+			move_uploaded_file($_FILES['image']['tmp_name'],'image/'.$image_name);
+			$image = 'image/'.$image_name;
+		}
+		else
+		{
+			redirectBack();
+		}
+	}
+
+	if(!isset($id))
+	{
+		$formation = Formation::create([
+			'titre' => $titre,
+			'description' => $description,
+			'debut' => $debut,
+			'duree' => $duree,
+			'cout' => $cout,
+			'nb_places' => $nb_places,
+			'type_id' => $type_id,
+			'adresse_id' => $adresse_id,
+			'prestataire_id' => $prestataire_id,
+			'image' => $image
+		]);
+	}
+	else
+	{
+		$data = [
+			'titre' => $titre,
+			'description' => $description,
+			'debut' => $debut,
+			'duree' => $duree,
+			'cout' => $cout,
+			'nb_places' => $nb_places,
+			'type_id' => $type_id,
+			'adresse_id' => $adresse_id,
+			'prestataire_id' => $prestataire_id,
+		];
+		$formation = Formation::find($id);
+		$oldImage = $formation->image;
+		if(($oldImage != $image) && $image !== null)
+			$data['image'] = $image;
+		$formation->update($data);
+	}
+	
 }
 $adresses = Adresse::all()->map(function($adresse) {
 	return ['id' => $adresse->id, 'data' => $adresse->format()];	
 })->toJson(escapeJson());
 $types = Type::all(['id', 'titre AS data'])->toJson(escapeJson());
 $prestataires = Prestataire::all(['id', 'raison_sociale AS data'])->toJson(escapeJson());
+if(isset($_GET['id'])){
+	try {
+		$formation = Formation::with('adresse','type','prestataire')->findOrFail($_GET['id']);
+	} catch (Exception $e) {
+		Error::set(404);	
+	}
+}
+else
+	$formation = new Formation;
 
 require 'views/ajouterFormation.php';
