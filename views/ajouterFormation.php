@@ -6,7 +6,7 @@
 				Ajouter une formation
 			</div>
 			<div class="panel-body">
-			<form action=<?= baseUrl() ?>ajouterFormationv2 method="post">
+			<form action=<?= baseUrl() ?>ajouterFormationv2 method="post" enctype="multipart/form-data">
 				<div class="form-group col-md-12">
 					<?= Form::text('titre', 'Nom de la formation :', ['class' => 'form-control','value' => $formation->titre]) ?>
 				</div>
@@ -25,6 +25,9 @@
 				<div class="form-group col-md-6">
 					<?= Form::number('nb_places', 'Nombre de places:', ['class' => 'form-control','value' => $formation->nb_places]) ?>
 				</div>
+				<div class="form-group col-md-12">
+					<?= Form::file('image', 'Image de la formation :', ['class' => 'form-control']) ?>
+				</div>
 				<select-or-disable :elements='<?= $types ?>' name="type" old="<?= $formation->type_id ?>">
 					<div v-cloak class="col-md-12 adresse_form slideUp">
 						<div class="form-group col-md-12">
@@ -32,17 +35,6 @@
 						</div>
 					</div>
 				</select-or-disable>
-<!-- 				<select name="type_id" id="type_id" class="form-control">
-                    <option value="" disabled selected>Selectionnez ou ajoutez.</option>
-                    <?php 
-                    foreach($types as $type)
-                    { 
-                        ?>
-                        <option <?= ($type['id'] === $formation->id ? 'selected' : null) ?> value="<?= $type['id'] ?>"><?= $type['data'] ?></option>
-                        
-                    <?php
-                    }?>
-                </select> -->
 				<select-or-disable :elements='<?= htmlspecialchars($prestataires) ?>' name="prestataire" :old="<?= isset($formation->id) ? $formation->prestataire_id : "0" ?>">
 					<div v-cloak class="col-md-12 adresse_form slideUp">
 						<div class="form-group col-md-12">

@@ -2,6 +2,7 @@
 
 use Models\Type;
 use Models\Adresse;
+use Core\Validator;
 use Models\Formation;
 use Models\Prestataire;
 
@@ -10,6 +11,7 @@ if(!auth('user')->isAdmin())
 if(methodIs('post'))
 {
 	extract($_POST);
+	$image = null; 
 	if(!isset($prestataire_id))
 	{
 		if(isset($presta_ville))
@@ -41,6 +43,20 @@ if(methodIs('post'))
 			'code_postal' => $cp
 		])->id;
 	}
+	if($_FILES['image']['size'] > 0)
+	{
+		if(Validator::fileImage($_FILES['image']))
+		{
+			$image_name = randStr(60).'.'.pathinfo($_FILES['image']['name'],PATHINFO_EXTENSION);
+			move_uploaded_file($_FILES['image']['tmp_name'],'image/'.$image_name);
+			$image = 'image/'.$image_name;
+		}
+		else
+		{
+			redirectBack();
+		}
+	}
+
 	if(!isset($id))
 	{
 		$formation = Formation::create([
@@ -52,7 +68,8 @@ if(methodIs('post'))
 			'nb_places' => $nb_places,
 			'type_id' => $type_id,
 			'adresse_id' => $adresse_id,
-			'prestataire_id' => $prestataire_id
+			'prestataire_id' => $prestataire_id,
+			'image' => $image
 		]);
 	}
 	else
@@ -66,9 +83,12 @@ if(methodIs('post'))
 			'nb_places' => $nb_places,
 			'type_id' => $type_id,
 			'adresse_id' => $adresse_id,
-			'prestataire_id' => $prestataire_id
+			'prestataire_id' => $prestataire_id,
 		];
 		$formation = Formation::find($id);
+		$oldImage = $formation->image;
+		if(($oldImage != $image) && $image !== null)
+			$data['image'] = $image;
 		$formation->update($data);
 	}
 	
