@@ -23,12 +23,12 @@
 
 <script>
 	export default {
-		props: {
-				elements : { default : false},
-				name: {},
-				bsclass: { default: false },
-				old: { default : "0" }
-				},
+		props: [
+			"elements",
+			"name",
+			"bsclass",
+			"old"
+		],
 		data: function() {
 			return {
 				showSubForm: false,
@@ -39,8 +39,7 @@
 				this.showSubForm = !this.showSubForm
 			},
 			selected : function (elem) {
-				if(this.old)
-					return (elem.id == this.old) ? "selected" : null
+				return (elem.id == this.old) ? "selected" : null
 			}
 		},
 		filters: {

@@ -26,7 +26,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="<?= baseUrl()?>welcome">
+                    <a class="navbar-brand" href="<?= baseUrl()?>home">
                         M2L
                     </a>
                 </div>

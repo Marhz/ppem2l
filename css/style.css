@@ -6970,7 +6970,7 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
 	text-align: center;
 }
 body{
-	background: #f7faff;
+	background: white;
 }
 
 ul {
@@ -7091,7 +7091,7 @@ ul {
 }
 .annonce
 {
-	background: #909090;
+	background: #cecece;
 	/*border: 1px solid rgba(0, 0, 0, 0.2);*/
 	/*border-bottom: 8px solid #E4EEFF;*/
 	margin-bottom: 4%;
@@ -7109,7 +7109,8 @@ ul {
 	color:white;
 	right: 15px;
 	z-index: 100;
-	background: rgba(255,0,0,.8);
+	background: rgba(239, 132, 65, .9);
+
 	padding:5px 20px;
 	font-size: 16px;
 	line-height: 30px;
@@ -7391,7 +7392,7 @@ hr {
 
 .mainTitle{
 	margin-top: 0;
-	margin-bottom: 50px;
+	margin-bottom: 0px;
 	font-size: 40px;
 	color: #909090;
 	letter-spacing: 1px;
@@ -7448,13 +7449,13 @@ hr {
 	width: 100% !important;
 }
 
-.pagination > li > a {
-	font-size: 30px;
-	padding: 6px 20px;
+.main-pagination > li > a {
+	font-size: 22px;
+	padding: 6px 16px;
 }
 
-.pagination > li > a > .fa {
-	font-size: 30px;
+.main-pagination > li > a > .fa {
+	font-size: 22px;
 }
 
 /** {
@@ -7509,4 +7510,9 @@ transform: scale(1.0001);
 	left:0;
 	right: 0;
 	text-align: center;
+}
+
+.full {
+	width: 100%;
+	height: 100%;
 }

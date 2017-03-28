@@ -22,8 +22,7 @@ class Formation extends BaseModel
         	->offset(($perPage*($page-1)))
         	->limit(($perPage*$page) - ($perPage*($page-1)))
         	->orderBy('debut')->get();
-        $items->page = $page;
-        $items->lastPage = ceil((static::count() / $perPage));
+        $items->push(['current' =>(int) $page, 'lastPage' => ceil((static::count() / $perPage))]);
         return $items;
     }
 

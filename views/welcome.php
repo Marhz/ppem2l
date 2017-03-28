@@ -2,7 +2,8 @@
 <div class="container container-mobile">
 	<div class="row">
 		<h1 class="title col-xs-12 mainTitle">Formations à venir</h1>
-			<?php 
+		<formations :data="<?= htmlspecialchars($formations, ENT_QUOTES, 'UTF-8') ?>"></formations>
+<!-- 			<?php 
 			foreach($formations as $formation)
 			{
 			?>
@@ -37,9 +38,13 @@
 								<div class="btn-container">
 									<a href="formations/<?= $formation->id ?>" class="btn btn-primary annonce-button"><span class="glyphicon glyphicon-align-left"></span> Plus d'infos</a>
 									<?php
-									if($formation->canDo){ ?>
+									if($formation->canDo && !$formation->alreadyIn){ ?>
 										<a href="inscription/<?= $formation->id ?>" class="btn btn-success annonce-button"><span class="glyphicon glyphicon-align-left"></span> S'inscrire</a>
-									<?php 
+									<?php
+									}
+									else if ($formation->alreadyIn) { ?>
+										<a href="cancelFormation/<?= $formation->id ?>" class="btn btn-warning annonce-button"><span class="glyphicon glyphicon-align-left"></span> Se désinscrire</a>
+										<?php
 									}
 									else {
 										?>
@@ -56,9 +61,9 @@
 				<?php
 			}
 			?>
-			<div class="clear"></div>
-			<div class="center">
+ -->			
+<!-- 			<div class="center">
 				<?= Paginate::make($formations->page, $formations->lastPage, baseUrl().'home/') ?>
 			</div>
-		</div>
+ -->		</div>
 </div>

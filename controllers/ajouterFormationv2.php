@@ -9,13 +9,12 @@ if(!auth('user')->isAdmin())
 	Error::set(403);
 if(methodIs('post'))
 {
-	$data = $_POST;
-	extract($data);
-	if(isset($raison_sociale))
+	extract($_POST);
+	if(!isset($prestataire_id))
 	{
 		if(isset($presta_ville))
 		{
-			$presta_adresse_id = Adresse::create([
+			$prestataire_adresse_id = Adresse::create([
 				'ville' => $presta_ville,
 				'voirie' => $presta_voirie,
 				'nom_voirie' => $presta_nom_voirie,
@@ -25,7 +24,7 @@ if(methodIs('post'))
 		}
 		$prestataire_id = Prestataire::create([
 			'raison_sociale' => $raison_sociale,
-			'adresse_id' => $presta_adresse_id
+			'adresse_id' => $prestataire_adresse_id
 		])->id;
 	}
 	if(isset($type_titre))
@@ -81,9 +80,7 @@ $types = Type::all(['id', 'titre AS data'])->toJson(escapeJson());
 $prestataires = Prestataire::all(['id', 'raison_sociale AS data'])->toJson(escapeJson());
 if(isset($_GET['id'])){
 	try {
-		$formation = Formation::
-			with('adresse','type','prestataire')
-			->findOrFail($_GET['id']);
+		$formation = Formation::with('adresse','type','prestataire')->findOrFail($_GET['id']);
 	} catch (Exception $e) {
 		Error::set(404);	
 	}

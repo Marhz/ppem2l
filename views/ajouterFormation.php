@@ -25,7 +25,7 @@
 				<div class="form-group col-md-6">
 					<?= Form::number('nb_places', 'Nombre de places:', ['class' => 'form-control','value' => $formation->nb_places]) ?>
 				</div>
-				<select-or-disable :elements='<?= $types ?>' name="type" :old="<?= isset($formation->id) ? $formation->type_id : "0" ?>">
+				<select-or-disable :elements='<?= $types ?>' name="type" old="<?= $formation->type_id ?>">
 					<div v-cloak class="col-md-12 adresse_form slideUp">
 						<div class="form-group col-md-12">
 							<?= Form::text('type_titre', 'Titre : ', ['class' => 'form-control']) ?>
@@ -102,3 +102,4 @@
 		</div>
 	</div>
 </div>
+<div class="clear"></div>
