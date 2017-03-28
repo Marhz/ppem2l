@@ -16,9 +16,6 @@
 				</div>
 				</transition>
 			</transition>
-<!-- 			<div class="loading" v-if="true">
-				<span class="fa fa-spin fa-refresh loading-spinner"></span>
-			</div> -->
 			<div class="clear"></div>
 		</div>
 		<pagination 
@@ -67,27 +64,7 @@
 </script>
 
 <style>
-/*	.loading {
-		position: absolute;
-		display: block;
-		z-index: 1000;
-		margin-left:-15%;
-		background: rgb(255,255,255);
-		background: rgba(255,255,255,0.5);
-		background: red;
-		text-align: center;
-		font-size: 50px;
-	}
-	.loading-wrapper {
-		display: block;
-		margin:auto;
-	}
-*/
 	.full {
-		margin-left: -10%;
-		padding: 0 10%;
-		width:120%;
-		overflow: hidden;
 	}
 	.slide-left-enter-active {
 		overflow: hidden;

@@ -6957,6 +6957,10 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
 	background: white;
 }
 
+.no-margin {
+	margin: 0;
+}
+
 .hidden {
 	display: none;
 }
@@ -7077,12 +7081,6 @@ ul {
 	}
 }
 
-@media(max-width: 900px)
-{
-	.annonce img
-	{
-	}
-}
 .clear::after{
    content: " ";
    display: block; 
@@ -7458,16 +7456,7 @@ hr {
 	font-size: 22px;
 }
 
-/** {
-	width: 0;
-height: 0;
-border-style: solid;
-border-width: 45px 99vw 0 0;
-border-color: #2C3E50 transparent transparent transparent;
-transform: scale(1.0001);
-}*/
-
- body {
+body {
     font-family: 'Lato';
 }
 
@@ -7488,6 +7477,7 @@ transform: scale(1.0001);
 	border-left:33px solid green;
 	position: absolute;
 	z-index: 200;
+	border-top-right-radius: 5px;
 }
 
 .annonce-status
