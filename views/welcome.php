@@ -2,6 +2,8 @@
 <div class="container container-mobile">
 	<div class="row no-margin">
 		<h1 class="title col-xs-12 mainTitle">Formations à venir</h1>
+	</div>
+	<div class="row no-margin">
 		<formations :data="<?= htmlspecialchars($formations, ENT_QUOTES, 'UTF-8') ?>"></formations>
 <!-- 			<?php 
 			foreach($formations as $formation)

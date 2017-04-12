@@ -25,8 +25,7 @@ $formations = Formation::myPaginate($id)->each(function ($formation) use ($user)
 		$formation->canDo = false;
 		$formation->cantDoBecause = 'Vous n\'avez pas assez de jours ou de crédits restants';
 	}
-})->toArray();
-$formations = json_encode($formations, escapeJson());
+})->toJson(escapeJson());
 if(isAjax()){
 	echo $formations;
 	die();

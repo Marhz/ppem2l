@@ -1,5 +1,5 @@
 <template>
-	<div class="">
+	<div class="relative">
 		<pagination 
 			:current="pages[0].current" 
 			:last="pages[0].lastPage" 
@@ -25,6 +25,7 @@
 			@home="updateFormations" 
 			@loading="loading = true"
 		></pagination>
+		<div class="loading"></div>
 	</div>
 </template>
 
@@ -40,14 +41,13 @@
 				formations: this.data.filter(item => !item.hasOwnProperty('current')),
 				pages: this.data.filter(item => item.hasOwnProperty('lastPage')),
 				direction: '',
-				loading: false
+				loading: true
 			}
 		},
 		methods: {
 			updateFormations(data) {
 				this.formations = data.filter(item => !item.hasOwnProperty('current'))
 				let newPages = data.filter(item => item.hasOwnProperty('current'))
-				console.log(this.pages.current, newPages.current)
 				if(this.pages[0].current > newPages[0].current)
 					this.direction = 'right'
 				else
@@ -65,15 +65,14 @@
 
 <style>
 	.full {
+		overflow-x:hidden;
 	}
 	.slide-left-enter-active {
-		overflow: hidden;
-		animation: slide-left-in .5s;
+		animation: slide-left-in .8s;
 		animation-timing-function: ease-out;
 	}
 	.slide-left-leave-active {
-		overflow: hidden;
-		animation: slide-left-out .3s;
+		animation: slide-left-out .5s;
 		animation-timing-function: linear;
 	}
 	@keyframes slide-left-in {
@@ -97,13 +96,11 @@
 	}
 
 	.slide-right-enter-active {
-		overflow: hidden;
-		animation: slide-right-in .5s;
+		animation: slide-right-in .8s;
 		animation-timing-function: ease-out;
 	}
 	.slide-right-leave-active {
-		overflow: hidden;
-		animation: slide-right-out .3s;
+		animation: slide-right-out .5s;
 		animation-timing-function: linear;
 	}
 	@keyframes slide-right-in {
@@ -124,5 +121,16 @@
 		100% {
 			transform: translateX(100%);
 		}
+	}
+/*	.loading {
+		background: red;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}*/
+	.relative {
+		position: relative;
 	}
 </style>

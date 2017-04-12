@@ -2,13 +2,14 @@
 
 namespace Models;
 
+use Core\Error;
 use Core\MyMailer;
 
 class Formation extends BaseModel 
 {
 	public $timestamp=false;
 	protected $guarded = [];
-	protected $perPage = 6;
+	protected $perPage = 3;
 	//Helpers
 	public function getAdresse()
 	{
@@ -22,6 +23,8 @@ class Formation extends BaseModel
         	->offset(($perPage*($page-1)))
         	->limit(($perPage*$page) - ($perPage*($page-1)))
         	->orderBy('debut')->get();
+        if($items->isEmpty())
+            Error::set(404);
         $items->push(['current' =>(int) $page, 'lastPage' => ceil((static::count() / $perPage))]);
         return $items;
     }
