@@ -14,7 +14,7 @@ class Session {
 			return "<div class='alert alert-{$type} alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>{$message}</strong></div>";
 		}
 	}
-	public static function setFlash($message, $type = 'succe ss')
+	public static function setFlash($message, $type = 'success')
 	{
 		$_SESSION['flash']['message'] = htmlspecialchars($message);
 		$_SESSION['flash']['type'] = $type;
