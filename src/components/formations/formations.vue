@@ -25,7 +25,10 @@
 			@home="updateFormations" 
 			@loading="loading = true"
 		></pagination>
-		<div class="loading"></div>
+		<div class="loading" v-if="loading">
+			<span class="fa fa-spin fa-refresh"></span>
+			<p>Chargement</p>
+		</div>
 	</div>
 </template>
 
@@ -41,18 +44,19 @@
 				formations: this.data.filter(item => !item.hasOwnProperty('current')),
 				pages: this.data.filter(item => item.hasOwnProperty('lastPage')),
 				direction: '',
-				loading: true
+				loading: false
 			}
 		},
 		methods: {
 			updateFormations(data) {
+				this.loading = false
 				this.formations = data.filter(item => !item.hasOwnProperty('current'))
 				let newPages = data.filter(item => item.hasOwnProperty('current'))
 				if(this.pages[0].current > newPages[0].current)
 					this.direction = 'right'
 				else
 					this.direction = 'left'
-				this.pages = newPages 
+				this.pages = newPages
 			}
 		},
 		computed: {
@@ -122,15 +126,20 @@
 			transform: translateX(100%);
 		}
 	}
-/*	.loading {
+	.loading {
 		background: red;
 		position: absolute;
 		top: 0;
 		bottom: 0;
 		left: 0;
 		right: 0;
-	}*/
-	.relative {
-		position: relative;
+		z-index:1000;
+		background: rgba(255,255,255,.8);
+		font-size: 30px;
+		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
 	}
 </style>

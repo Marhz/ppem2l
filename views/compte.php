@@ -33,7 +33,6 @@
 							?>
 						</tbody>
 					</table>
-					<a href="createPDF"><button type="button" class="btn btn-danger"><i class="fa fa-file-pdf-o" aria-hidden="false"></i> Générer pdf</button></a>
 				</tab>
 				<tab name="Profil">
 					<div class="panel panel-info">
@@ -42,7 +41,7 @@
 			            </div>
 			            <div class="panel-body">
 			              <div class="row">
-			                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src=<?= baseUrl()?>image/<?= auth('user')->avatar ?> class="img-circle img-responsive"> </div>
+			                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="<?= baseUrl()?>image/<?= auth('user')->avatar ?>" class="img-circle img-responsive"> </div>
 			                <div class=" col-md-9 col-lg-9 "> 
 			                  <table class="table table-user-information">
 			                    <tbody>

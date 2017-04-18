@@ -1,6 +1,9 @@
 body {
 	width: 100%;
 }
+.relative {
+	position: relative;
+}
 .inline{
 	display: inline-block;
 }
