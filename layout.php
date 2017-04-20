@@ -72,4 +72,11 @@
             } 
         ?>
 </body>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <a href="<?= baseUrl() ?>contact">Contact</a>
+            </div>
+        </div>
+    </footer>
 </html>
