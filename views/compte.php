@@ -12,7 +12,6 @@
 						<th class="hide-small-screen">Duree</th>
 					</thead>
 					<tbody>		
-
 						<?php
 							foreach($user->formations as $formation)
 							{
@@ -55,10 +54,6 @@
 		                      <tr>
 		                        <td>Nombre de jour restant :</td>
 		                        <td><?= auth('user')->nbr_jour ?></td>
-		                      </tr>
-		                      <tr>
-		                        <td>Adresse :</td>
-		                        <td><?= auth('user')->getAdresse() ?></td>
 		                      </tr>
 		                      <tr>
 		                        <td>Votre responsable :</td>
