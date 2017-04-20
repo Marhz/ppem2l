@@ -59,7 +59,14 @@
 			                      </tr>
 			                      <tr>
 			                        <td>Adresse :</td>
-			                        <td><?= auth('user')->getAdresse() ?></td>
+			                        <td>
+			                        <?php 
+			                        if(auth('user')->adresse_id != null)	
+			                        	echo auth('user')->getAdresse();
+			                        else
+			                        	echo "Non renseigné."; 
+			                        ?>
+			                        </td>
 			                      </tr>
 			                      <tr>
 			                        <td>Votre responsable :</td>
@@ -79,7 +86,7 @@
 		                <div class="panel-footer">
 		                <?php if(!auth('user')->isAdmin()){ ?>
 		                    <span>
-		                    	<a href="#"><button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-edit" aria-hidden="false"></i> Editer son profil</button></a>
+		                    	<a href=ajouterUser/<?= auth('user')->id ?>><button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-edit" aria-hidden="false"></i> Editer son profil</button></a>
 		                    </span>
 						<?php }else{ ?>
 		                    <div>

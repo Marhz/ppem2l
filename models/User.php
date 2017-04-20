@@ -24,7 +24,7 @@ class User extends BaseModel
 	}
 	public function getAdresse()
 	{
-		return Adresse::find($this->id)->format();
+		return Adresse::find($this->adresse_id)->format();
 	}
 	public function getChef()
 	{
