@@ -1,5 +1,5 @@
 <template>
-	<div class="">
+	<div class="col-xs-12">
 		<div class="comments-count col-xs-12">
 			<h3>{{commentsCount}} Commentaire{{ (commentsCount > 1) ? 's' : '' }}</h3>
 		</div>
@@ -7,10 +7,10 @@
 			<div v-for="comment in comments" v-bind:key="comment.id" class="margin-bot-50 clear">
 				<div class="comments">
 					<!-- col-xs-12 col-md-10 col-md-offset-1 -->
-					<div class="comment-avatar col-md-offset-1 col-md-2 hidden-xs">
+					<div class="comment-avatar col-md-2 col-sm-3 hidden-xs">
 						<img :src="avatarUrl(comment.user)">
 					</div>
-					<div class="col-md-8">
+					<div class="col-xs-12 col-sm-9 col-md-10 ">
 						<span>
 							<b class="blue">{{comment.user | fullName}}</b>
 							<span v-if="comment.can_delete" class="pull-right fa fa-trash" @click="deleteComment(comment)"></span>
@@ -26,7 +26,8 @@
 				</div>
 			</div>
 		</transition-group>
-		<div class="col-md-10 col-md-offset-1 col-md-12">
+		<!-- <div class="col-md-10 col-md-offset-1 col-md-12"> -->
+		<div class="col-xs-12 col-md-10 col-md-offset-2">
 			<add-comment :formationId="formationId" @commentAdded="postSubmit"></add-comment>
 		</div>
 	</div>

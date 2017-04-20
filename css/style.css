@@ -6942,6 +6942,18 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
 body {
 	width: 100%;
 }
+.flex {
+	display: flex;
+	clear:both;
+	justify-content: left;
+	align-items: center;
+}
+@media screen and (max-width: 768px) {
+	.flex {
+		flex-direction: column;
+
+	}
+}
 .relative {
 	position: relative;
 }
@@ -6996,6 +7008,10 @@ ul {
 
 .padding-right {
 	padding-right: 15px;
+}
+
+.padding-top-50 {
+	padding-top: 50px;
 }
 
 @media screen and (max-width: 769px)
@@ -7093,7 +7109,10 @@ ul {
 	border-radius: 5px;
 	transition: all .3s ease;
 }
-
+.annonce-image {
+	max-width: 400px;
+	padding-right: 30px;
+}
 .annonce-type {
 	position: absolute;
 	top: 0;
@@ -7120,6 +7139,20 @@ ul {
 
 }
 
+@media screen and (max-width: 768px) {
+	.annonce-image {
+		padding-right: 0;
+		padding-bottom: 30px;
+		max-width: 100%;
+		width: 100%;
+	}
+	.annonce {
+
+	}
+	.annonce-type {
+		line-height: 20px;
+	}
+}
 .annonce:hover img
 {
 	opacity: 1;
@@ -7128,7 +7161,6 @@ ul {
 .formtitre
 {
 	font-size: 150%;
-	border: 1px solid rgba(0, 0, 0, 0.2);
 	text-align: center;
 	border-radius: 3px;
 	background: white;
@@ -7206,8 +7238,17 @@ ul {
 	background: white;
 	border-radius: 3px;
 	box-shadow: none;
-	border: 1px solid rgba(0, 0, 0, 0.2);
 	margin-bottom: 3%;
+	font-size: 18px;
+}
+
+.annonce-infos {
+	background: white;
+	border-radius: 3px;
+	box-shadow: none;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	font-size: 18px;
+	margin: 0 15px 3%;
 }
 
 .btn-container {
@@ -7293,7 +7334,11 @@ ul {
 }
 
 .comment-avatar {
-	text-align: center
+	text-align: center;
+}
+
+.comment-avatar > img {
+	max-width: 100%;
 }
 
 .comments img {
@@ -7311,10 +7356,6 @@ ul {
 .formtitre h1 {
 	margin:30px 0px;
 	letter-spacing: 5px;
-}
-
-.annonce-body {
-	font-size: 18px;
 }
 
 .fa-trash {
@@ -7361,8 +7402,8 @@ hr {
 }
 
 #map {
-	width: 500px;
-	height: 300px;
+	width: 100%;
+	height: 400px;
 }
 
 .datatable {
