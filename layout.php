@@ -35,9 +35,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav col-lg-9">
                     <?php if(isset($_SESSION['connecte'])){?>
-                        <li><a href="<?= baseUrl()?>home">Accueil</a></li>
                         <li><a href="<?= baseUrl()?>compte">Mon compte</a></li>
-                        <li><a href="<?= baseUrl()?>compte">Historique</a></li>
                         <li><a href="<?= baseUrl()?>validerFormations">Gestion des employés</a></li>
                         <li><a href="<?= baseUrl()?>admin">Administration</a></li>
                         <li><search-form></search-form></li>

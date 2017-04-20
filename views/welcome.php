@@ -1,5 +1,5 @@
 <?php use Core\Paginate; ?>
-<div class="container container-mobile">
+<div class="container">
 	<div class="row no-margin">
 		<h1 class="title col-xs-12 mainTitle">Formations à venir</h1>
 	</div>

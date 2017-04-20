@@ -9,7 +9,7 @@ class Formation extends BaseModel
 {
 	public $timestamp=false;
 	protected $guarded = [];
-	protected $perPage = 3;
+	protected $perPage = 6;
 	//Helpers
 	public function getAdresse()
 	{
@@ -34,7 +34,7 @@ class Formation extends BaseModel
     	if($this->isFull())
     	{
     		$users = $this->users()->wherePivot('valide', 0)->get()->each(function ($user) {
-    			MyMailer::sendMail($user->email, 'M2L - Formations', $this->title);
+    			MyMailer::sendMail($user->email, 'M2L - Formations', "Votre demande de participation à la formations {$formation->titre} a été refusée automatiquement car celle-ci est complète.<br/>Vous serez informé par mail et automatiquement réinscrit si une place se libère");
     			$user->formations()->updateExistingPivot($this->id, ['valide' => 2]);
     		});
     	}
@@ -45,9 +45,9 @@ class Formation extends BaseModel
     	if($this->isFull())
     	{
     		$users = $this->users()->wherePivot('valide', 2)->get()->each(function ($user) {
-    			MyMailer::sendMail($user->email, 'M2L - Formations', "YA DLA PLACE OMG");
+    			MyMailer::sendMail($user->email, 'M2L - Formations', "Une place s'est libérée dans la formation {$this->titre}, vous y avez été automatiquement réinscrit et êtez en attende d'une validation par votre chef");
     			$user->formations()->updateExistingPivot($this->id, ['valide' => 0]);
-    		});    		
+    		});
     	}
     }
 

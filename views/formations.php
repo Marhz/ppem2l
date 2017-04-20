@@ -3,26 +3,28 @@
 		<div class="formtitre col-xs-12">
 			<h1><?= $formation->titre ?></h1>	
 		</div>
-		<div class="col-xs-4 margin-top">
-			<img class="center-block" src="<?= baseUrl()?>image/<?= isset($formation->image) ? $formation->image : 'logoformation.png'?>" />
+		<div class="flex annonce-infos margin-top-50">
+			<div class="annonce-image">
+				<img class="center-block" src="<?= baseUrl()?>image/<?= isset($formation->image) ? $formation->image : 'curling.png'?>" />
+			</div>
+			<div>
+				<p>
+					<b>Débute le:</b> <?= affDate($formation->debut) ?>
+				</p>
+				<p>
+					<b>Durée:</b> <?= $formation->duree ?> jours.
+				</p>
+				<p>
+					<b>Délivrée par:</b> <?= $formation->prestataire->raison_sociale ?>	
+				</p>
+				<p>
+					<b>Coût:</b> <?= $formation->cout ?> crédits.
+				</p>
+				<p>
+					<b>Adresse:</b><span id="adresse"> <?= $formation->getAdresse() ?></span>
+				</p>
+			</div>
 		</div>
-		<div class="col-xs-8 annonce-body margin-top">
-			<p>
-				<b>Débute le:</b> <?= affDate($formation->debut) ?>
-			</p>
-			<p>
-				<b>Durée:</b> <?= $formation->duree ?> jours.
-			</p>
-			<p>
-				<b>Délivrée par:</b> <?= $formation->prestataire->raison_sociale ?>	
-			</p>
-			<p>
-				<b>Coût:</b> <?= $formation->cout ?> crédits.
-			</p>
-			<p>
-				<b>Adresse:</b><span id="adresse"> <?= $formation->getAdresse() ?></span>
-			</p>
-		</div>	
 		<div class="col-xs-12 annonce-body margin-top">
 			<p class="description"><?= $formation->description ?></p>
 			<maps address="<?= $formation->getAdresse() ?>" ref="maps"></maps>

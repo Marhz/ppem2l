@@ -6,7 +6,7 @@
 				Ajouter une formation
 			</div>
 			<div class="panel-body">
-			<form action=<?= baseUrl() ?>ajouterFormationv2 method="post" enctype="multipart/form-data">
+			<form action=<?= baseUrl() ?>ajouterFormation method="post" enctype="multipart/form-data">
 				<div class="form-group col-md-12">
 					<?= Form::text('titre', 'Nom de la formation :', ['class' => 'form-control','value' => $formation->titre]) ?>
 				</div>
