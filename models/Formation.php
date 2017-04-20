@@ -56,6 +56,11 @@ class Formation extends BaseModel
    		return $this->users()->wherePivot('valide', 1)->count() == $this->nb_places;
    	}
 
+    public function participantsCount()
+    {
+        return $this->users()->wherePivot('valide', 1)->count();
+    }
+
 	//Relations
 	public function users()
 	{

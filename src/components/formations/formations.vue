@@ -14,7 +14,6 @@
 						<formation :data="formation" ></formation>
 					</div>
 				</div>
-				</transition>
 			</transition>
 			<div class="clear"></div>
 		</div>
@@ -72,11 +71,11 @@
 		overflow-x:hidden;
 	}
 	.slide-left-enter-active {
-		animation: slide-left-in .8s;
+		animation: slide-left-in .5s;
 		animation-timing-function: ease-out;
 	}
 	.slide-left-leave-active {
-		animation: slide-left-out .5s;
+		animation: slide-left-out .3s;
 		animation-timing-function: linear;
 	}
 	@keyframes slide-left-in {
@@ -100,11 +99,11 @@
 	}
 
 	.slide-right-enter-active {
-		animation: slide-right-in .8s;
+		animation: slide-right-in .5s;
 		animation-timing-function: ease-out;
 	}
 	.slide-right-leave-active {
-		animation: slide-right-out .5s;
+		animation: slide-right-out .3s;
 		animation-timing-function: linear;
 	}
 	@keyframes slide-right-in {

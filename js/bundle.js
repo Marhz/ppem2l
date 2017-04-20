@@ -32118,7 +32118,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
 
 exports.default = {
 	components: { formation: _formation2.default, pagination: _pagination2.default },
@@ -32667,7 +32666,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\na:hover {\n\ttext-decoration: none;\n}\n.results {\n\tposition: absolute;\n\tbackground: rgba(0,0,0,0.9);\n\tbox-shadow: 2px 2px 8px rgba(156, 156, 156, 1),-2px 2px 8px rgba(156, 156, 156, 1);\n\tborder: 1px solid white;\n}\n.results a {\n\tcolor:white;\n}\n@media (max-width: 768px)\n{\n.results {\n\t\tposition: relative;\n}\n}\n.results ul {\n\tpadding: 0;\n}\n.result {\n\tdisplay:block;\n\tmin-width: 300px;\n\tpadding: 0 15px;\n}\n.result span {\n\tline-height: 30px\n}\n.titre {\n\tfont-size: 20px\n}\n.search-separator {\n\tmargin: 5px 0;\n}\n.results li:last-child .search-separator {\n\tdisplay: none;\n}\n.search-addon {\n\tcolor: white;\n\tbackground: #337AB7;\n\tfont-size: 15px;\n\tcursor:pointer;\n}\n.search-active {\n\tbackground: #1048ff;\n\tcolor:white;\n}\n.search-active:hover {\n\tcolor:white;\n}\n", ""]);
+exports.push([module.i, "\na:hover {\n\ttext-decoration: none;\n}\n.results {\n\tposition: absolute;\n\tbackground: rgba(0,0,0,0.9);\n\tbox-shadow: 2px 2px 8px rgba(156, 156, 156, 1),-2px 2px 8px rgba(156, 156, 156, 1);\n\tborder: 1px solid white;\n}\n.results a {\n\tcolor:white;\n}\n@media (max-width: 768px)\n{\n.results {\n\t\tposition: relative;\n\t\tmin-width: 300px;\n}\n}\n.results ul {\n\tpadding: 0;\n}\n.result {\n\tdisplay:block;\n\tmin-width: 300px;\n\tpadding: 0 15px;\n}\n.result span {\n\tline-height: 30px\n}\n.titre {\n\tfont-size: 20px\n}\n.search-separator {\n\tmargin: 5px 0;\n}\n.results li:last-child .search-separator {\n\tdisplay: none;\n}\n.search-addon {\n\tcolor: white;\n\tbackground: #337AB7;\n\tfont-size: 15px;\n\tcursor:pointer;\n}\n.search-active {\n\tbackground: #1048ff;\n\tcolor:white;\n}\n.search-active:hover {\n\tcolor:white;\n}\n", ""]);
 
 // exports
 
@@ -32695,7 +32694,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\n.full {\n\toverflow-x:hidden;\n}\n.slide-left-enter-active {\n\tanimation: slide-left-in .8s;\n\tanimation-timing-function: ease-out;\n}\n.slide-left-leave-active {\n\tanimation: slide-left-out .5s;\n\tanimation-timing-function: linear;\n}\n@keyframes slide-left-in {\n0% {\n\t\ttransform: translateX(100%);\n}\n50% {\n\t\ttransform: translateX(-40%);\n}\n100% {\n\t\ttransform: translateX(0%);\n}\n}\n@keyframes slide-left-out {\n0% {\n\t\ttransform: translateX(0%);\n}\n100% {\n\t\ttransform: translateX(-100%);\n}\n}\n.slide-right-enter-active {\n\tanimation: slide-right-in .8s;\n\tanimation-timing-function: ease-out;\n}\n.slide-right-leave-active {\n\tanimation: slide-right-out .5s;\n\tanimation-timing-function: linear;\n}\n@keyframes slide-right-in {\n0% {\n\t\ttransform: translateX(-100%);\n}\n50% {\n\t\ttransform: translateX(40%);\n}\n100% {\n\t\ttransform: translateX(0%);\n}\n}\n@keyframes slide-right-out {\n0% {\n\t\ttransform: translateX(0%);\n}\n100% {\n\t\ttransform: translateX(100%);\n}\n}\n.loading {\n\tbackground: red;\n\tposition: absolute;\n\ttop: 0;\n\tbottom: 0;\n\tleft: 0;\n\tright: 0;\n\tz-index:1000;\n\tbackground: rgba(255,255,255,.8);\n\tfont-size: 30px;\n\ttext-align: center;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\tflex-direction: column;\n}\n", ""]);
+exports.push([module.i, "\n.full {\n\toverflow-x:hidden;\n}\n.slide-left-enter-active {\n\tanimation: slide-left-in .5s;\n\tanimation-timing-function: ease-out;\n}\n.slide-left-leave-active {\n\tanimation: slide-left-out .3s;\n\tanimation-timing-function: linear;\n}\n@keyframes slide-left-in {\n0% {\n\t\ttransform: translateX(100%);\n}\n50% {\n\t\ttransform: translateX(-40%);\n}\n100% {\n\t\ttransform: translateX(0%);\n}\n}\n@keyframes slide-left-out {\n0% {\n\t\ttransform: translateX(0%);\n}\n100% {\n\t\ttransform: translateX(-100%);\n}\n}\n.slide-right-enter-active {\n\tanimation: slide-right-in .5s;\n\tanimation-timing-function: ease-out;\n}\n.slide-right-leave-active {\n\tanimation: slide-right-out .3s;\n\tanimation-timing-function: linear;\n}\n@keyframes slide-right-in {\n0% {\n\t\ttransform: translateX(-100%);\n}\n50% {\n\t\ttransform: translateX(40%);\n}\n100% {\n\t\ttransform: translateX(0%);\n}\n}\n@keyframes slide-right-out {\n0% {\n\t\ttransform: translateX(0%);\n}\n100% {\n\t\ttransform: translateX(100%);\n}\n}\n.loading {\n\tbackground: red;\n\tposition: absolute;\n\ttop: 0;\n\tbottom: 0;\n\tleft: 0;\n\tright: 0;\n\tz-index:1000;\n\tbackground: rgba(255,255,255,.8);\n\tfont-size: 30px;\n\ttext-align: center;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\tflex-direction: column;\n}\n", ""]);
 
 // exports
 

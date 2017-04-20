@@ -119,11 +119,12 @@
 	}
 	.results a {
 		color:white;
-	}
+	} 
 	@media (max-width: 768px)
 	{
 		.results {
 			position: relative;
+			min-width: 300px;
 		}
 	}
 	.results ul {
