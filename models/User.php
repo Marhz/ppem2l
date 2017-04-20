@@ -22,6 +22,14 @@ class User extends BaseModel
 	{
 		return ucwords($this->nom." ".$this->prenom);
 	}
+	public function getAdresse()
+	{
+		return Adresse::find($this->adresse_id)->format();
+	}
+	public function getChef()
+	{
+		return User::find($this->chef_id)->fullName();
+	}
 
 	public function hasEnoughCredit($formation)
 	{

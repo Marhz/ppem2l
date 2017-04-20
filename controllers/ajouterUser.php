@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Models\Adresse;
 use Models\User;
 
-if(!auth('user')->isAdmin())
+if(!auth('user')->isAdmin() && !(auth('user')->id == $_GET['id']))
 	Error::set(403);
 if(methodIs('post'))
 {
@@ -69,7 +69,7 @@ if(methodIs('post'))
 	{
 		User::where('chef_id', $id)->update(['chef_id' => null]);
 	}
-	Session::setFlash("Utilisateur {$user->fullName()} créé avec succès, appuyez <a href='user/{$user->id}'>ici</a> pour accéder à sa page");
+	Session::setFlash("Utilisateur {$user->fullName()} créé avec succès, appuyez <a href='ajouterUser/{$user->id}'>ici</a> pour accéder à sa page");
 	redirect(baseUrl().'admin#utilisateurs');
 
 }

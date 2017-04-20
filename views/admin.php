@@ -69,8 +69,12 @@
 									<td><?= $formation->duree ?></td>
 									<td><?= $formation->debut ?></td>
 									<td class="center">
-										<button class="btn btn-success box"><span class="fa fa-edit"></span></button>
-										<button class="btn btn-danger box"><span class="fa fa-trash"></span></button>
+										<a href="<?= baseUrl() ?>ajouterFormation/<?= $formation->id ?>/edit">
+											<button class="btn btn-success box"><span class="fa fa-edit"></span></button>
+										</a>
+										<a href="<?= baseUrl() ?>adminUsers/<?= $user->id ?>/delete">
+											<button class="btn btn-danger box"><span class="fa fa-trash"></span></button>
+										</a>
 									</td>
 								</tr>
 								<?php
@@ -80,7 +84,36 @@
 				</table>
 			</tab>
 			<tab name="Prestataires">
-
+				<table class="table table-striped margin datatable" v-cloak>
+					<thead>
+						<tr>
+							<td>Raison sociale</td>
+							<td>Adresse</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+							foreach($prestataires as $prestataire)
+							{
+								?>
+								<tr>
+									<td><?= $prestataire->raison_sociale ?></td>
+									<td><?= $prestataire->adresse->format() ?></td>
+									<td class="center">
+									<a href="<?= baseUrl() ?>ajouterPrestataire/<?= $prestataire->id ?>/edit">
+										<button class="btn btn-success box"><span class="fa fa-edit"></span></button>
+									</a>
+									<a href="<?= baseUrl() ?>ajouterPrestataire/<?= $prestataire->id ?>/delete">
+										<button class="btn btn-danger box"><span class="fa fa-trash"></span></button>
+									</a>
+									</td>
+								</tr>
+								<?php
+							}
+						?>
+					</tbody>
+				</table>
 			</tab>		
 		</tabs>
 	</div>
