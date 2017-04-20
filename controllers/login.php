@@ -1,5 +1,8 @@
 <?php
-
+if(isset($_SESSION['connecte']))
+{
+	redirect(baseUrl());
+}
 if(isset($_SESSION['connecte']) || (!isset($_POST['email']) || !isset($_POST['mdp'])))
 {
 	if(isset($_COOKIE['remember']))
@@ -10,13 +13,13 @@ if(isset($_SESSION['connecte']) || (!isset($_POST['email']) || !isset($_POST['md
 		{			
 			$_SESSION['connecte']= true;
 			$_SESSION['user'] = $user;	
-			header('location:welcome');
+			redirect(baseUrl());
+
 		}
 		else
 		{
 			$error = '<div class="alert alert-danger">Votre Cookie de connexion est expiré.</div>';
 			include_once('views/login.php');
-			//echo "Mauvais login <a href='index.php'>Retour</a>";
 		}
 
 	}
@@ -37,8 +40,7 @@ else
         	$user->save();
             setcookie('remember',$user->token, time() + 365*24*3600);
         }
-		echo "Connexion réussi";
-		header('location:home');
+		redirect(baseUrl());
 	}
 	else
 	{
