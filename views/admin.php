@@ -24,7 +24,9 @@
 							{
 								?>
 								<tr>
-									<td><?= $user->fullName() ?></td>
+									<td>
+										<a href="<?= baseUrl() ?>compte/<?= $user->id ?>"><?= $user->fullName() ?></a>
+									</td>
 									<td><?= $user->email ?></td>
 									<td><?= $user->credit ?></td>
 									<td><?= $user->login ?></td>

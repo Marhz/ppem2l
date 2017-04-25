@@ -118,9 +118,9 @@
                         </select>
                     </div>
 
-                    <?php} if (isset($_GET['id']))
+                    <?php} if(isset($_GET['id']))
                     { ?>
-                        <input type="hidden" name="id" value="<?= $_GET['id'] ?>" />
+                        
                     <?php 
                     }
                     ?>
