@@ -1,14 +1,15 @@
 <?php
 
 use Core\Error;
-use Core\MyMailer;
-use Core\Session;
-use Illuminate\Database\Eloquent\Collection;
-use Models\Adresse;
 use Models\User;
+use Core\Session;
+use Core\MyMailer;
+use Models\Adresse;
+use Illuminate\Database\Eloquent\Collection;
 
-if(!auth('user')->isAdmin() && !(auth('user')->id == $_GET['id']))
+if(!auth('user')->isAdmin())
 	Error::set(403);
+
 if(methodIs('post'))
 {
 	extract($_POST);
@@ -65,7 +66,7 @@ if(methodIs('post'))
 	{
 		User::where('chef_id', $id)->update(['chef_id' => null]);
 	}
-	Session::setFlash("Utilisateur {$user->fullName()} créé avec succès, appuyez <a href='ajouterUser/{$user->id}'>ici</a> pour accéder à sa page");
+	Session::setFlash("Utilisateur {$user->fullName()} créé avec succès, appuyez <a href='".baseUrl()."compte/{$user->id}'>ici</a> pour accéder à sa page");
 	redirect(baseUrl().'admin#utilisateurs');
 }
 $chiefs = User::where('level','>=',1)->get();

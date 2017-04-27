@@ -93,7 +93,7 @@
 				window.location = baseUrl+'formations/'+this.results[this.selected].id
 			},
 			submit: function() {
-				$("#search-form").submit()
+				document.querySelector("#search-form").submit()
 			},
 			loseFocus: function() {
 				setTimeout(() => this.displayResult = false, 100)
@@ -119,11 +119,12 @@
 	}
 	.results a {
 		color:white;
-	}
+	} 
 	@media (max-width: 768px)
 	{
 		.results {
 			position: relative;
+			min-width: 300px;
 		}
 	}
 	.results ul {

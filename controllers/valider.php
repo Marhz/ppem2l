@@ -1,10 +1,14 @@
 <?php
 
+use Core\Error;
 use Models\User;
 use Core\MyMailer;
 use Dompdf\Dompdf;
 use Models\Formation;
 use Illuminate\Database\Eloquent\Relations\updateExistingPivot;
+
+if(!auth('user')->isChef())
+	Error::set(403);
 
 extract($_POST);
 // Core\MyMailer::sendMail('gderemusat@gmail.com','hello','there');

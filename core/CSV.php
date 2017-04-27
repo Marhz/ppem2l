@@ -62,6 +62,8 @@ class CSV {
 						'email' => $csv[2],
 						'login' => $csv[2],
 						'password' => sha1($mdp),
+						'credit' => 5000,
+						'nbr_jour' => 15,
 						'chef_id' => isset($_POST['chef_id']) ? $_POST['chef_id'] : NULL
 					];
 					if(validateUserCsv($data))
@@ -84,14 +86,12 @@ class CSV {
 						{
 							$user = \Models\User::create($data);
 							MyMailer::sendMail($user->email,"M2L - Création de votre comptre M2L maison des ligues","Bonjour, <br/><br/> Votre compte sur l'intranet de la maison des ligues a été créer. <br/> Login : {$user->email} <br/> Mot de passe : {$mdp}");
-
+							Session::setMessages("L'utilisateur <a href='".baseUrl()."compte/{$user->id}'>{$user->email}</a> a été ajouté avec succès");
 						}
 					}
 				}
 			}
-
 		}
-		Session::setCsvErrors($errors);	}
-
-
+		Session::setCsvErrors($errors);	
+	}
 }

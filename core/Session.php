@@ -20,6 +20,20 @@ class Session {
 		$_SESSION['flash']['type'] = $type;
 	}
 
+	public static function setMessages($message, $type = 'success')
+	{
+		$_SESSION['flashArray']['messages'][] = $message;
+		$_SESSION['flashArray']['type'] = $type;
+	}
+
+	public static function getMessages()
+	{
+		if(isset($_SESSION['flashArray']['messages'])){
+			$tmp = $_SESSION['flashArray']['messages'];
+			unset($_SESSION['flashArray']['messages']);
+			return $tmp;			
+		}
+	}
 
 	public static function setValidationErrors($errors)
 	{

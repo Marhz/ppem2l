@@ -22960,7 +22960,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/opt/lampp/htdocs/ppem2l/src/components/comments.vue"
+Component.options.__file = "/var/www/html/ppem2l/src/components/comments.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] comments.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -22998,7 +22998,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/opt/lampp/htdocs/ppem2l/src/components/formations/formations.vue"
+Component.options.__file = "/var/www/html/ppem2l/src/components/formations/formations.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] formations.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23036,7 +23036,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/opt/lampp/htdocs/ppem2l/src/components/maps.vue"
+Component.options.__file = "/var/www/html/ppem2l/src/components/maps.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] maps.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23070,7 +23070,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/opt/lampp/htdocs/ppem2l/src/components/message.vue"
+Component.options.__file = "/var/www/html/ppem2l/src/components/message.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] message.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23108,7 +23108,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/opt/lampp/htdocs/ppem2l/src/components/searchForm.vue"
+Component.options.__file = "/var/www/html/ppem2l/src/components/searchForm.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] searchForm.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23142,7 +23142,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/opt/lampp/htdocs/ppem2l/src/components/selectOrDisable.vue"
+Component.options.__file = "/var/www/html/ppem2l/src/components/selectOrDisable.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] selectOrDisable.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23176,7 +23176,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/opt/lampp/htdocs/ppem2l/src/components/tab.vue"
+Component.options.__file = "/var/www/html/ppem2l/src/components/tab.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] tab.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23210,7 +23210,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/opt/lampp/htdocs/ppem2l/src/components/tabs.vue"
+Component.options.__file = "/var/www/html/ppem2l/src/components/tabs.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] tabs.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -32053,6 +32053,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
 
 exports.default = {
 	props: ['data'],
@@ -32085,7 +32086,6 @@ var _pagination2 = _interopRequireDefault(_pagination);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
 //
 //
 //
@@ -32461,7 +32461,7 @@ exports.default = {
 			window.location = baseUrl + 'formations/' + this.results[this.selected].id;
 		},
 		submit: function submit() {
-			$("#search-form").submit();
+			document.querySelector("#search-form").submit();
 		},
 		loseFocus: function loseFocus() {
 			var _this2 = this;
@@ -32667,7 +32667,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\na:hover {\n\ttext-decoration: none;\n}\n.results {\n\tposition: absolute;\n\tbackground: rgba(0,0,0,0.9);\n\tbox-shadow: 2px 2px 8px rgba(156, 156, 156, 1),-2px 2px 8px rgba(156, 156, 156, 1);\n\tborder: 1px solid white;\n}\n.results a {\n\tcolor:white;\n}\n@media (max-width: 768px)\n{\n.results {\n\t\tposition: relative;\n}\n}\n.results ul {\n\tpadding: 0;\n}\n.result {\n\tdisplay:block;\n\tmin-width: 300px;\n\tpadding: 0 15px;\n}\n.result span {\n\tline-height: 30px\n}\n.titre {\n\tfont-size: 20px\n}\n.search-separator {\n\tmargin: 5px 0;\n}\n.results li:last-child .search-separator {\n\tdisplay: none;\n}\n.search-addon {\n\tcolor: white;\n\tbackground: #337AB7;\n\tfont-size: 15px;\n\tcursor:pointer;\n}\n.search-active {\n\tbackground: #1048ff;\n\tcolor:white;\n}\n.search-active:hover {\n\tcolor:white;\n}\n", ""]);
+exports.push([module.i, "\na:hover {\n\ttext-decoration: none;\n}\n.results {\n\tposition: absolute;\n\tbackground: rgba(0,0,0,0.9);\n\tbox-shadow: 2px 2px 8px rgba(156, 156, 156, 1),-2px 2px 8px rgba(156, 156, 156, 1);\n\tborder: 1px solid white;\n}\n.results a {\n\tcolor:white;\n}\n@media (max-width: 768px)\n{\n.results {\n\t\tposition: relative;\n\t\tmin-width: 300px;\n}\n}\n.results ul {\n\tpadding: 0;\n}\n.result {\n\tdisplay:block;\n\tmin-width: 300px;\n\tpadding: 0 15px;\n}\n.result span {\n\tline-height: 30px\n}\n.titre {\n\tfont-size: 20px\n}\n.search-separator {\n\tmargin: 5px 0;\n}\n.results li:last-child .search-separator {\n\tdisplay: none;\n}\n.search-addon {\n\tcolor: white;\n\tbackground: #337AB7;\n\tfont-size: 15px;\n\tcursor:pointer;\n}\n.search-active {\n\tbackground: #1048ff;\n\tcolor:white;\n}\n.search-active:hover {\n\tcolor:white;\n}\n", ""]);
 
 // exports
 
@@ -32695,7 +32695,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\n.full {\n\toverflow-x:hidden;\n}\n.slide-left-enter-active {\n\tanimation: slide-left-in .8s;\n\tanimation-timing-function: ease-out;\n}\n.slide-left-leave-active {\n\tanimation: slide-left-out .5s;\n\tanimation-timing-function: linear;\n}\n@keyframes slide-left-in {\n0% {\n\t\ttransform: translateX(100%);\n}\n50% {\n\t\ttransform: translateX(-40%);\n}\n100% {\n\t\ttransform: translateX(0%);\n}\n}\n@keyframes slide-left-out {\n0% {\n\t\ttransform: translateX(0%);\n}\n100% {\n\t\ttransform: translateX(-100%);\n}\n}\n.slide-right-enter-active {\n\tanimation: slide-right-in .8s;\n\tanimation-timing-function: ease-out;\n}\n.slide-right-leave-active {\n\tanimation: slide-right-out .5s;\n\tanimation-timing-function: linear;\n}\n@keyframes slide-right-in {\n0% {\n\t\ttransform: translateX(-100%);\n}\n50% {\n\t\ttransform: translateX(40%);\n}\n100% {\n\t\ttransform: translateX(0%);\n}\n}\n@keyframes slide-right-out {\n0% {\n\t\ttransform: translateX(0%);\n}\n100% {\n\t\ttransform: translateX(100%);\n}\n}\n.loading {\n\tbackground: red;\n\tposition: absolute;\n\ttop: 0;\n\tbottom: 0;\n\tleft: 0;\n\tright: 0;\n\tz-index:1000;\n\tbackground: rgba(255,255,255,.8);\n\tfont-size: 30px;\n\ttext-align: center;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\tflex-direction: column;\n}\n", ""]);
+exports.push([module.i, "\n.full {\n\toverflow-x:hidden;\n}\n.slide-left-enter-active {\n\tfilter: blur(0px);\n\tanimation: slide-left-in .8s;\n\tanimation-timing-function: ease-out;\n}\n.slide-left-leave-active {\n\tfilter: blur(0px);\n\tanimation: slide-left-out .3s;\n\tanimation-timing-function: linear;\n}\n.slide-left-enter-active .annonce{\n\tanimation: slide-skew-left .8s;\n}\n@keyframes slide-skew-left {\n0% {\n\t\ttransform: skewX(7deg);\n}\n50% {\n\t\ttransform: skewX(0deg);\n}\n60% {\n\t\ttransform: skewX(-5deg);\n}\n80% {\n\t\ttransform: skewX(-2deg);\n}\n100% {\n\t\ttransform: skewX(0deg);\n}\n}\n.slide-left-leave-active .annonce{\n\ttransform: skewX(10deg);\n}\n.slide-right-enter-active .annonce{\n\tanimation: slide-skew-right .8s;\n}\n.slide-right-leave-active .annonce{\n\ttransform: skewX(10deg);\n}\n@keyframes slide-left-in {\n0% {\n\t\ttransform: translateX(100%);\n}\n50% {\n\t\ttransform: translateX(-40%);\n}\n100% {\n\t\ttransform: translateX(0%);\n}\n}\n@keyframes slide-left-out {\n0% {\n\t\ttransform: translateX(0%);\n}\n100% {\n\t\ttransform: translateX(-100%);\n}\n}\n@keyframes slide-skew-right {\n0% {\n\t\ttransform: skewX(7deg);\n}\n50% {\n\t\ttransform: skewX(0deg);\n}\n60% {\n\t\ttransform: skewX(-5deg);\n}\n80% {\n\t\ttransform: skewX(-2deg);\n}\n100% {\n\t\ttransform: skewX(0deg);\n}\n}\n.slide-right-enter-active {\n\tfilter: blur(0px);\n\tanimation: slide-right-in .8s;\n\tanimation-timing-function: ease-out;\n}\n.slide-right-leave-active {\n\tfilter: blur(0px);\n\tanimation: slide-right-out .3s;\n\tanimation-timing-function: linear;\n}\n@keyframes slide-right-in {\n0% {\n\t\ttransform: translateX(-100%);\n}\n50% {\n\t\ttransform: translateX(40%);\n}\n100% {\n\t\ttransform: translateX(0%);\n}\n}\n@keyframes slide-right-out {\n0% {\n\t\ttransform: translateX(0%);\n}\n100% {\n\t\ttransform: translateX(100%);\n}\n}\n.loading {\n\tposition: absolute;\n\ttop: 0;\n\tbottom: 0;\n\tleft: 0;\n\tright: 0;\n\tz-index:1000;\n\tbackground: rgba(255,255,255,.8);\n\tfont-size: 30px;\n\ttext-align: center;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n\tflex-direction: column;\n}\n", ""]);
 
 // exports
 
@@ -48276,7 +48276,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/opt/lampp/htdocs/ppem2l/src/components/addComment.vue"
+Component.options.__file = "/var/www/html/ppem2l/src/components/addComment.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] addComment.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -48310,7 +48310,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/opt/lampp/htdocs/ppem2l/src/components/formations/formation.vue"
+Component.options.__file = "/var/www/html/ppem2l/src/components/formations/formation.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] formation.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -48348,7 +48348,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/opt/lampp/htdocs/ppem2l/src/components/pagination.vue"
+Component.options.__file = "/var/www/html/ppem2l/src/components/pagination.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] pagination.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -48837,7 +48837,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('span', [_vm._v("\n\t\t\t\tDébute le: " + _vm._s(_vm.formation.debut) + "\n\t\t\t")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('span', [_vm._v("\n\t\t\t\tDurée: " + _vm._s(_vm.formation.duree) + " jours.\n\t\t\t")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('span', [_vm._v("\n\t\t\t\tCoût: " + _vm._s(_vm.formation.cout) + " crédits.\n\t\t\t")])]), _vm._v(" "), _c('img', {
     staticClass: "center-block",
     attrs: {
-      "src": _vm.baseUrl + 'image/' + 'curling.png'
+      "src": _vm.formation.image ? _vm.baseUrl + _vm.formation.image : _vm.baseUrl + 'image/' + 'curling.png'
     }
   }), _vm._v(" "), _c('div', {
     staticClass: "annonce-details-overlay"

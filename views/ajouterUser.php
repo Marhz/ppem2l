@@ -1,24 +1,13 @@
 <?php use Core\Form; ?>
 <div id="addrForm">
     <div class="col-md-8 col-md-offset-2">
-        <?php 
-        if(isset($csvErrors))
-        { 
-            foreach($csvErrors as $error)
-            {
-                ?>
-                <message type="danger"><?= $error ?></message>
-                <?php
-            }
-        }
-        ?>
         <div class="panel panel-primary">
             <div class="panel-heading">
                 Ajouter un Utilisateur
             </div>
             <div class="panel-body">
                 <?php if(auth('user')->isAdmin()){ ?>
-                    <form action="addUserCSV" method="post" enctype='multipart/form-data'>
+                    <form action="<?= baseUrl() ?>addUserCSV" method="post" enctype='multipart/form-data'>
                         <div class="form-group col-md-12">
                             <?= Form::file('csv', 'Fichier : ', ['class' => 'form-control']) ?>
                         </div>
@@ -116,9 +105,9 @@
                             } ?>
                         </select>
                     </div>
-                  <?php if (isset($_GET['id']))
+                    <?php if (isset($_GET['id']))
                     { ?>
-                        
+                        <input type="hidden" value="<?= $_GET['id'] ?>" name="id">
                     <?php 
                     }
                     ?>

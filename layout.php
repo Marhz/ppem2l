@@ -37,8 +37,13 @@
                     <ul class="nav navbar-nav col-lg-9">
                     <?php if(isset($_SESSION['connecte'])){?>
                         <li><a href="<?= baseUrl()?>compte">Mon compte</a></li>
-                        <li><a href="<?= baseUrl()?>validerFormations">Gestion des employés</a></li>
-                        <li><a href="<?= baseUrl()?>admin">Administration</a></li>
+                        <?php if(auth('user')->isChef()) { ?>
+                            <li><a href="<?= baseUrl()?>validerFormations">Gestion des employés</a></li>
+                        <?php 
+                        }
+                        if(auth('user')->isAdmin()) { ?>
+                            <li><a href="<?= baseUrl()?>admin">Administration</a></li>
+                        <?php } ?>
                         <li><search-form></search-form></li>
                     </ul>
                     <?php }?>
@@ -71,9 +76,6 @@
             } 
         ?>
 </body>
-<?php if(isset($page) && $page=="home")
-{
-?>
     <footer class="footer">
         <div class="container">
             <div class="element">
@@ -104,5 +106,4 @@
             </p>
         </div>
     </footer>
-<?php } ?>
 </html>

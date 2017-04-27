@@ -6998,12 +6998,20 @@ body{
 ul {
 	list-style-type: none;
 }
+.align-right {
+	text-align: right;
+}
 .no-padding{
 	padding: 0;
 }
 
 .margin-top-50 {
 	margin-top: 50px;
+}
+
+.margin-bot-15 {
+	position: relative;
+	margin-bottom: 15px;
 }
 
 .padding-right {
@@ -7255,7 +7263,6 @@ ul {
 	width: 100%;
 	text-align: center;
 	padding-bottom: 2%;
-
 }
 
 .annonce-button {
@@ -7358,22 +7365,22 @@ ul {
 	letter-spacing: 5px;
 }
 
-.fa-trash {
+.comments .fa-trash {
 	font-size:26px;
 	transition: all .5s;
 }
 
-.fa-edit {
+.comments .fa-edit {
 	font-size: 28px;
 	transition: all .5s;
 }
 
-.fa-edit:hover {
+.comments .fa-edit:hover {
 	color:green;
 	transform: translateY(-5px);
 }
 
-.fa-trash:hover {
+.comments .fa-trash:hover {
 	color:red;
 	transform: translateY(-5px);
 }
