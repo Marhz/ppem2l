@@ -144,7 +144,6 @@ function validateUserCsv($data, $oldUser = false)
 	{
 		$errorArray['prenom'] = "Prenom invalide."; 
 	}
-	dd($oldUser);
 	if($edit)
 	{
 		if(\Models\User::where('email', $email)->first())

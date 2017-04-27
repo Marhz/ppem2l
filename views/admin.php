@@ -1,4 +1,24 @@
-<div class="container container-mobile">
+<div class="container container-mobile">		
+    <?php 
+    if(isset($messages))
+    { 
+        foreach($messages as $message)
+        {
+            ?>
+            <message ><?= $message ?></message>
+            <?php
+        }
+    }
+    if(isset($csvErrors))
+    { 
+        foreach($csvErrors as $error)
+        {
+            ?>
+            <message type="danger"><?= $error ?></message>
+            <?php
+        }
+    }
+    ?>
 	<div class="col-xs-12 container-mobile">
 		<tabs v-cloak>
 			<tab name="Utilisateurs" selected="true">
@@ -33,8 +53,7 @@
 											<button class="btn btn-success box">
 												<span class="fa fa-edit"></span>
 											</button>
-										</a>
-										<a href="<?= baseUrl() ?>adminUsers/<?= $user->id ?>/delete">
+										</a><a href="<?= baseUrl() ?>adminUsers/<?= $user->id ?>/delete">
 											<button class="btn btn-danger box">
 												<span class="fa fa-trash"></span>
 											</button>
@@ -78,8 +97,7 @@
 									<td class="align-right">
 										<a href="<?= baseUrl() ?>ajouterFormation/<?= $formation->id ?>/edit">
 											<button class="btn btn-success box"><span class="fa fa-edit"></span></button>
-										</a>
-										<a href="<?= baseUrl() ?>adminUsers/<?= $user->id ?>/delete">
+										</a><a href="<?= baseUrl() ?>adminUsers/<?= $user->id ?>/delete">
 											<button class="btn btn-danger box"><span class="fa fa-trash"></span></button>
 										</a>
 									</td>
@@ -115,8 +133,7 @@
 									<td class="align-right">
 									<a href="<?= baseUrl() ?>ajouterPrestataire/<?= $prestataire->id ?>/edit">
 										<button class="btn btn-success box"><span class="fa fa-edit"></span></button>
-									</a>
-									<a href="<?= baseUrl() ?>ajouterPrestataire/<?= $prestataire->id ?>/delete">
+									</a><a href="<?= baseUrl() ?>ajouterPrestataire/<?= $prestataire->id ?>/delete">
 										<button class="btn btn-danger box"><span class="fa fa-trash"></span></button>
 									</a>
 									</td>
