@@ -44,7 +44,9 @@
 							{
 								?>
 								<tr>
-									<td><?= $user->fullName() ?></td>
+									<td>
+										<a href="<?= baseUrl() ?>compte/<?= $user->id ?>"><?= $user->fullName() ?></a>
+									</td>
 									<td><?= $user->email ?></td>
 									<td class="hide-small-screen"><?= $user->credit ?></td>
 									<td class="hide-small-screen"><?= $user->nbr_jour ?></td>

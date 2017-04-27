@@ -19,7 +19,8 @@
 					Coût: {{ formation.cout }} crédits.
 				</span>
 			</div>
-			<img class="center-block" :src="baseUrl+'image/'+'curling.png'" />
+			<!-- <img class="center-block" :src="baseUrl+formation.image" /> -->
+			<img class="center-block" :src="formation.image ? baseUrl+formation.image : baseUrl+'image/'+'curling.png'" />
 			<div class="annonce-details-overlay"></div>
 		</div>
 		<div class="col-xs-12 col-md-12 annonce-bottom">

@@ -70,7 +70,7 @@ if(methodIs('post'))
 	{
 		User::where('chef_id', $id)->update(['chef_id' => null]);
 	}
-	Session::setFlash("Utilisateur {$user->fullName()} créé avec succès, appuyez <a href='".basrUrl()."compte/{$user->id}'>ici</a> pour accéder à sa page");
+	Session::setFlash("Utilisateur {$user->fullName()} créé avec succès, appuyez <a href='".baseUrl()."compte/{$user->id}'>ici</a> pour accéder à sa page");
 	redirect(baseUrl().'admin#utilisateurs');
 
 }

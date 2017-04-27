@@ -26,6 +26,7 @@ function deleteUser()
 {
 	try
 	{
+		$user = User::findOrFail($_GET['id']);
 		if($user->isChef())
 		{
 			$user->load('employes')
@@ -34,7 +35,11 @@ function deleteUser()
 					$employe->update(['chef_id' => null]);
 				});
 		}
-		$user = User::findOrFail($_GET['id']);
+		$formations = $user->formations;
+		foreach ($formations as $formation) {
+			$formation->checkIfFullBefore();
+			$formation->users()->detach($user->id);
+		}
 		$user->deleted_at = Carbon::now();
 		$user->save();
 
@@ -43,6 +48,7 @@ function deleteUser()
 	{
 		Error::set(404);
 	}
+	redirectBack();
 }
 
 function editUser()

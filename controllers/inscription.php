@@ -18,7 +18,7 @@ if($user->isChef())
 {
 	$user->formations()->attach($id, ['valide' => 1]);
 	$user->update([
-		'nbr_jour' => $user->nb_jours - $formation->duree,
+		'nbr_jour' => $user->nbr_jour - $formation->duree,
 		'credit' => $user->credit - $formation->cout
 	]);
 	$formation->checkIfFull();
@@ -27,10 +27,9 @@ else
 {
 	$user->formations()->attach($id);
 	$user->update([
-		'nbr_jour' => $user->nb_jours - $formation->duree,
+		'nbr_jour' => $user->nbr_jour - $formation->duree,
 		'credit' => $user->credit - $formation->cout
 	]);
-
 }
 
 Session::setFlash('Inscription réussie, vous serez notifié par émail lorsque votre responsable aura accepté ou refusé votre demande', 'success');

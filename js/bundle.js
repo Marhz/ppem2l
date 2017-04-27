@@ -32053,6 +32053,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
 
 exports.default = {
 	props: ['data'],
@@ -32460,7 +32461,7 @@ exports.default = {
 			window.location = baseUrl + 'formations/' + this.results[this.selected].id;
 		},
 		submit: function submit() {
-			$("#search-form").submit();
+			document.querySelector("#search-form").submit();
 		},
 		loseFocus: function loseFocus() {
 			var _this2 = this;
@@ -48836,7 +48837,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('span', [_vm._v("\n\t\t\t\tDébute le: " + _vm._s(_vm.formation.debut) + "\n\t\t\t")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('span', [_vm._v("\n\t\t\t\tDurée: " + _vm._s(_vm.formation.duree) + " jours.\n\t\t\t")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('span', [_vm._v("\n\t\t\t\tCoût: " + _vm._s(_vm.formation.cout) + " crédits.\n\t\t\t")])]), _vm._v(" "), _c('img', {
     staticClass: "center-block",
     attrs: {
-      "src": _vm.baseUrl + 'image/' + 'curling.png'
+      "src": _vm.formation.image ? _vm.baseUrl + _vm.formation.image : _vm.baseUrl + 'image/' + 'curling.png'
     }
   }), _vm._v(" "), _c('div', {
     staticClass: "annonce-details-overlay"
