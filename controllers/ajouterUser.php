@@ -12,7 +12,6 @@ if(!auth('user')->isAdmin() && !(auth('user')->id == $_GET['id']))
 if(methodIs('post'))
 {
 	extract($_POST);
-
 	$data = [
 		'nom' => $nom, 
 		'prenom' => $prenom,
@@ -27,13 +26,11 @@ if(methodIs('post'))
 		$mdp = randStr(8);
 		$data['password'] = sha1($mdp);
 	}
-
 	if(isset($chef))
 	{
 		$data['level'] = 1;
 		$data['chef_id'] = null;
 	}
-
 	else
 	{
 		if(isset($chef_id))
@@ -43,7 +40,6 @@ if(methodIs('post'))
 	}
 	if(!validateUser($data, $data['id']))
 		redirect(baseUrl()."ajouterUser/".$data['id']); //validation des champs et retour erreur;
-
 	if(!isset($id))
 	{
 		$user = User::create($data);
@@ -71,12 +67,11 @@ if(methodIs('post'))
 	}
 	Session::setFlash("Utilisateur {$user->fullName()} créé avec succès, appuyez <a href='ajouterUser/{$user->id}'>ici</a> pour accéder à sa page");
 	redirect(baseUrl().'admin#utilisateurs');
-
 }
-
 $chiefs = User::where('level','>=',1)->get();
 $employes = User::where('level',0)->whereNull('chef_id')->get();
 $errors = Session::getValidationErrors();
+
 if(isset($_GET['id'])){
 	try {
 		$user = User::with('employes')->findOrFail($_GET['id']);

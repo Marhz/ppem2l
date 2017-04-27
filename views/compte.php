@@ -61,7 +61,7 @@
 		                        <?= (auth('user')->chef_id != null) ? auth('user')->chef->fullName() : "L' Administrateur"; 
 		                       	?>
 		                       	<span class="pull-right">
-		                       		<a href="#" class="btn btn-primary"><i class="glyphicon glyphicon-envelope"></i> Contact</a>
+		                       		<a href="contact" class="btn btn-primary"><i class="glyphicon glyphicon-envelope"></i> Contact</a>
 		                       	</span>
 		                        </td>
 		                      </tr>
@@ -73,12 +73,12 @@
 	                <div class="panel-footer">
 	                <?php if(!auth('user')->isAdmin()){ ?>
 	                    <span>
-	                    	<a href="#"><button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-edit" aria-hidden="false"></i> Editer son profil</button></a>
+	                    	<a href=ajouterUser/<?=auth('user')->id ?> ><button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-edit" aria-hidden="false"></i> Editer son profil</button></a>
 	                    </span>
 					<?php }else{ ?>
 	                    <div>
 	                    	<a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i>   Contact</a>
-	                        <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i> Editer</a>
+	                        <a href=ajouterUser/<?=auth('user')->id ?>   data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i> Editer</a>
 	                        <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i> Supprimer</a>
 	                    </div>
 	                <?php } ?>

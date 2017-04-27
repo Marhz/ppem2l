@@ -10,4 +10,6 @@ if(isset($user->chef))
 
 $paramsT["placeholder"] = "Veuillez écrire votre message ici...";
 
+$paramsS["value"] = "Envoyer";
+
 include("views/contact.php");

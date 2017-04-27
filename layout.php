@@ -9,6 +9,7 @@
     <!-- Fonts -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"> 
     <link href="<?= baseUrl() ?>css/style.css" rel="stylesheet">
 </head>
 <body id="app-layout">
@@ -70,11 +71,38 @@
             } 
         ?>
 </body>
+<?php if(isset($page) && $page=="home")
+{
+?>
     <footer class="footer">
         <div class="container">
-            <div class="row">
-                <a href="<?= baseUrl() ?>contact">Contact</a>
+            <div class="element">
+                <a href="<?= baseUrl() ?>/compte#profil"><i class="fa fa-address-card-o fa-lg" aria-hidden="true"></i> Mon profil</a>
+            </div>
+            <div class="element">
+                <a href="<?= baseUrl() ?>/compte">
+                    <i class="fa fa-list-ul fa-lg" aria-hidden="true"></i>
+                    Mes formations
+                </a>
+            </div>
+            <div class="element">
+                <a href="<?= baseUrl() ?>contact">
+                    <i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i>
+                    Contact
+                </a>
+            </div>
+            <div class="element">
+                <a>
+                    <i class="fa fa-question-circle-o fa-lg" aria-hidden="true"></i>
+                A propos
+                </a>
             </div>
         </div>
+        <div class="copyright">
+            <p>
+                M2L ©
+            </p>
+        </div>
     </footer>
+<?php } ?>
 </html>

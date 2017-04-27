@@ -34,4 +34,5 @@ if(isAjax()){
 // 	Session::setFlash("Vous n'avez plus de jours de formations disponible", "warning");
 //$nbFormation = $user->formations->count();
 // $formations = Formation::with('prestataire', 'type')->get();
+$page = "home";
 include_once('views/welcome.php');
