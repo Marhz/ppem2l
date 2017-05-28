@@ -1,10 +1,15 @@
 <template>
 	<div>
-		<div class="tabs">
-			<ul class="nav nav-tabs">
-				<li v-for="tab in tabs" :class="[{'active' : tab.isActive }, col]" >
-					<a :href="tab.href" @click="selectTab(tab.href)" >{{tab.name}}</a>
-				</li>
+		<div class="">
+			<ul class="myTabs">
+				<a v-for="tab in tabs" 
+					:href="tab.href" 
+					@click="selectTab(tab.href)"
+					class="myTab"
+					:class="{'tabActive' : tab.isActive }"
+ 				>
+					<li>{{tab.name}}</li> 
+				</a>
 			</ul>
 		</div>
 
@@ -15,13 +20,10 @@
 </template>
 
 <script>
-	// import tab from './tab.vue';
 	export default {
-		// components: {tab},
 		data() {
 			return { 
 				tabs: [],
-				tabsNb: 0
 			}
 		},
 		created() {
@@ -32,7 +34,6 @@
 			if(href) {
 				this.selectTab(href);
 			}
-			this.tabsNb = 12/this.$children.length
 		},
 		methods: {
 			selectTab(href) {
@@ -41,10 +42,35 @@
 				});
 			}
 		},
-		computed: {
-			col() {
-				return "col-xs-"+this.tabsNb
-			}
-		}
 	}
 </script>
+
+<style>
+	.myTabs {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		justify-content: center;
+		align-items: stretch;
+		min-height: 50px;
+		position: relative;
+	}
+	.myTab {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-bottom: 2px solid #ececec;
+		font-size: 16px;
+		font-weight: 500;
+		color: inherit;
+		text-decoration: none;
+	}
+	.myTab:not(:last-child) {
+		/*border-right: 1px solid #ececec;*/
+	}
+	.tabActive {
+		color: rgb(45, 80, 255);
+		border-bottom: 2px solid rgb(79, 143, 247);		
+	}
+</style>

@@ -60,7 +60,7 @@
 					this.displayResult = false
 					return
 				}
-				if(this.search === this.oldSearch)
+				if(this.search === this.oldSearch || this.search.length < 2)
 					return
 	            this.oldSearch = this.search
 				$.ajax({

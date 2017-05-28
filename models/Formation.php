@@ -34,22 +34,37 @@ class Formation extends BaseModel
     	if($this->isFull())
     	{
     		$users = $this->users()->wherePivot('valide', 0)->get()->each(function ($user) {
-    			MyMailer::sendMail($user->email, 'M2L - Formations', "Votre demande de participation à la formations {$formation->titre} a été refusée automatiquement car celle-ci est complète.<br/>Vous serez informé par mail et automatiquement réinscrit si une place se libère");
+    			MyMailer::sendMail($user->email, 'M2L - Formations', "Votre demande de participation à la formations {$formation->titre} a été refusée automatiquement car celle-ci est complète.<br/>Vos crédits et jours restants ont été automatiquement rajoutés à votre compte.<br/>Vous serez informé par mail et automatiquement réinscrit si une place se libère");
+                $user->updateCurrencies($this->cout, $this->duree);
     			$user->formations()->updateExistingPivot($this->id, ['valide' => 2]);
     		});
     	}
     }
-
-    public function checkIfFullBefore()
+    public function registerBackUsers()
     {
-    	if($this->isFull())
-    	{
-    		$users = $this->users()->wherePivot('valide', 2)->get()->each(function ($user) {
-    			MyMailer::sendMail($user->email, 'M2L - Formations', "Une place s'est libérée dans la formation {$this->titre}, vous y avez été automatiquement réinscrit et êtez en attende d'une validation par votre chef");
-    			$user->formations()->updateExistingPivot($this->id, ['valide' => 0]);
-    		});
-    	}
+        return User::where('credit', '>=', $this->cout)
+            ->where('nbr_jour', '>=', $this->duree)
+            ->whereHas('formations', function ($query) {
+                $query->where('attribution_formations.valide', 2)->where('formation_id', $this->id);
+            })
+            ->get()
+            ->each(function ($user) {
+                $user->updateCurrencies(-$this->cout, -$this->duree);
+                $user->save();
+                $user->formations()->updateExistingPivot($this->id, ['valide' => 0]);
+            });
     }
+    // public function checkIfFullBefore()
+    // {
+    // 	if($this->isFull())
+    // 	{
+    // 		$users = $this->users()->wherePivot('valide', 2)->get()->each(function ($user) {
+    // 			MyMailer::sendMail($user->email, 'M2L - Formations', "Une place s'est libérée dans la formation {$this->titre}, vous y avez été automatiquement réinscrit si vos crédits et jours restant le permetent et êtez en attende d'une validation par votre chef");
+    //             $user->updateCurrencies($this->cout, $this->duree);
+    // 			$user->formations()->updateExistingPivot($this->id, ['valide' => 0]);
+    // 		});
+    // 	}
+    // }
 
    	public function isFull()
    	{

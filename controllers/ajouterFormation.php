@@ -1,8 +1,10 @@
 <?php
 
 use Models\Type;
-use Models\Adresse;
+use Core\Session;
+use Carbon\Carbon;
 use Core\Validator;
+use Models\Adresse;
 use Models\Formation;
 use Models\Prestataire;
 
@@ -47,9 +49,7 @@ if(methodIs('post'))
 	{
 		if(Validator::fileImage($_FILES['image']))
 		{
-			$image_name = randStr(60).'.'.pathinfo($_FILES['image']['name'],PATHINFO_EXTENSION);
-			move_uploaded_file($_FILES['image']['tmp_name'],'image/'.$image_name);
-			$image = 'image/'.$image_name;
+			$image_name = uploadImage($_FILES['image']);
 		}
 		else
 		{
@@ -59,6 +59,7 @@ if(methodIs('post'))
 
 	if(!isset($id))
 	{
+		// dd($debut);
 		$formation = Formation::create([
 			'titre' => $titre,
 			'description' => $description,
@@ -91,7 +92,8 @@ if(methodIs('post'))
 			$data['image'] = $image;
 		$formation->update($data);
 	}
-	
+	Session::setFlash('La formation "'.$formation->titre.'" a été '.(!isset($id) ? 'crée' : 'changée').' avec succès');
+	redirect(baseUrl()."admin#formations");
 }
 $adresses = Adresse::all()->map(function($adresse) {
 	return ['id' => $adresse->id, 'data' => $adresse->format()];	

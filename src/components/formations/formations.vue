@@ -80,7 +80,7 @@
 		animation: slide-left-out .3s;
 		animation-timing-function: linear;
 	}
-	.slide-left-enter-active .annonce{
+/*	.slide-left-enter-active .annonce{
 		animation: slide-skew-left .8s;
 	}
 	@keyframes slide-skew-left {
@@ -109,6 +109,7 @@
 	.slide-right-leave-active .annonce{
 		transform: skewX(10deg);
 	}
+*/
 	@keyframes slide-left-in {
 		0% {
 			transform: translateX(100%);
@@ -128,7 +129,7 @@
 			transform: translateX(-100%);
 		}
 	}
-	@keyframes slide-skew-right {
+/*	@keyframes slide-skew-right {
 		0% {
 			transform: skewX(7deg);
 		}
@@ -144,7 +145,7 @@
 		100% {
 			transform: skewX(0deg);
 		}
-	}
+	}*/
 	.slide-right-enter-active {
 		filter: blur(0px);
 		animation: slide-right-in .8s;

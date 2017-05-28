@@ -13,7 +13,7 @@ import moment from 'moment';
 import maps from './components/maps.vue'
 import message from './components/message.vue'
 import formations from './components/formations/formations.vue';
-
+import datePicker from './components/datePicker.vue'
 
 window.baseUrl = 'http://127.0.0.1/ppem2l/';
 moment.locale('fr')
@@ -29,7 +29,8 @@ var myApp = new Vue({
 		searchForm,
 		maps,
 		message,
-		formations
+		formations,
+		datePicker
 	},
 });
 

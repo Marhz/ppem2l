@@ -168,3 +168,9 @@ function isAjax()
 {
 	return (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
 }
+
+function uploadImage($image) {
+	$image_name = randStr(60).'.'.pathinfo($image['name'],PATHINFO_EXTENSION);
+	move_uploaded_file($image['tmp_name'],'image/'.$image_name);
+	return 'image/'.$image_name;
+}

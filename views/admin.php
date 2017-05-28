@@ -26,7 +26,9 @@
 					<a href="<?= baseUrl() ?>ajouterUser">
 						<button class="btn btn-success pull-right">Ajouter un utilisateur</button>
 					</a>
-					<button class="btn btn-primary pull-right">Ajouter des utilisateurs via csv</button>
+					<a href="<?= baseUrl() ?>addUserCSV">
+						<button class="btn btn-primary pull-right">Ajouter des utilisateurs via csv</button>
+					</a>
 				</div>
 				<table class="table table-striped margin datatable" v-cloak>
 					<thead>

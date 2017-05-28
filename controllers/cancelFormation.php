@@ -10,27 +10,13 @@ $id = $_GET['id'];
 $formation = Formation::find($id);
 if(!$formation->users->contains(auth('user')->id)){
 	Session::setFlash("Vous n'ête pas inscrit à cette formation", "warning");
-	redirect(baseUrl());
+	redirectBack();
 }
 if(auth('user')->formations()->find($id)->pivot->valide == 1){
-	$users = User::where('credit', '>=', $formation->cout)
-		->where('nbr_jour', '>=', $formation->duree)
-		->whereHas('formations', function ($query) use ($id) {
-			$query->where('attribution_formations.valide', 2)->where('formation_id', $id);
-		})
-		->get()
-		->each(function ($user) use($formation) {
-			$user->credit -= $formation->cout;
-			$user->nbr_jour -= $formation->duree;
-			$user->save();
-			$user->formations()->updateExistingPivot($formation->id, ['valide' => 0]);
-		});
-	MyMailer::sendMail($users->pluck('email')->toArray(), "M2L - Formations", "Une place s'est librée dans la formation".$formation->title);
+	$users = $formation->registerBackUsers();
+	MyMailer::sendMail($users->pluck('email')->toArray(), "M2L - Formations", "Une place s'est libérée dans la formation {$formation->titre}, vous y avez été automatiquement réinscrit si vos crédits et jours restant le permetent et êtez en attende d'une validation par votre chef");
+	auth('user')->formations()->detach($id);
+	auth('user')->updateCurrencies($formation->cout, $formation->duree);
+	Session::setFlash("Désinscription réussie!");
+	redirectBack();
 }
-auth('user')->formations()->detach($id);
-auth('user')->update([
-	'nbr_jour' => auth('user')->nbr_jour + $formation->duree,
-	'credit' => auth('user')->credit + $formation->cout
-]);
-// auth('user')->formations()->attach($id);
-redirectBack();

@@ -55,7 +55,7 @@
 						foreach($employes as $employe)
 						{
 							?>
-							<p><a href="utilisateur/<?= $employe->id ?>"><?= $employe->fullName() ?></a></p>
+							<p><a href="compte/<?= $employe->id ?>"><?= $employe->fullName() ?></a></p>
 							<?php	
 						}
 					}

@@ -38,8 +38,8 @@ if(methodIs('post'))
 		$prestataire->update($data);
 	}
 
-	Session::setFlash("Prestataire crée avec succès, appuyez <a href='prestataire/{$prestataire->id}'>ici</a> pour accéder à sa page");
-
+	Session::setFlash("Prestataire {$prestataire->raison_sociale} ".(isset($id) ? "changé" : "crée")." avec succès!");
+	redirect(baseUrl()."admin#prestataires");
 }
 $adresses = Adresse::all()->map(function($adresse) {
 	return ['id' => $adresse->id, 'data' => $adresse->format()];	

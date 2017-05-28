@@ -31,6 +31,13 @@ class User extends BaseModel
 		return User::find($this->chef_id)->fullName();
 	}
 
+	public function updateCurrencies($credit, $duree)
+	{
+		$this->credit += $credit;
+		$this->nbr_jour += $duree;
+		$this->save();
+	}
+
 	public function hasEnoughCredit($formation)
 	{
 		return $this->credit >= $formation->cout;

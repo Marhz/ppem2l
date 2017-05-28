@@ -1,5 +1,15 @@
+* {
+	box-sizing: border-box;
+}
 body {
 	width: 100%;
+	position: relative;
+}
+#app{
+	/*min-height: 80vh;*/
+	height: 100%;
+	min-height: 100vh;
+	padding-bottom: 300px;
 }
 .flex {
 	display: flex;
@@ -10,7 +20,6 @@ body {
 @media screen and (max-width: 768px) {
 	.flex {
 		flex-direction: column;
-
 	}
 }
 .relative {
@@ -510,7 +519,8 @@ hr {
 }
 
 body {
-    font-family: 'Lato';
+    /*font-family: 'Lato';*/
+    font-family: 'Open Sans', sans-serif;
 }
 
 .fa-btn {
@@ -573,6 +583,10 @@ body
 	font-size: 20px;
 	position: relative;
 	color: white;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 
 .footer .container
@@ -628,4 +642,10 @@ body
 		width: 50%;
 		padding-bottom: 50px;
 	}
+}
+
+.alert-message {
+	width: 70%;
+	margin: 0 auto;
+	margin-bottom: 30px;
 }

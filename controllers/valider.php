@@ -1,4 +1,4 @@
-<?php
+p<?php
 
 use Core\Error;
 use Models\User;
@@ -21,7 +21,7 @@ if(auth('user')->employes->contains($user))
 {
 	if($valide == 2)
 	{
-		$formation->checkIfFullBefore();
+		// $formation->checkIfFullBefore();
 		MyMailer::sendMail($user->email, "M2L - demande de formation", "<p>Votre demande de participation à la formation {$formation->titre} a été refusée par votre chef.</p>");
 	}
 	$user->formations()->updateExistingPivot($id_f, ['valide' => $valide]);

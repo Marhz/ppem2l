@@ -11,7 +11,7 @@ class Session {
 			extract($_SESSION['flash']);
 			unset($_SESSION['flash']);
 			$message = htmlspecialchars_decode($message);
-			return "<div class='alert alert-{$type} alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>{$message}</strong></div>";
+			return "<div class='alert alert-{$type} alert-dismissible alert-message' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>{$message}</strong></div>";
 		}
 	}
 	public static function setFlash($message, $type = 'success')

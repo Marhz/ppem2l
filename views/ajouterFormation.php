@@ -3,7 +3,7 @@
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				Ajouter une formation
+				<?= !isset($formation->id) ? "Ajouter" : "Editer" ?> une formation
 			</div>
 			<div class="panel-body">
 			<form action=<?= baseUrl() ?>ajouterFormation method="post" enctype="multipart/form-data">
@@ -14,7 +14,10 @@
 					<?= Form::textarea('description', 'Description :', ['class' => 'form-control','value' => $formation->description]) ?>
 				</div>
 				<div class="form-group col-md-6">
-					<?= Form::input('date', 'debut', 'Date de début: ', ['class' => 'form-control','value' => formatDateInput($formation->debut)]) ?>
+<!-- 					<?= Form::input('date', 'debut', 'Date de début: ', ['class' => 'form-control','value' => formatDateInput($formation->debut)]) ?>			
+ -->
+ 					<label for="debut">Date de début</label>
+ 					<date-picker input-id="debut" default="<?= formatDateInput($formation->debut) ?>"></date-picker>
 				</div>
 				<div class="form-group col-md-6">
 					<?= Form::number('duree', 'Durée(en jours) :', ['class' => 'form-control','value' => $formation->duree]) ?>

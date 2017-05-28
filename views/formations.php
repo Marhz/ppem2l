@@ -5,7 +5,7 @@
 		</div>
 		<div class="flex annonce-infos margin-top-50">
 			<div class="annonce-image">
-				<img class="center-block" src="<?= baseUrl()?>image/<?= isset($formation->image) ? $formation->image : 'curling.png'?>" />
+				<img class="center-block" src="<?= isset($formation->image) ? baseUrl().$formation->image : baseUrl().'image/curling.png'?>" />
 			</div>
 			<div>
 				<p>

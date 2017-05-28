@@ -8,7 +8,7 @@
 		            </div>
 		            <div class="panel-body">
 		              <div class="row">
-		                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="<?= baseUrl()?>image/<?= auth('user')->avatar ?>" class="img-circle img-responsive"> </div>
+		                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="<?= baseUrl().auth('user')->avatar ?>" class="img-circle img-responsive"> </div>
 		                <div class=" col-md-9 col-lg-9 "> 
 		                  <table class="table table-user-information">
 		                    <tbody>
@@ -29,6 +29,7 @@
 		                        <td>
 		                        <?= ($user->chef_id != null) ? $user->chef->fullName() : "L' Administrateur"; 
 		                       	?>
+		                       	<div class="clear"></div>
 		                       	<span class="pull-right">
 		                       		<a href="contact" class="btn btn-primary"><i class="glyphicon glyphicon-envelope"></i> Contact</a>
 		                       	</span>
@@ -36,26 +37,27 @@
 		                      </tr>
 		             		</tbody>
 		                  </table>
+		              	<?php if(auth('user')->id === $user->id) { ?>
+		              		<form method="POST" action="<?= baseUrl()."updateAvatar" ?>" enctype="multipart/form-data">
+		              			<div class="form-group">
+		              				<label for="avatar">Changer de photo de profil</label>
+		              				<input type="file" name="avatar" id="avatar" class="form-control">
+		              			</div>
+		              			<button type="submit" name="submit" class="btn btn-primary pull-right">Envoyer</button>
+		              		</form>
+		              	<?php } ?>
+
 		                </div>
 		              </div>
 		            </div>
 	                <div class="panel-footer">
-	                <?php if(!auth('user')->isAdmin() && $user->id == auth('user')->id){ ?>
-	                    <span>
-	                    	<a href=ajouterUser/<?=auth('user')->id ?> ><button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-edit" aria-hidden="false"></i> Editer son profil</button></a>
-	                    </span>
-					<?php }else{ ?>
 	                    <div>
 	                    	<a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i> Contact</a>
-	                        <a href=ajouterUser/<?=auth('user')->id ?>   data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i> Editer</a>
-	                        <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i> Supprimer</a>
+	                		<?php if(auth('user')->isAdmin()){ ?>
+		                        <a href=<?= baseUrl() ?>ajouterUser/<?= $user->id ?>   data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i> Editer</a>
+		                        <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i> Supprimer</a>
+	                		<?php } ?>
 	                    </div>
-	                <?php }
-	                if(auth('user')->isAdmin()){ ?>
-	                	<a href=<?= baseUrl() ?>ajouterUser/<?= $user->id ?> data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i> Editer</a>
-	                    <a href=<?= baseUrl() ?>adminUsers/<?= $user->id ?>/delete data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i> Supprimer</a>
-	                <?php } ?>
-						</div>
 	                </div>
 	            </div>
 			</tab>
