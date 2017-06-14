@@ -49,21 +49,34 @@
 				</table>
 			</tab>
 			<tab name="Mes employés">
-				<?php
-					if(!$employes->isEmpty())
-					{		
-						foreach($employes as $employe)
-						{
-							?>
-							<p><a href="compte/<?= $employe->id ?>"><?= $employe->fullName() ?></a></p>
-							<?php	
+				<div class="userThumbnail-container">
+					<?php
+						if(!$employes->isEmpty())
+						{		
+							foreach($employes as $employe)
+							{
+								?>
+								<!-- <a href="compte/<?= $employe->id ?>"> -->
+								<a href="#mes-employés">
+									<div class="userThumbnail">
+										<img src="<?= baseUrl().$employe->avatar ?>" class="userThumbnail-avatar" alt="">
+										<div class="userThumbnail-info">
+											<p class="userThumbnail-text"><?= $employe->fullName() ?></p>
+											<p class="userThumbnail-text"><?= $employe->email ?></p>
+											<p class="userThumbnail-text"><?= $employe->credit ?> crédits</p>
+										</div>
+									</div>									
+								</a>
+								<!-- <p><a href="compte/<?= $employe->id ?>"><?= $employe->fullName() ?></a></p> -->
+								<?php	
+							}
 						}
-					}
-					else
-					{
-						echo "Vous n'avez pas d'employé(s).";
-					}
-				?>
+						else
+						{
+							echo "Vous n'avez pas d'employé(s).";
+						}
+					?>				
+				</div>
 			</tab>
 		</tabs>
 	</div>

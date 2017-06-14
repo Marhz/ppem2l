@@ -3,6 +3,7 @@
 namespace Models;
 
 use Core\Error;
+use Carbon\Carbon;
 use Core\MyMailer;
 
 class Formation extends BaseModel 
@@ -20,6 +21,7 @@ class Formation extends BaseModel
     {
         $perPage = (new static)->perPage;
         $items = static::with('type')
+            ->where("debut", ">", Carbon::now())
         	->offset(($perPage*($page-1)))
         	->limit(($perPage*$page) - ($perPage*($page-1)))
         	->orderBy('debut')->get();

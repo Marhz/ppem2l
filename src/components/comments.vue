@@ -78,7 +78,7 @@ export default {
 			this.editId = false;
 		},
 		avatarUrl(user) {
-			return baseUrl+"image/logoformation.png"
+			return baseUrl+user.avatar
 		}
 	},
 	computed: {
@@ -88,7 +88,7 @@ export default {
 	},
 	filters: {
 		fullName(user) {
-			return `${user.prenom} ${user.nom}`;
+			return `${user.nom} ${user.prenom}`;
 		},
 		ago(date) {
 			return moment(date).fromNow();

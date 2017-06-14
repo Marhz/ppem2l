@@ -49,7 +49,7 @@
                     <div class="form-group col-md-12 users">
                         <label for="chef_id">Chef : (optionnel)</label>
                         <select name="chef_id" id="chef_id" class="form-control">
-                            <option value="" disabled selected hidden>Choisir un chef ou laisser vide.</option>
+                            <option value="" selected>Aucun</option>
                             <?php 
                             foreach($chiefs as $chief)
                             { 

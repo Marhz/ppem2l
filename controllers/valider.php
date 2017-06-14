@@ -1,4 +1,4 @@
-p<?php
+<?php
 
 use Core\Error;
 use Models\User;
@@ -11,8 +11,6 @@ if(!auth('user')->isChef())
 	Error::set(403);
 
 extract($_POST);
-// Core\MyMailer::sendMail('gderemusat@gmail.com','hello','there');
-// validerFormation($bdd, $id_u, $id_f,$valide);
 $user = User::findOrFail($id_u);
 
 $formation = Formation::find($id_f);
@@ -23,6 +21,7 @@ if(auth('user')->employes->contains($user))
 	{
 		// $formation->checkIfFullBefore();
 		MyMailer::sendMail($user->email, "M2L - demande de formation", "<p>Votre demande de participation à la formation {$formation->titre} a été refusée par votre chef.</p>");
+		$user->updateCurrencies($formation->cout, $formation->duree);
 	}
 	$user->formations()->updateExistingPivot($id_f, ['valide' => $valide]);
 	if($valide == 1)
@@ -39,6 +38,7 @@ if(auth('user')->employes->contains($user))
 		$name = "valide".rand(1,1000).".pdf";
 		file_put_contents("pdf/${name}", $dompdf->output());
 		MyMailer::sendMail($user->email, 'M2L - Acceptation de votre demande de formation', "<p>Votre demande de participation à la formation {$formation->titre} a été acceptée</p>","pdf/${name}");
+		unlink("pdf/{$name}");
 	}
 }
 

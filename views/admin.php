@@ -137,7 +137,7 @@
 									<td class="align-right">
 									<a href="<?= baseUrl() ?>ajouterPrestataire/<?= $prestataire->id ?>/edit">
 										<button class="btn btn-success box"><span class="fa fa-edit"></span></button>
-									</a><a href="<?= baseUrl() ?>ajouterPrestataire/<?= $prestataire->id ?>/delete">
+									</a><a href="<?= baseUrl() ?>effacerPrestataire/<?= $prestataire->id ?>">
 										<button class="btn btn-danger box"><span class="fa fa-trash"></span></button>
 									</a>
 									</td>

@@ -36,7 +36,7 @@ if(methodIs('post'))
 	{
 		if(isset($chef_id))
 		{
-			$data['chef_id'] = $chef_id;
+			$data['chef_id'] = ($chef_id == "") ? null : $chef_id;
 		}
 	}
 	if(!validateUser($data, $data['id']))
@@ -66,7 +66,7 @@ if(methodIs('post'))
 	{
 		User::where('chef_id', $id)->update(['chef_id' => null]);
 	}
-	Session::setFlash("Utilisateur {$user->fullName()} créé avec succès, appuyez <a href='".baseUrl()."compte/{$user->id}'>ici</a> pour accéder à sa page");
+	Session::setFlash("L'utilisateur {$user->fullName()} ".(isset($id) ? "changé" : "crée")." avec succès, appuyez <a href='".baseUrl()."compte/{$user->id}'>ici</a> pour accéder à sa page");
 	redirect(baseUrl().'admin#utilisateurs');
 }
 $chiefs = User::where('level','>=',1)->get();

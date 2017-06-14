@@ -7,7 +7,10 @@ use Models\Formation;
 // 	echo json_encode('');
 // 	die();
 // }
-$formations = Formation::with('type', 'adresse')->orderBy('debut', 'desc')->get();
+$formations = Formation::with('type', 'adresse')
+	->where("debut", ">", Carbon::now())
+	->orderBy('debut', 'desc')
+	->get();
 foreach($formations as $key => $value)
 {
 	$found = false;

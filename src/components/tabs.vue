@@ -66,11 +66,15 @@
 		color: inherit;
 		text-decoration: none;
 	}
+	.myTab:focus {
+		text-decoration: none;
+	}
 	.myTab:not(:last-child) {
 		/*border-right: 1px solid #ececec;*/
 	}
 	.tabActive {
 		color: rgb(45, 80, 255);
-		border-bottom: 2px solid rgb(79, 143, 247);		
+		text-decoration: none;
+		border-bottom: 2px solid rgb(120, 143, 255);		
 	}
 </style>

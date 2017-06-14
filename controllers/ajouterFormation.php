@@ -49,7 +49,7 @@ if(methodIs('post'))
 	{
 		if(Validator::fileImage($_FILES['image']))
 		{
-			$image_name = uploadImage($_FILES['image']);
+			$image = uploadImage($_FILES['image']);
 		}
 		else
 		{
@@ -59,7 +59,6 @@ if(methodIs('post'))
 
 	if(!isset($id))
 	{
-		// dd($debut);
 		$formation = Formation::create([
 			'titre' => $titre,
 			'description' => $description,

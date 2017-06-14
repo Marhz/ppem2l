@@ -37,12 +37,9 @@ function deleteUser()
 		}
 		$formations = $user->formations;
 		foreach ($formations as $formation) {
-			$formation->checkIfFullBefore();
 			$formation->users()->detach($user->id);
 		}
-		$user->deleted_at = Carbon::now();
-		$user->save();
-
+		$user->delete();
 	}
 	catch (ModelNotFoundException $e)
 	{
